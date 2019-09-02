@@ -1,0 +1,15 @@
+*~
+*.pyc
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+octave-workspace
+*/octave-workspace
+*.log
+*.html
+*.pdf
+*.so
+\#*\#
+mocaml_history.ml
+private
+__pycache__/
+*.annot
