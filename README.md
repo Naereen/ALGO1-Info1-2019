@@ -3,8 +3,8 @@
 
 - Magistère d'Informatique de Rennes - ENS Rennes - Année 2019/2020
 - Intervenants :
-  + Cours : Lilian Besson
-  + Travaux dirigés : Raphaël Truffet
+  + Cours : [Lilian Besson](https://perso.crans.org/besson/)
+  + Travaux dirigés : [Raphaël Truffet](http://perso.eleves.ens-rennes.fr/people/Raphael.Truffet/)
 - DM (pour les élèves du département informatique) : sujet à travailler seul et à rendre, copie manuscripte.
 
 ----
@@ -13,9 +13,7 @@
 
 C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/) (https://perso.crans.org/besson/teach/info1_algo1_2019/).
 
-- TODO lien nbviewer [list of notebooks](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/)
-- TODO lien Binder
-- TODO explications Binder
+- Liste des notebooks [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master).
 
 [![MyBinder v2](https://beta.mybinder.org/badge.svg)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master)
 
