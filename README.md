@@ -1,53 +1,51 @@
 # ALGO1 : Introduction à l'algorithmique
-# [Jupyter Notebooks](http://jupyter.org/) :notebook: by [Naereen @ GitHub](https://naereen.github.io/)
 
 - Magistère d'Informatique de Rennes - ENS Rennes - Année 2019/2020
 - Intervenants :
   + Cours : [Lilian Besson](https://perso.crans.org/besson/)
   + Travaux dirigés : [Raphaël Truffet](http://perso.eleves.ens-rennes.fr/people/Raphael.Truffet/)
-- DM (pour les élèves du département informatique) : sujet à travailler seul et à rendre, copie manuscripte.
 
 ----
 
 ## Information à propos de ce cours
 
-C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/) (https://perso.crans.org/besson/teach/info1_algo1_2019/).
+C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/`).
 
-- Liste des notebooks [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master).
+- Liste des notebooks : [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/`), [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master).
 
 [![MyBinder v2](https://beta.mybinder.org/badge.svg)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master)
 
 ## Liste de notebooks
 
 ### Cours 1
-- TODO : [CoursMagistral_1.py](CoursMagistral_1.py) et [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb)
+- [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb)
 
 ### Cours 2
-- TODO : [CoursMagistral_2.py](CoursMagistral_2.py) et [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
+- TODO : [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
 
 ### Cours 3
-- TODO : [CoursMagistral_3.py](CoursMagistral_3.py) et [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
+- TODO : [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
 
 ### Cours 4
-- TODO : [CoursMagistral_4.py](CoursMagistral_4.py) et [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
+- TODO : [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
 
 ### Cours 5
-- TODO : [CoursMagistral_5.py](CoursMagistral_5.py) et [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
+- TODO : [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
 
 ### Cours 6
-- TODO : [CoursMagistral_6.py](CoursMagistral_6.py) et [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
+- TODO : [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
 
 ### Cours 7
-- TODO : [CoursMagistral_7.py](CoursMagistral_7.py) et [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
+- TODO : [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
 
 ### Cours 8
-- TODO : [CoursMagistral_8.py](CoursMagistral_8.py) et [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
+- TODO : [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
 
 ### Cours 9
-- TODO : [CoursMagistral_9.py](CoursMagistral_9.py) et [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
+- TODO : [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
 
 ### Cours 10
-- TODO : [CoursMagistral_10.py](CoursMagistral_10.py) et [CoursMagistral_10.ipynb](CoursMagistral_10.ipynb)
+- TODO : [CoursMagistral_10.ipynb](CoursMagistral_10.ipynb)
 
 ----
 
