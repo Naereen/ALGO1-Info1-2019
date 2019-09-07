@@ -17,35 +17,45 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 
 ## Liste de notebooks
 
-### Cours 1
-- [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb) (aussi [en python](CoursMagistral_1.py))
+### Cours 1 : Introduction + File de priorité
+- [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 2
+### Cours 2 : Structures de données pour un ensemble
 - TODO : [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 3
+### Cours 3 : Diviser pour régner
 - TODO : [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 4
+### Cours 4 : Graphes, et parcours en profondeur
 - TODO : [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 5
+### Cours 5 : Parcours en largeur
 - TODO : [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 6
+### Cours 6 : Algorithmes gloutons
 - TODO : [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 7
+### Cours 7 : Programmation dynamique
 - TODO : [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 8
+### Cours 8 : Flots
 - TODO : [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 9
+### Cours 9 : Programmation linéaire
 - TODO : [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-### Cours 10
+### Cours 10 : Algorithmes de recherche de solutions
 - TODO : [CoursMagistral_10.ipynb](CoursMagistral_10.ipynb)
+- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ----
 
@@ -93,7 +103,7 @@ $ jupyter-notebook --version  # version >= 4 is recommended
 > - More information about [notebooks (on the documentation of IPython)](https://nbviewer.jupiter.org/github/ipython/ipython/blob/3.x/examples/Notebook/Index.ipynb) or [on the FAQ on Jupyter's website](https://nbviewer.jupyter.org/faq).
 > - More information about [mybinder.org](http://mybinder.org/): on [this example repository](https://github.com/binder-project/example-requirements).
 
-## :scroll: License ? [![GitHub license](https://img.shields.io/github/license/Naereen/ALGO1-Info1-2019.svg)](https://github.com/Naereen/ALGO1-Info1-2019/blob/master/LICENSE)
+## :scroll: License ? [![GitHub license](https://img.shields.io/github/license/Naereen/ALGO1-Info1-2019.svg)](https://github.com/Naereen/ALGO1-Info1-2019/blob/master/LICENSE.txt)
 All the notebooks in this repository are published under the terms of the [MIT License](https://lbesson.mit-license.org/) (file [LICENSE.txt](LICENSE.txt)).
 © [Lilian Besson](https://GitHub.com/Naereen), 2019.
 

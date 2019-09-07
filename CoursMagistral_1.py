@@ -709,25 +709,25 @@ def time_a_sort_function(sort_function, sort_function_name, values_n, number=100
 
 # Comparons notre tri par tas avec la fonction `sorted()` de Python :
 
-# In[228]:
+# In[233]:
 
 
 small_values_n = [10, 100, 500] + list(range(1000, 5000, 1000))
-big_values_n = list(range(6000, 100000, 2000))
+big_values_n = list(range(6000, 100000, 4000))
 
 values_n = small_values_n + big_values_n
 
 
-# In[229]:
+# In[234]:
 
 
-times_sorted = time_a_sort_function(sorted, "sorted", values_n, number=20)
+times_sorted = time_a_sort_function(sorted, "sorted", values_n, number=100)
 
 
-# In[230]:
+# In[235]:
 
 
-times_heapSort = time_a_sort_function(heapSort, "heapSort", values_n, number=20)
+times_heapSort = time_a_sort_function(heapSort, "heapSort", values_n, number=100)
 
 
 # In[226]:
@@ -736,7 +736,7 @@ times_heapSort = time_a_sort_function(heapSort, "heapSort", values_n, number=20)
 times_insertionSort = time_a_sort_function(insertionSort, "insertionSort", small_values_n, number=20)
 
 
-# In[232]:
+# In[236]:
 
 
 plt.figure()

@@ -1,7 +1,7 @@
 # Makefile to convert Jupyter notebooks to HTML pages
 SHELL=/usr/bin/env /bin/bash
 
-all:	export send
+all:	send
 
 send:	send_zamok
 send_zamok:
