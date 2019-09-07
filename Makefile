@@ -5,7 +5,7 @@ all:	export send
 
 send:	send_zamok
 send_zamok:
-	CP --exclude=.ipynb_checkpoints --exclude=.git ./ ${Szam}algo1_info1_2019/notebooks/
+	CP --exclude=.ipynb_checkpoints --exclude=.git *.ipynb *.py *.html README.md LICENSE.txt ${Szam}teach/info1_algo1_2019/notebooks/
 
 export:
 	./export.sh
