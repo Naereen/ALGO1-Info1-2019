@@ -18,7 +18,7 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 ## Liste de notebooks
 
 ### Cours 1
-- [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb)
+- [CoursMagistral_1.ipynb](CoursMagistral_1.ipynb) (aussi [en python](CoursMagistral_1.py))
 
 ### Cours 2
 - TODO : [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
