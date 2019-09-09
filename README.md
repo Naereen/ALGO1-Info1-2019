@@ -13,7 +13,7 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 
 - Liste des notebooks : [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/`), [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master).
 
-[![MyBinder v2](https://beta.mybinder.org/badge.svg)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master)
+[![MyBinder v2](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master)
 
 ## Liste de notebooks
 
