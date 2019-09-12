@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-2" data-toc-modified-id="Cours-Magistral-2-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 2</a></div><div class="lev2 toc-item"><a href="#Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes" data-toc-modified-id="Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Structures de données pour représenter un ensemble de valeurs distinctes</a></div><div class="lev2 toc-item"><a href="#Type-abstrait" data-toc-modified-id="Type-abstrait-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Type abstrait</a></div><div class="lev2 toc-item"><a href="#Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives" data-toc-modified-id="Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Implémentation des opérations non primitives à partir des opérations primitives</a></div><div class="lev2 toc-item"><a href="#Tests-communs-aux-différentes-implémentations" data-toc-modified-id="Tests-communs-aux-différentes-implémentations-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Tests communs aux différentes implémentations</a></div><div class="lev2 toc-item"><a href="#Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)" data-toc-modified-id="Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Implémentation naïve avec une structure linéaire (liste, tableau etc)</a></div><div class="lev2 toc-item"><a href="#Implémentation-native-avec-set-en-Python" data-toc-modified-id="Implémentation-native-avec-set-en-Python-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Implémentation native avec <code>set</code> en Python</a></div><div class="lev2 toc-item"><a href="#Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits" data-toc-modified-id="Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits-27"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Bidouillage 1/1 : implémentation avec des entiers 32/64 bits</a></div><div class="lev2 toc-item"><a href="#Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python" data-toc-modified-id="Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python-28"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Bidouillage 2/2 : implémentation avec des entiers en précision infinie avec Python</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-tables-de-hachage-?" data-toc-modified-id="Implémentation-avec-des-tables-de-hachage-?-29"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Implémentation avec des tables de hachage ?</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-arbres-binaires-de-recherche-?" data-toc-modified-id="Implémentation-avec-des-arbres-binaires-de-recherche-?-210"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Implémentation avec des arbres binaires de recherche ?</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-211"><span class="toc-item-num">2.11&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-2" data-toc-modified-id="Cours-Magistral-2-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 2</a></div><div class="lev2 toc-item"><a href="#Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes" data-toc-modified-id="Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Structures de données pour représenter un ensemble de valeurs distinctes</a></div><div class="lev2 toc-item"><a href="#Type-abstrait" data-toc-modified-id="Type-abstrait-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Type abstrait</a></div><div class="lev2 toc-item"><a href="#Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives" data-toc-modified-id="Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Implémentation des opérations non primitives à partir des opérations primitives</a></div><div class="lev2 toc-item"><a href="#Tests-communs-aux-différentes-implémentations" data-toc-modified-id="Tests-communs-aux-différentes-implémentations-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Tests communs aux différentes implémentations</a></div><div class="lev2 toc-item"><a href="#Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)" data-toc-modified-id="Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Implémentation naïve avec une structure linéaire (liste, tableau etc)</a></div><div class="lev2 toc-item"><a href="#Implémentation-native-avec-set-en-Python" data-toc-modified-id="Implémentation-native-avec-set-en-Python-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Implémentation native avec <code>set</code> en Python</a></div><div class="lev2 toc-item"><a href="#Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits" data-toc-modified-id="Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits-27"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Bidouillage 1/1 : implémentation avec des entiers 32/64 bits</a></div><div class="lev2 toc-item"><a href="#Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python" data-toc-modified-id="Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python-28"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Bidouillage 2/2 : implémentation avec des entiers en précision infinie avec Python</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-tables-de-hachage-?" data-toc-modified-id="Implémentation-avec-des-tables-de-hachage-?-29"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Implémentation avec des tables de hachage ?</a></div><div class="lev3 toc-item"><a href="#En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;" data-toc-modified-id="En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;-291"><span class="toc-item-num">2.9.1&nbsp;&nbsp;</span>En Python : <code>set</code> ~= <code>dict</code> avec des valeurs "inutiles"</a></div><div class="lev3 toc-item"><a href="#Présentation-de-l'idée-:" data-toc-modified-id="Présentation-de-l'idée-:-292"><span class="toc-item-num">2.9.2&nbsp;&nbsp;</span>Présentation de l'idée :</a></div><div class="lev3 toc-item"><a href="#Comment-stocker-les-plus-petits-ensembles-?" data-toc-modified-id="Comment-stocker-les-plus-petits-ensembles-?-293"><span class="toc-item-num">2.9.3&nbsp;&nbsp;</span>Comment stocker les plus petits ensembles ?</a></div><div class="lev3 toc-item"><a href="#Choix-de-la-fonction-de-hachage" data-toc-modified-id="Choix-de-la-fonction-de-hachage-294"><span class="toc-item-num">2.9.4&nbsp;&nbsp;</span>Choix de la fonction de hachage</a></div><div class="lev3 toc-item"><a href="#Pour-l'exemple-ici" data-toc-modified-id="Pour-l'exemple-ici-295"><span class="toc-item-num">2.9.5&nbsp;&nbsp;</span>Pour l'exemple ici</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-arbres-binaires-de-recherche-?" data-toc-modified-id="Implémentation-avec-des-arbres-binaires-de-recherche-?-210"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Implémentation avec des arbres binaires de recherche ?</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-211"><span class="toc-item-num">2.11&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -83,10 +83,10 @@ class SetIterator():
             return self.values[self.current - 1]
 
 
-# In[63]:
+# In[172]:
 
 
-class SetWithNonPrimOperations():
+class SetWithNonPrimOperations():    
     def isEmpty(self):
         return len(self) == 0
 
@@ -162,6 +162,9 @@ class SetWithNonPrimOperations():
         for value in self:
             self.pop(value)
     
+    def remove(self, value):
+        self.pop(value)
+    
     def __str__(self):
         """ Represent the values of the set in a string {a1,...,an}."""
         str_list = str(self.values())
@@ -170,7 +173,7 @@ class SetWithNonPrimOperations():
 
 # ## Tests communs aux différentes implémentations
 
-# In[64]:
+# In[173]:
 
 
 def un_petit_test_avec_une_structure_densemble(SetClass):
@@ -249,11 +252,45 @@ def un_petit_test_avec_une_structure_densemble(SetClass):
     
 
 
+# Le deuxième test va juste être une suite d'ajout et de suppression de valeurs dans l'ensemble.
+
+# In[174]:
+
+
+import random
+
+
+# In[ ]:
+
+
+random.choice
+
+
+# In[182]:
+
+
+def random_add_remove_test(SetClass, size=1000, max_value=10_000):
+    ens = SetClass()
+    for _ in range(size):
+        x = random.randint(-max_value, max_value)
+        ens.add(x)
+        assert x in ens
+    values = ens.values()
+    for _ in range(size):
+        x = random.choice(values)
+        if random.random() <= 0.5:
+            ens.add(x)
+            assert x in ens
+        else:
+            ens.remove(x)
+            assert x not in ens
+
+
 # ## Implémentation naïve avec une structure linéaire (liste, tableau etc)
 # - On utilise une liste ou un tableau (en Python, `list<d>`) pour stocker les valeurs.
 # - Voyons les implémentations concrètes (les complexités sont discutées pour chacune plus bas).
 
-# In[65]:
+# In[176]:
 
 
 class SetWithList(SetWithNonPrimOperations):
@@ -301,7 +338,7 @@ class SetWithList(SetWithNonPrimOperations):
 
 # On test :
 
-# In[66]:
+# In[177]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithList)
@@ -329,6 +366,33 @@ un_petit_test_avec_une_structure_densemble(SetWithList)
 # | `issuperset(S1, S2)` | $O(n + m)$ | $O(n + m)$ |
 # 
 # > Il reste à définir ce que signifie complexité moyenne. Regardez par exemple dans [Introduction à l'Algorithmique, de Cormen et al].
+
+# In[183]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=10000000)')
+
+
+# In[184]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=100000)')
+
+
+# In[181]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=100000)')
+
 
 # ## Implémentation native avec `set` en Python
 
@@ -365,6 +429,25 @@ un_petit_test_avec_une_structure_densemble(NativeSet)
 # 
 # > Référence : https://stackoverflow.com/questions/3949310/ddg#3949350, https://hg.python.org/releasing/3.6/file/tip/Objects/setobject.c et https://wiki.python.org/moin/TimeComplexity#set
 
+# In[180]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=100000)')
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=100000)')
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=100000)')
+
+
 # ## Bidouillage 1/1 : implémentation avec des entiers 32/64 bits
 # 
 # - Si on sait que les valeurs qu'on va ajouter dans nos ensembles sont comprises entre 0 et 31, on peut représenter un (petit) ensemble avec *un seul* entier 32 bits : si le $i$ème bit est à 1, c'est que $i$ est dans l'ensemble.
@@ -378,13 +461,6 @@ import numpy as np
 
 
 # - On va voir comment utiliser les opérations bit à bit pour réaliser les opérations sur les ensembles. [Documentation ?](https://docs.scipy.org/doc/numpy/reference/routines.bitwise.html)
-
-# In[74]:
-
-
-i32 = np.int32
-i64 = np.int64
-
 
 # In[101]:
 
@@ -416,63 +492,61 @@ bin(1 << 7)  # = {7}
 
 # Et voilà la classe
 
-# In[102]:
+# In[103]:
+
+
+from math import log2
+
+
+# In[152]:
 
 
 class SetWithInt(SetWithNonPrimOperations):
-    def __init__(self, dataType):
-        self._dataType = dataType
-        self.int = dataType(0)
+    def __init__(self, zero=0):
+        """ Use zero=0 to use native int, zero=np.int32(0) or np.int64(0) to use 32/64 bits."""
+        self.int = zero
 
     def __len__(self):
         """ Return n the current size of the set."""
-        return len(self._values)
+        return len(self.values())
 
     def contains(self, value):
         """ Test if value is in the set.
         
-        - Test linearly the equality with all values in the list.
-        - Takes O(n) time in worst case."""
-        for other_value in self._values:
-            if other_value == value:
-                return True
-        return False
-        # equivalent to
-        # return value in self._values
+        - Test one bit.
+        """
+        return (self.int & (1 << value)) != 0
     __contains__ = contains
 
     def add(self, value):
-        """ Add value in the set if it is not present.
-        
-        - Takes O(n) time in worst case."""
-        if value not in self:
-            self._values.append(value)
+        """ Add value in the set if it is not present."""
+        self.int |= (1 << value)
 
     def pop(self, value):
-        """ Add value in the set if it is not present.
-        
-        - Takes O(n) time in worst case."""
-        if value in self:  # O(n)
-            location = self._values.index(value)  # O(n), but happens only once
-            del self._values[location]  # O(n)
+        """ Add value in the set if it is not present."""
+        self.int ^= (1 << value)
     
     def values(self):
-        """ Return a fresh list of the values of the set (not the actual list, to protect it).
+        """ Return a fresh list of the values of the set.
         
         - Takes O(n) time in worst case."""
-        return list(self._values)
+        if self.int == 0:
+            return []
+        else:
+            n = 1 + int(log2(self.int))
+            return [ i for i in range(n) if i in self]
 
 
-# In[ ]:
+# In[133]:
 
 
-SetWithInt32 = SetWithInt(np.int32)
-SetWithInt64 = SetWithInt(np.int64)
+SetWithInt32 = lambda: SetWithInt(np.int32(0))
+SetWithInt64 = lambda: SetWithInt(np.int64(0))
 
 
 # On test :
 
-# In[66]:
+# In[134]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithInt32)
@@ -482,31 +556,215 @@ un_petit_test_avec_une_structure_densemble(SetWithInt32)
 # Donc $n\leq32$, alors que les notations $O(n)$ (etc) sont des **notations asymptotiques** (ie. valables quand $n\to\infty$ !).
 
 # ## Bidouillage 2/2 : implémentation avec des entiers en précision infinie avec Python
+# - On ne verrait la différence que si on faisait des tests de la rapidité des opérations de bases, avec des valeurs $\leq 31$ en comparaison de la structure utilisant des entiers natifs sur 32 bits.
+# - On voit aussi la différence quant au fait que les ensembles représentés avec des entiers natifs 32/64 bits ne peuvent stocker que des valeurs entre 0 et 31 ou 63.
 
-# In[ ]:
+# In[154]:
 
 
-SetWithIntInfinite = SetWithInt(int)
+SetWithIntInfinite = lambda: SetWithInt(int(0))
 
 
-# In[ ]:
+# In[140]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithIntInfinite)
 
 
+# In[180]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=100)')
+
+
 # ## Implémentation avec des tables de hachage ?
+# 
+# ### En Python : `set` ~= `dict` avec des valeurs "inutiles"
+# L'implémentation standard des ensembles en Python, `set`, utilise en fait une implémentation très proche des `dict` de Python, avec des valeurs vides (et quelques optimisations).
+# On va d'abord décrire le fonctionnement de tables de hachage simples, ne stockant que des valeurs (en fait, les clés des dictionnaires `dict`), et à la fin on expliquera rapidement comment généraliser au stockage de couples `(cle, valeur)`.
+# 
+# ### Présentation de l'idée :
+# 
+# - On suppose que les valeurs que l'on va stocker dans l'ensemble sont dans un domaine $D$. Par exemple, $D = \{0, \dots, 1023\}$.
+# - On va se donner une fonction $f : D \to \{0, \dots, m\}$, qui soit simple à calculer. Par exemple, $m = 10$ et $f(x) = x \mod 10 \in\{0,\dots,9\}$.
+# - La table de hachage va consister en un premier tableau, de taille $m$, qui en position $i$ va pointer vers une autre structure d'ensemble (e.g., une structure linéaire ou même une autre table de hachage, dans le cas du hachage chaîné). Cette structure d'ensemble va servir à stocker toutes les valeurs qui ont pour image $i$ par la fonction $f$.
+# 
+# Les opérations de base sur l'ensemble représenté par la table seront réalisées comme suit :
+# 
+# - Lorsqu'on ajoute une valeur $v$ à la table :
+#   + on calcule $j = f(v)$,
+#   + on ajoute $v$ à l'ensemble en position $j$ du tableau :
+#     * si c'est une liste chaînée par exemple, on créée une nouvelle liste contenant $v$ ou on ajoute $v$ à la fin de la liste chaînée,
+#     * si c'est une autre table de hachage, on l'ajoute en utilisant la primitive de la table,
+#     * etc
+# 
+# - Lorsque l'on veut tester l'appartenance de $v$ à la table :
+#   + on calcule $j = f(v)$ (le numéro de la cellule contenant $v$, on parle parfois aussi d'alvéole),
+#   + on test si $v$ appartient à la liste / l'ensemble stocké en position $j$ du tableau.
+# 
+# - La suppression fonctionne comme l'ajout.
 
-# In[ ]:
+# ### Comment stocker les plus petits ensembles ?
+# - A première vue, on est face à une idée stupide : pour stocker un ensemble, on en stocke $m$…
+# - Mais si la fonction de hachage est bien faite, si elle envoie les données $x \in D$ sur les $m$ différentes valeurs uniformément (en gros si $\forall j\in\{0,\dots,m\}, \# \{ x \in D : f(x) = j\} \simeq \frac{1}{m}$)
+# - Les opérations de base sur les sous ensembles (les alvéoles) sont en complexités (au pire cas) linéaires dans la taille de ces sous ensembles, ce qui dépend du remplissage actuel de la table.
+
+# Par exemple, avec $m = 20$, la fonction $f(x) = x \mod 20$ et des valeurs qui sont des entiers aléatoirement tirés :
+# 
+#     0   |_|  --> []
+#     1   |_|  --> [98281,92581,11221]
+#     2   |_|  --> [91422,84022,65742,55322,59162]
+#     3   |_|  --> [64583,43563]
+#     4   |_|  --> []
+#     5   |_|  --> [1665,1585]
+#     6   |_|  --> [80986,80446,95966,28446,74726]
+#     7   |_|  --> [40867,86987,47907]
+#     8   |_|  --> [86268,31908,21688,59068,50448]
+#     9   |_|  --> [65989,38369,69769]
+#     10  |_|  --> [8670]
+#     11  |_|  --> [27211,99291]
+#     12  |_|  --> [43532]
+#     13  |_|  --> [55033,3873,76353]
+#     14  |_|  --> [74734]
+#     15  |_|  --> [36075,62495,42015,75435,26415]
+#     16  |_|  --> [85336,21856,18376,46436,64516]
+#     17  |_|  --> [66117,95857]
+#     18  |_|  --> [76438]
+#     19  |_|  --> []
+# 
+# Par exemples : 
+# - Ici, chercher l'appartenance de 76438 à l'ensemble se fera en deux opérations : calculer $f(76438)=18$, puis en cherchant (en une seule opération) $76438$ dans $[76438]$.
+# - Chercher $59068$ va trouver la cellule $f(59068) = 8$, qui contient 5 valeurs, et donc trouver $59068$ dans la liste $[86268,31908,21688,59068,50448]$ prend quatre opérations.
+
+# ### Choix de la fonction de hachage
+# - Il existe plein de fonction de hachage pour différentes utilisations.
+# - Pour des entiers, on peut prendre $f(x) = x \mod m$ et adapter $m$ en fonction des propriétés voulues par notre structure.
+#   + Plus $m$ est grand, plus les opérations seront rapides mais plus on consomme de mémoire, inversement un plus petit $m$ réduit l'impact mémoire mais augmente l'impact temps.
+#   + En fait, si nos entiers sont entre $0$ et $M$, on peut avoir les deux cas extrêmes suivants :
+#     * la pire solution vis à vis du temps de calcul est d'utiliser $m = 1$, tous les entiers sont stockés dans la même liste. On a donc une complexité en $O(n)$ pour les opérations de base, cf. plus haut.
+#     * la meilleure solution vis à vis du temps de calcul  est d'utiliser $m = M$, ie. la table de hachage est juste un vecteur de bit, où la case $j$ vaut $T[j]=[j]$ ssi $j$ est dans la table. Chaque entier est stocké dans sa propre liste, de taille vide ou de taille 1. On a donc une complexité en $O(1)$ pour les opérations de base, cf. plus haut.
+#     * choisir un $m$ intermédiaire, par exemple $m = O(\log(M))$, peut permettre de balancer entre les deux extrêmes.
+#     
+# - Pour des chaînes de caractères, on peut faire la somme des hachés de chaque caractères, modulo un certain nombre, ou n'importe quelle idée de ce genre.
+# 
+# - Python utilise la fonction `hash()` :
+
+# In[142]:
 
 
+help(hash)
 
 
-
-# In[ ]:
-
+# In[149]:
 
 
+hash(1)  # les entiers suffisamment petits sont hachés sur eux même
+hash(2**2399)
+hash("1")
+
+
+# In[145]:
+
+
+hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !")
+
+
+# In[146]:
+
+
+hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !")
+
+
+# - Les détails d'implémentations de `hash` vont au delà de la portée de ce cours.
+# - Voir [cette démonstration](http://people.irisa.fr/Francois.Schwarzentruber/hash_tables_demo/) pour des exemples de fonctions de hachage.
+
+# ### Pour l'exemple ici
+# - Pour l'implémentation ici, on va utiliser la fonction `f(x) = hash(x) % m`, où `taille` sera un paramètre de la table.
+# - L'avantage est que l'on pourra stocker n'importe quel objet Python (enfin, n'importe quel objet hachable, cf. [cette explication](https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python)).
+# 
+
+# In[159]:
+
+
+def homemadeHash(m=1024):
+    def f(x):
+        return hash(x) % m
+    return f
+
+
+# In[160]:
+
+
+class SetWithHashTable(SetWithNonPrimOperations):
+    """ Hash table with linked chaining: each cell uses a Python list to store the values."""
+    sizeMax = 1024
+    
+    def __init__(self, size=sizeMax):
+        """ Create a new empty hash table."""
+        self.size = size
+        self.hash = homemadeHash(size)
+        self.table = [ [] for _ in range(self.size) ]
+
+    def __len__(self):
+        """ Return n the current size of the set.
+        
+        - Takes O(m) time in all cases.
+        """
+        return sum(len(cell) for cell in self.table)
+
+    def contains(self, value):
+        """ Test if value is in the set.
+        
+        - Takes O(k) for k the length of the cell containing the value.
+        """
+        k = self.hash(value)
+        return value in self.table[k]
+    __contains__ = contains
+
+    def add(self, value):
+        """ Add value in the set if it is not present."""
+        k = self.hash(value)
+        if value not in self.table[k]:
+            self.table[k].append(value)
+
+    def pop(self, value):
+        """ Add value in the set if it is not present."""
+        k = self.hash(value)
+        if value in self.table[k]:
+            self.table[k].remove(value)
+    
+    def values(self):
+        """ Return a fresh list of the values of the set.
+        
+        - Takes O(n) time in worst case."""
+        values = []
+        for cell in self.table:
+            for value in cell:
+                values.append(value)
+        return values
+
+
+# In[161]:
+
+
+un_petit_test_avec_une_structure_densemble(SetWithHashTable)
+
+
+# In[180]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=10000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=100000)')
 
 
 # ## Implémentation avec des arbres binaires de recherche ?
