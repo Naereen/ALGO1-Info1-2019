@@ -83,7 +83,7 @@ class SetIterator():
             return self.values[self.current - 1]
 
 
-# In[172]:
+# In[205]:
 
 
 class SetWithNonPrimOperations():    
@@ -165,6 +165,9 @@ class SetWithNonPrimOperations():
     def remove(self, value):
         self.pop(value)
     
+    def __contains__(self, value):
+        return self.contains(value)
+    
     def __str__(self):
         """ Represent the values of the set in a string {a1,...,an}."""
         str_list = str(self.values())
@@ -173,7 +176,7 @@ class SetWithNonPrimOperations():
 
 # ## Tests communs aux différentes implémentations
 
-# In[173]:
+# In[206]:
 
 
 def un_petit_test_avec_une_structure_densemble(SetClass):
@@ -254,25 +257,25 @@ def un_petit_test_avec_une_structure_densemble(SetClass):
 
 # Le deuxième test va juste être une suite d'ajout et de suppression de valeurs dans l'ensemble.
 
-# In[174]:
+# In[207]:
 
 
 import random
 
 
-# In[ ]:
+# In[208]:
 
 
 random.choice
 
 
-# In[182]:
+# In[209]:
 
 
-def random_add_remove_test(SetClass, size=1000, max_value=10_000):
+def random_add_remove_test(SetClass, size=1000, max_value=10_000, min_value=-10_000):
     ens = SetClass()
     for _ in range(size):
-        x = random.randint(-max_value, max_value)
+        x = random.randint(min_value, max_value)
         ens.add(x)
         assert x in ens
     values = ens.values()
@@ -282,7 +285,8 @@ def random_add_remove_test(SetClass, size=1000, max_value=10_000):
             ens.add(x)
             assert x in ens
         else:
-            ens.remove(x)
+            if x in ens:
+                ens.remove(x)
             assert x not in ens
 
 
@@ -290,7 +294,7 @@ def random_add_remove_test(SetClass, size=1000, max_value=10_000):
 # - On utilise une liste ou un tableau (en Python, `list<d>`) pour stocker les valeurs.
 # - Voyons les implémentations concrètes (les complexités sont discutées pour chacune plus bas).
 
-# In[176]:
+# In[210]:
 
 
 class SetWithList(SetWithNonPrimOperations):
@@ -312,7 +316,6 @@ class SetWithList(SetWithNonPrimOperations):
         return False
         # equivalent to
         # return value in self._values
-    __contains__ = contains
 
     def add(self, value):
         """ Add value in the set if it is not present.
@@ -367,7 +370,7 @@ un_petit_test_avec_une_structure_densemble(SetWithList)
 # 
 # > Il reste à définir ce que signifie complexité moyenne. Regardez par exemple dans [Introduction à l'Algorithmique, de Cormen et al].
 
-# In[183]:
+# In[185]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=100)')
@@ -376,33 +379,38 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=10000000)')
 
 
-# In[184]:
+# In[186]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=100)')
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=10000)')
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=10000000)')
 
 
-# In[181]:
+# In[187]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=100)')
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=10000)')
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=10000000)')
 
+
+# Plus `max_value` est grande, plus il y a de valeurs différentes, donc plus on a une liste qui sera longue, et donc plus les opérations coûtent cher.
 
 # ## Implémentation native avec `set` en Python
 
-# In[31]:
+# In[211]:
 
 
-NativeSet = set  # et c'est tout
+class NativeSet(set, SetWithNonPrimOperations):
+    def values(self):
+        return list(self)
+    # et c'est tout
 
 
-# In[38]:
+# In[212]:
 
 
 un_petit_test_avec_une_structure_densemble(NativeSet)
@@ -429,24 +437,53 @@ un_petit_test_avec_une_structure_densemble(NativeSet)
 # 
 # > Référence : https://stackoverflow.com/questions/3949310/ddg#3949350, https://hg.python.org/releasing/3.6/file/tip/Objects/setobject.c et https://wiki.python.org/moin/TimeComplexity#set
 
-# In[180]:
+# In[213]:
 
 
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=1000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=1000_000_000)')
 
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=10000, max_value=100000)')
 
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithSet, size=100000, max_value=100000)')
+# In[198]:
 
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=1000_000_000)')
+
+
+# In[199]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=1000_000_000)')
+
+
+# In[200]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=1000_000_000)')
+
+
+# In[201]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000_000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000_000, max_value=1000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000_000, max_value=1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000_000, max_value=1000_000_000)')
+
+
+# - On semble vérifier que l'implémentation native de Python est quasiment indépendante des valeurs stockées, dès qu'elles sont assez grandes.
+# - Et que les complexités (amorties) des opérations `add`/`remove` sont linéaires en la taille de l'ensemble.
 
 # ## Bidouillage 1/1 : implémentation avec des entiers 32/64 bits
 # 
@@ -498,7 +535,7 @@ bin(1 << 7)  # = {7}
 from math import log2
 
 
-# In[152]:
+# In[214]:
 
 
 class SetWithInt(SetWithNonPrimOperations):
@@ -516,7 +553,6 @@ class SetWithInt(SetWithNonPrimOperations):
         - Test one bit.
         """
         return (self.int & (1 << value)) != 0
-    __contains__ = contains
 
     def add(self, value):
         """ Add value in the set if it is not present."""
@@ -546,7 +582,7 @@ SetWithInt64 = lambda: SetWithInt(np.int64(0))
 
 # On test :
 
-# In[134]:
+# In[215]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithInt32)
@@ -559,23 +595,39 @@ un_petit_test_avec_une_structure_densemble(SetWithInt32)
 # - On ne verrait la différence que si on faisait des tests de la rapidité des opérations de bases, avec des valeurs $\leq 31$ en comparaison de la structure utilisant des entiers natifs sur 32 bits.
 # - On voit aussi la différence quant au fait que les ensembles représentés avec des entiers natifs 32/64 bits ne peuvent stocker que des valeurs entre 0 et 31 ou 63.
 
-# In[154]:
+# In[216]:
 
 
 SetWithIntInfinite = lambda: SetWithInt(int(0))
 
 
-# In[140]:
+# In[217]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithIntInfinite)
 
 
-# In[180]:
+# In[218]:
 
 
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=100)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=100, min_value=0)')
 
+
+# In[220]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=10000, min_value=0)')
+
+
+# In[221]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000_000, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000_000, max_value=10000, min_value=0)')
+
+
+# Avec cet implémentation, on ne peut raisonnablement pas stocker des valeurs trop grandes.
 
 # ## Implémentation avec des tables de hachage ?
 # 
@@ -683,7 +735,7 @@ hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !"
 # - L'avantage est que l'on pourra stocker n'importe quel objet Python (enfin, n'importe quel objet hachable, cf. [cette explication](https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python)).
 # 
 
-# In[159]:
+# In[222]:
 
 
 def homemadeHash(m=1024):
@@ -692,7 +744,7 @@ def homemadeHash(m=1024):
     return f
 
 
-# In[160]:
+# In[223]:
 
 
 class SetWithHashTable(SetWithNonPrimOperations):
@@ -744,30 +796,46 @@ class SetWithHashTable(SetWithNonPrimOperations):
         return values
 
 
-# In[161]:
+# In[224]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithHashTable)
 
 
-# In[180]:
+# Et maintenant quelques tests :
+
+# In[225]:
 
 
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=100000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10000, max_value=100000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=100)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=1000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=10000)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100000, max_value=100000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10, max_value=10, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=10, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100, max_value=100, min_value=0)')
+
+
+# In[226]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000_000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000_000_000_000, min_value=0)')
+
+
+# La complexité (amortie) des opérations semble aussi indépendant de la taille des valeurs hachées (c'est logique, vu le modulo dans la fonction $f(x)$), et linéaire dans la taille des ensembles.
+
+# In[ ]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000_000, min_value=0)')
 
 
 # ## Implémentation avec des arbres binaires de recherche ?
+# 
+# <span style="font-size:500%; color:red;">TODO !</span>
 
 # In[ ]:
 
@@ -778,9 +846,3 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 # ## Conclusion
 # 
 # C'est bon pour aujourd'hui !
-
-# In[ ]:
-
-
-
-
