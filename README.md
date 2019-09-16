@@ -22,7 +22,7 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 2 : Structures de données pour un ensemble
-- TODO : [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
+- [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 3 : Diviser pour régner

@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-2" data-toc-modified-id="Cours-Magistral-2-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 2</a></div><div class="lev2 toc-item"><a href="#Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes" data-toc-modified-id="Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Structures de données pour représenter un ensemble de valeurs distinctes</a></div><div class="lev2 toc-item"><a href="#Type-abstrait" data-toc-modified-id="Type-abstrait-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Type abstrait</a></div><div class="lev2 toc-item"><a href="#Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives" data-toc-modified-id="Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Implémentation des opérations non primitives à partir des opérations primitives</a></div><div class="lev2 toc-item"><a href="#Tests-communs-aux-différentes-implémentations" data-toc-modified-id="Tests-communs-aux-différentes-implémentations-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Tests communs aux différentes implémentations</a></div><div class="lev2 toc-item"><a href="#Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)" data-toc-modified-id="Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Implémentation naïve avec une structure linéaire (liste, tableau etc)</a></div><div class="lev2 toc-item"><a href="#Implémentation-native-avec-set-en-Python" data-toc-modified-id="Implémentation-native-avec-set-en-Python-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Implémentation native avec <code>set</code> en Python</a></div><div class="lev2 toc-item"><a href="#Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits" data-toc-modified-id="Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits-27"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Bidouillage 1/1 : implémentation avec des entiers 32/64 bits</a></div><div class="lev2 toc-item"><a href="#Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python" data-toc-modified-id="Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python-28"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Bidouillage 2/2 : implémentation avec des entiers en précision infinie avec Python</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-tables-de-hachage-?" data-toc-modified-id="Implémentation-avec-des-tables-de-hachage-?-29"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Implémentation avec des tables de hachage ?</a></div><div class="lev3 toc-item"><a href="#En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;" data-toc-modified-id="En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;-291"><span class="toc-item-num">2.9.1&nbsp;&nbsp;</span>En Python : <code>set</code> ~= <code>dict</code> avec des valeurs "inutiles"</a></div><div class="lev3 toc-item"><a href="#Présentation-de-l'idée-:" data-toc-modified-id="Présentation-de-l'idée-:-292"><span class="toc-item-num">2.9.2&nbsp;&nbsp;</span>Présentation de l'idée :</a></div><div class="lev3 toc-item"><a href="#Comment-stocker-les-plus-petits-ensembles-?" data-toc-modified-id="Comment-stocker-les-plus-petits-ensembles-?-293"><span class="toc-item-num">2.9.3&nbsp;&nbsp;</span>Comment stocker les plus petits ensembles ?</a></div><div class="lev3 toc-item"><a href="#Choix-de-la-fonction-de-hachage" data-toc-modified-id="Choix-de-la-fonction-de-hachage-294"><span class="toc-item-num">2.9.4&nbsp;&nbsp;</span>Choix de la fonction de hachage</a></div><div class="lev3 toc-item"><a href="#Pour-l'exemple-ici" data-toc-modified-id="Pour-l'exemple-ici-295"><span class="toc-item-num">2.9.5&nbsp;&nbsp;</span>Pour l'exemple ici</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-arbres-binaires-de-recherche-?" data-toc-modified-id="Implémentation-avec-des-arbres-binaires-de-recherche-?-210"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Implémentation avec des arbres binaires de recherche ?</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-211"><span class="toc-item-num">2.11&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-2" data-toc-modified-id="Cours-Magistral-2-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 2</a></div><div class="lev2 toc-item"><a href="#Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes" data-toc-modified-id="Structures-de-données-pour-représenter-un-ensemble-de-valeurs-distinctes-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Structures de données pour représenter un ensemble de valeurs distinctes</a></div><div class="lev2 toc-item"><a href="#Type-abstrait" data-toc-modified-id="Type-abstrait-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Type abstrait</a></div><div class="lev2 toc-item"><a href="#Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives" data-toc-modified-id="Implémentation-des-opérations-non-primitives-à-partir-des-opérations-primitives-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Implémentation des opérations non primitives à partir des opérations primitives</a></div><div class="lev2 toc-item"><a href="#Tests-communs-aux-différentes-implémentations" data-toc-modified-id="Tests-communs-aux-différentes-implémentations-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Tests communs aux différentes implémentations</a></div><div class="lev2 toc-item"><a href="#Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)" data-toc-modified-id="Implémentation-naïve-avec-une-structure-linéaire-(liste,-tableau-etc)-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Implémentation naïve avec une structure linéaire (liste, tableau etc)</a></div><div class="lev2 toc-item"><a href="#Implémentation-native-avec-set-en-Python" data-toc-modified-id="Implémentation-native-avec-set-en-Python-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Implémentation native avec <code>set</code> en Python</a></div><div class="lev2 toc-item"><a href="#Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits" data-toc-modified-id="Bidouillage-1/1-:-implémentation-avec-des-entiers-32/64-bits-27"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Bidouillage 1/1 : implémentation avec des entiers 32/64 bits</a></div><div class="lev2 toc-item"><a href="#Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python" data-toc-modified-id="Bidouillage-2/2-:-implémentation-avec-des-entiers-en-précision-infinie-avec-Python-28"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>Bidouillage 2/2 : implémentation avec des entiers en précision infinie avec Python</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-tables-de-hachage-?" data-toc-modified-id="Implémentation-avec-des-tables-de-hachage-?-29"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>Implémentation avec des tables de hachage ?</a></div><div class="lev3 toc-item"><a href="#En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;" data-toc-modified-id="En-Python-:-set-~=-dict-avec-des-valeurs-&quot;inutiles&quot;-291"><span class="toc-item-num">2.9.1&nbsp;&nbsp;</span>En Python : <code>set</code> ~= <code>dict</code> avec des valeurs "inutiles"</a></div><div class="lev3 toc-item"><a href="#Présentation-de-l'idée-:" data-toc-modified-id="Présentation-de-l'idée-:-292"><span class="toc-item-num">2.9.2&nbsp;&nbsp;</span>Présentation de l'idée :</a></div><div class="lev3 toc-item"><a href="#Comment-stocker-les-plus-petits-ensembles-?" data-toc-modified-id="Comment-stocker-les-plus-petits-ensembles-?-293"><span class="toc-item-num">2.9.3&nbsp;&nbsp;</span>Comment stocker les plus petits ensembles ?</a></div><div class="lev3 toc-item"><a href="#Choix-de-la-fonction-de-hachage" data-toc-modified-id="Choix-de-la-fonction-de-hachage-294"><span class="toc-item-num">2.9.4&nbsp;&nbsp;</span>Choix de la fonction de hachage</a></div><div class="lev3 toc-item"><a href="#Pour-l'exemple-ici" data-toc-modified-id="Pour-l'exemple-ici-295"><span class="toc-item-num">2.9.5&nbsp;&nbsp;</span>Pour l'exemple ici</a></div><div class="lev2 toc-item"><a href="#Implémentation-avec-des-arbres-binaires-de-recherche-?" data-toc-modified-id="Implémentation-avec-des-arbres-binaires-de-recherche-?-210"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>Implémentation avec des arbres binaires de recherche ?</a></div><div class="lev3 toc-item"><a href="#Un-nœud-d'un-arbre-binaire" data-toc-modified-id="Un-nœud-d'un-arbre-binaire-2101"><span class="toc-item-num">2.10.1&nbsp;&nbsp;</span>Un nœud d'un arbre binaire</a></div><div class="lev3 toc-item"><a href="#Un-arbre-binaire-de-recherche" data-toc-modified-id="Un-arbre-binaire-de-recherche-2102"><span class="toc-item-num">2.10.2&nbsp;&nbsp;</span>Un arbre binaire de recherche</a></div><div class="lev3 toc-item"><a href="#Ensemble-avec-un-Arbre-Binaire-de-Recherche" data-toc-modified-id="Ensemble-avec-un-Arbre-Binaire-de-Recherche-2103"><span class="toc-item-num">2.10.3&nbsp;&nbsp;</span>Ensemble avec un Arbre Binaire de Recherche</a></div><div class="lev2 toc-item"><a href="#Comparaison-des-différentes-implémentations" data-toc-modified-id="Comparaison-des-différentes-implémentations-211"><span class="toc-item-num">2.11&nbsp;&nbsp;</span>Comparaison des différentes implémentations</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-212"><span class="toc-item-num">2.12&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -325,7 +325,7 @@ class SetWithList(SetWithNonPrimOperations):
             self._values.append(value)
 
     def pop(self, value):
-        """ Add value in the set if it is not present.
+        """ Remove value in the set if it is present.
         
         - Takes O(n) time in worst case."""
         if value in self:  # O(n)
@@ -559,7 +559,7 @@ class SetWithInt(SetWithNonPrimOperations):
         self.int |= (1 << value)
 
     def pop(self, value):
-        """ Add value in the set if it is not present."""
+        """ Remove value in the set if it is present."""
         self.int ^= (1 << value)
     
     def values(self):
@@ -661,7 +661,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinit
 # - Mais si la fonction de hachage est bien faite, si elle envoie les données $x \in D$ sur les $m$ différentes valeurs uniformément (en gros si $\forall j\in\{0,\dots,m\}, \# \{ x \in D : f(x) = j\} \simeq \frac{1}{m}$)
 # - Les opérations de base sur les sous ensembles (les alvéoles) sont en complexités (au pire cas) linéaires dans la taille de ces sous ensembles, ce qui dépend du remplissage actuel de la table.
 
-# Par exemple, avec $m = 20$, la fonction $f(x) = x \mod 20$ et des valeurs qui sont des entiers aléatoirement tirés :
+# Par exemple, avec $m = 20$, la fonction $f(x) = x \mod 20$ et des valeurs qui sont des entiers aléatoirement tirés (cf. [cette page de démonstration](http://people.irisa.fr/Francois.Schwarzentruber/hash_tables_demo/)) :
 # 
 #     0   |_|  --> []
 #     1   |_|  --> [98281,92581,11221]
@@ -721,12 +721,6 @@ hash("1")
 hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !")
 
 
-# In[146]:
-
-
-hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !")
-
-
 # - Les détails d'implémentations de `hash` vont au delà de la portée de ce cours.
 # - Voir [cette démonstration](http://people.irisa.fr/Francois.Schwarzentruber/hash_tables_demo/) pour des exemples de fonctions de hachage.
 
@@ -780,7 +774,7 @@ class SetWithHashTable(SetWithNonPrimOperations):
             self.table[k].append(value)
 
     def pop(self, value):
-        """ Add value in the set if it is not present."""
+        """ Remove value in the set if it is present."""
         k = self.hash(value)
         if value in self.table[k]:
             self.table[k].remove(value)
@@ -838,10 +832,13 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 # Pour plus de détails sur les arbres binaires de recherche, cf. le cours, le chapitre 12 du livre de référence "Algorithmique" de Cormen et al, et sur Internet.
 # 
 # <img width="60%" src="figures/CM2_BinarySearchTree.png">
-# 
-# <span style="font-size:500%; color:red;">TODO !</span>
 
-# In[251]:
+# ### Un nœud d'un arbre binaire
+# 
+# - Un nœud contient une clé, `key`, et éventuellement une valeur associée,
+# - Ainsi que des pointeurs vers d'autres nœuds (éventuellement) : parent, fils gauche (`left`) et fils droit (`right`).
+
+# In[574]:
 
 
 class NodeTree():
@@ -852,20 +849,121 @@ class NodeTree():
         self.right = right
         self.parent = parent
     
+    def __str__(self):
+        if self.value is None:  # key is also the stored value
+            return "{}".format(self.key)
+        else:
+            return "{}: {}".format(self.key, self.value)
+
+    # --- First algorithm on this BST: compute the height ---
+    
     def height(self):
-        h = 1
+        """ Compute the height h of the Binary Search Tree.
+        
+        - Takes a time in O(n). Could be stored and take a time O(1) but it's useless."""
+        h = 0
         if self.left is not None:
             h = max(h, 1 + self.left.height())
         if self.right is not None:
             h = max(h, 1 + self.right.height())
         return h
+    
+    # --- Keys and values ---
+
+    def keys(self):
+        """ Extract the keys from the Binary Search Tree.
+        
+        - It is a generator, use list(self.keys()) to have a list.
+        - Takes a time in O(n) for n keys."""
+        if self is not None:
+            if self.left is not None:
+                yield from self.left.keys()
+            yield self.key
+            if self.right is not None:
+                yield from self.right.keys()
+
+    def values(self):
+        """ Extract the values from the Binary Search Tree.
+        
+        - UIt is a generator, use list(self.keys()) to have a list.
+        - Takes a time in O(n) for n values."""
+        if self is not None:
+            if self.left is not None:
+                yield from self.left.values()
+            yield self.value
+            if self.right is not None:
+                yield from self.right.values()
+    
+    # --- Search ---
+    
+    def search(self, key):
+        """ Search for the NodeTree(...) associated to the queried key. Returns None if not found.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if key is None or self.key is None:
+            raise KeyError
+        if self.key == key:
+            return self
+        elif key < self.key and self.left is not None:
+            return self.left.search(key)
+        elif key > self.key and self.right is not None:
+            return self.right.search(key)
+        raise KeyError
+
+    # --- Looking for minimum / successor ---
+    
+    def minimum(self):
+        """ Search for the NodeTree(...) associated to the minimum key.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if self.left is None:
+            return self
+        else:
+            return self.left.minimum()
+    
+    def successor(self, node):
+        """ Search for the NodeTree(...) successor of the queried node (ie. the node with smallest key >= node.key).
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if node.right is not None:
+            return node.right.minimum()
+        x = node
+        y = x.parent
+        while y is not None and x == y.right():
+            x = y
+            y = x.parent
+        return y
+
+    # --- Looking for maximum / predecessor ---
+    
+    def maximum(self):
+        """ Search for the NodeTree(...) associated to the maximum key.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if self is None:
+            return self
+        else:
+            return self.right.maximum()
+    
+    def predecessor(self, node):
+        """ Search for the NodeTree(...) predecessor of the queried node (ie. the node with largest key <= node.key).
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if node.left is not None:
+            return node.left.maximum()
+        x = node
+        y = x.parent
+        while y is not None and x == y.left():
+            x = y
+            y = x.parent
+        return y
 
 
 # Les deux exemples de la figure se représentent comme ça :
 
 # - Pour l'arbre équilibré de la figure (a) ci dessus :
 
-# In[252]:
+# In[575]:
 
 
 n_5 = NodeTree(5)
@@ -884,20 +982,9 @@ n_2.parent, n_5bis.parent = n_3, n_3
 n_8.parent = n_7
 
 
-# In[254]:
-
-
-n_5.height()
-n_3.height()
-n_2.height()
-n_5bis.height()
-n_7.height()
-n_8.height()
-
-
 # - Pour l'arbre non équilibré de la figure (b) ci dessus :
 
-# In[256]:
+# In[576]:
 
 
 n_5 = NodeTree(5)
@@ -914,20 +1001,10 @@ n_5.left = n_5bis ; n_5bis.parent = n_5
 n_7.right = n_8 ; n_8.parent = n_7
 
 
-# In[257]:
-
-
-n_5.height()
-n_3.height()
-n_2.height()
-n_5bis.height()
-n_7.height()
-n_8.height()
-
-
+# ### Un arbre binaire de recherche
 # Et maintenant pour la classe :
 
-# In[260]:
+# In[577]:
 
 
 class BinarySearchTree():
@@ -937,16 +1014,28 @@ class BinarySearchTree():
 
     # --- Looking for a (key,value) ---
     
-    def search(self, key):
-        """ Search for the NodeTree(...) associated to the queried key.
+    def get(self, key):
+        """ Search for the value associated to the queried key.
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if self.root is None or self.root.key == key:
-            return self.root
-        elif key < self.root.key:
-            return self.root.left.search(key)
-        else:
-            return self.root.right.search(key)
+        if self.root is None:
+            raise KeyError
+        node = self.root.search(key)
+        if node is not None:
+            return node.value
+        raise KeyError
+
+    def contains(self, value):
+        """ Test if value is in the set.
+        
+        - Takes O(h) for h the height of the BST.
+        """
+        try:
+            _ = self.get(value)
+            return True
+        except KeyError:
+            return False
+    __contains__ = contains
 
     # --- Looking for minimum / successor ---
     
@@ -983,15 +1072,15 @@ class BinarySearchTree():
         else:
             return self.root.right.maximum()
     
-    def successor(self, node):
-        """ Search for the NodeTree(...) successor of the queried node (ie. the node with smallest key >= node.key).
+    def predecessor(self, node):
+        """ Search for the NodeTree(...) predecessor of the queried node (ie. the node with largest key <= node.key).
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if node.right is not None:
-            return node.right.minimum()
+        if node.left is not None:
+            return node.left.maximum()
         x = node
         y = x.parent
-        while y is not None and x == y.right():
+        while y is not None and x == y.left():
             x = y
             y = x.parent
         return y
@@ -999,6 +1088,13 @@ class BinarySearchTree():
     # --- Insertion ---
     
     def insert(self, key, value=None):
+        """ Insert a new key (or (key, value)) in the BST.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if key in self:
+            value_mapped = self.get(key)
+            if value == value_mapped:
+                return  # nothing to do, the pair (key, value) is already in the set!
         self.size += 1
         z = NodeTree(key, value=value)
         y = None
@@ -1017,10 +1113,22 @@ class BinarySearchTree():
         else:
             y.right = z
 
-    # --- Supression ---
+    # --- Supression/deletion: it is harder! ---
     
-    def delete(self, key, value=None):
+    def delete(self, key):
+        """ Delete the key in the BST.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+
+        if self.root is None:
+            raise KeyError
+        node_to_delete = self.root.search(key)
+        if node_to_delete is None:
+            raise KeyError
+
         self.size -= 1
+        z = node_to_delete
+
         # ligne 1-3 Cormen [Arbre-Supprimer]
         if z.left is None or z.right is None:
             y = z
@@ -1037,22 +1145,14 @@ class BinarySearchTree():
         # ligne 9-13 Cormen [Arbre-Supprimer]
         if y.parent is None:
             self.root = x
-        elif y == y.parent.gauche:
-            y.parent.gauche = x
+        elif y == y.parent.left:
+            y.parent.left = x
         else:
-            y.parent.droite = x
+            y.parent.right = x
         # ligne 14-16 Cormen [Arbre-Supprimer]
         if y != z:
             z.key, z.value = y.key, y.value
         return y
-    
-    # --- Length, height ---
-    
-    def __len__(self):
-        return self.size
-
-    def height(self):
-        return self.root.height()
     
     # --- Keys and values ---
 
@@ -1061,32 +1161,187 @@ class BinarySearchTree():
         
         - Takes a time in O(n) for n keys."""
         if self.root is not None:
-            yield from self.root.left.keys()
-            yield self.root.key
-            yield from self.root.right.keys()
+            return list(self.root.keys())
+        return []
 
     def values(self):
         """ Extract the values from the Binary Search Tree.
         
         - Takes a time in O(n) for n values."""
         if self.root is not None:
-            yield from self.root.left.values()
-            yield self.root.value
-            yield from self.root.right.values()
+            return list(self.root.values())
+        return []
+    
+    # --- Length, height ---
+    
+    def __len__(self):
+        return self.size
+
+    def height(self):
+        if self.root is not None:
+            return self.root.height()
+        else:
+            return -1
+
+    # --- Draw the graph ---
+    
+    def to_nxgraph(self):
+        G = nx.DiGraph()
+        def go_down(node):
+            if node.left is not None:
+                G.add_node(node.left)
+                G.add_edge(node, node.left)
+                go_down(node.left)
+            if node.right is not None:
+                G.add_node(node.right)
+                G.add_edge(node, node.right)
+                go_down(node.right)
+        if self.root is not None:
+            G.add_node(self.root)
+            go_down(self.root)
+        return G
+    
+    def plot(self):
+        G = self.to_nxgraph()
+        pos = nx.drawing.nx_agraph.graphviz_layout(G, prog='dot')
+        return nx.draw(G, pos, with_labels=True)
+
+
+# Dessiner l'ABR est facile, avec la bibliothèque [NetworkX](https://networkx.github.io/).
+
+# In[578]:
+
+
+import matplotlib.pyplot as plt
+import networkx as nx    
 
 
 # Quelques exemples et quelques tests :
 
+# In[579]:
+
+
+keys = list(range(10))
+values = [ "V{}".format(key) for key in keys ]
+
+
+# In[580]:
+
+
+BST = BinarySearchTree()
+
+for (k, v) in zip(keys, values):
+    print("Clés de l'ABR =", list(BST.keys()), "Valeurs de l'ABR =", list(BST.values()), "Hauteur de l'ABR =", BST.height(), "Taille de l'ABR =", BST.size)
+    BST.insert(k, v)
+
+print("Clés de l'ABR =", list(BST.keys()), "Valeurs de l'ABR =", list(BST.values()), "Hauteur de l'ABR =", BST.height(), "Taille de l'ABR =", BST.size)
+
+
+# In[581]:
+
+
+BST.plot()
+
+
+# Maintenant si l'ordre d'insertion des clés n'est plus monotone, on va éviter d'avoir un arbre binaire réduit à une chaîne.
+
+# In[582]:
+
+
+BST = BinarySearchTree()
+
+keys_values = list(zip(keys, values))
+
+import random
+random.seed(1234)
+random.shuffle(keys_values)
+print("Clés et valeurs =", keys_values)
+
+for (k, v) in keys_values:
+    BST.insert(k, v)
+    print("Clés de l'ABR =", list(BST.keys()), "Valeurs de l'ABR =", list(BST.values()), "Hauteur de l'ABR =", BST.height(), "Taille de l'ABR =", BST.size)
+
+for k in keys:
+    print("Valeur associée à", k, "=", BST.get(k))
+
+
+# In[583]:
+
+
+BST.plot()
+
+
+# On voit ici que si on insert les clés dans un ordre "aléatoire" (ie. un ordre qui a peu de chance de donner un cas trop dégénéré), l'arbre binaire ne sera *pas* réduit à une chaîne et il aura une hauteur bien plus faible que sa taille.
+
+# ### Ensemble avec un Arbre Binaire de Recherche
+# 
+# C'est très simple, on va stocker les valeurs de l'ensemble dans les clés de l'ABR et on utilise des valeurs vides.
+# 
+# L'objectif est d'avoir une complexité en $\mathcal{O}(\log(n))$ pour l'ajout, l'appartenance et le retrait de valeurs, si les valeurs ajoutées sont insérées dans un ordre aléatoire.
+# Comme pour la table de hachage, la complexité au pire des cas restera linéaire en $\Omega(n)$ (si on construit un ABR réduit à une chaîne linéaire, comme l'exemple plus haut).
+
+# In[584]:
+
+
+class SetWithBinarySearchTree(BinarySearchTree, SetWithNonPrimOperations):
+    """ A set storing its values in a Binary Search Tree."""
+    
+    def values(self):  # hack: we only use keys as values
+        return self.keys()
+
+    def add(self, value):
+        """ Add value in the set if it is not present."""
+        key, value = value, None
+        return self.insert(key, value=value)
+
+    def pop(self, value):
+        """ Remove value in the set if it is present."""
+        return self.delete(value)
+
+
+# Et pour la dernière structure implémentée ici, on teste :
+
+# In[585]:
+
+
+un_petit_test_avec_une_structure_densemble(SetWithBinarySearchTree)
+
+
+# Et maintenant quelques tests :
+
+# In[586]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10, max_value=10, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10, max_value=1000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=1000, max_value=10, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=100, max_value=100, min_value=0)')
+
+
+# In[587]:
+
+
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=100, max_value=1000_000, min_value=-1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=1000, max_value=1000_000, min_value=-1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10000, max_value=1000_000, min_value=-1000_000)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=100000, max_value=1000_000, min_value=-1000_000)')
+
+
+# ## Comparaison des différentes implémentations
+
 # In[ ]:
 
 
-
-
-
-# In[ ]:
-
-
-
+print("\n- Pour la classe", NativeSet)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithList)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithInt)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithInt, size=1000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithHashTable)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithBinarySearchTree)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=1000, max_value=1000_000, min_value=0)')
 
 
 # ## Conclusion
