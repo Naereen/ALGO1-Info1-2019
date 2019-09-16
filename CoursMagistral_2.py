@@ -645,6 +645,8 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinit
 # - On va se donner une fonction $f : D \to \{0, \dots, m\}$, qui soit simple à calculer. Par exemple, $m = 10$ et $f(x) = x \mod 10 \in\{0,\dots,9\}$.
 # - La table de hachage va consister en un premier tableau, de taille $m$, qui en position $i$ va pointer vers une autre structure d'ensemble (e.g., une structure linéaire ou même une autre table de hachage, dans le cas du hachage chaîné). Cette structure d'ensemble va servir à stocker toutes les valeurs qui ont pour image $i$ par la fonction $f$.
 # 
+# <img width="55%" src="figures/CM2_HashTableWithChaining.png">
+# 
 # Les opérations de base sur l'ensemble représenté par la table seront réalisées comme suit :
 # 
 # - Lorsqu'on ajoute une valeur $v$ à la table :
@@ -838,7 +840,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 # 
 # Pour plus de détails sur les arbres binaires de recherche, cf. le cours, le chapitre 12 du livre de référence "Algorithmique" de Cormen et al, et sur Internet.
 # 
-# <img width="60%" src="figures/CM2_BinarySearchTree.png">
+# <img width="55%" src="figures/CM2_BinarySearchTree.png">
 
 # ### Un nœud d'un arbre binaire
 # 
