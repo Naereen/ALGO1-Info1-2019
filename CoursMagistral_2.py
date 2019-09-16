@@ -59,6 +59,7 @@
 #     issuperset           : Set<d> * Set<d> -> bool
 #     // test si le premier ensemble est contenu dans le second
 
+# ----
 # ## Implémentation des opérations non primitives à partir des opérations primitives
 # - Avec OCaml, on pourrait écrire un foncteur.
 # - Avec Python, on va écrire une classe, et on pourra obtenir différentes implémentations complètes de la structure de données d'ensemble, à partir de différentes implémentations partielles des opérations primitives. C'est assez naïf : le code est indépendant de l'implémentation sous jacente de `add`/`pop` et de l'itérations :
@@ -174,7 +175,10 @@ class SetWithNonPrimOperations():
         return "{" + str_list.strip("[]") + "}"
 
 
+# ----
 # ## Tests communs aux différentes implémentations
+# 
+# On écrit un petit test qui sera utilisé avec les différentes implémentations.
 
 # In[206]:
 
@@ -256,21 +260,13 @@ def un_petit_test_avec_une_structure_densemble(SetClass):
 
 
 # Le deuxième test va juste être une suite d'ajout et de suppression de valeurs dans l'ensemble.
-
-# In[207]:
-
-
-import random
-
-
-# In[208]:
-
-
-random.choice
-
+# 
+# Il servira pour mesurer l'efficacité temporelle des deux opérations de bases (`add`/`pop`), en fonction de l'amplitude des valeurs de l'ensemble (`max_value`/`min_value`), et de la taille de l'ensemble qui sera construit (`size`).
 
 # In[209]:
 
+
+import random
 
 def random_add_remove_test(SetClass, size=1000, max_value=10_000, min_value=-10_000):
     ens = SetClass()
@@ -339,7 +335,7 @@ class SetWithList(SetWithNonPrimOperations):
         return list(self._values)
 
 
-# On test :
+# On teste cette première structure :
 
 # In[177]:
 
@@ -399,6 +395,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size
 
 # Plus `max_value` est grande, plus il y a de valeurs différentes, donc plus on a une liste qui sera longue, et donc plus les opérations coûtent cher.
 
+# ----
 # ## Implémentation native avec `set` en Python
 
 # In[211]:
@@ -485,6 +482,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 # - On semble vérifier que l'implémentation native de Python est quasiment indépendante des valeurs stockées, dès qu'elles sont assez grandes.
 # - Et que les complexités (amorties) des opérations `add`/`remove` sont linéaires en la taille de l'ensemble.
 
+# ----
 # ## Bidouillage 1/1 : implémentation avec des entiers 32/64 bits
 # 
 # - Si on sait que les valeurs qu'on va ajouter dans nos ensembles sont comprises entre 0 et 31, on peut représenter un (petit) ensemble avec *un seul* entier 32 bits : si le $i$ème bit est à 1, c'est que $i$ est dans l'ensemble.
@@ -629,6 +627,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinit
 
 # Avec cet implémentation, on ne peut raisonnablement pas stocker des valeurs trop grandes.
 
+# ----
 # ## Implémentation avec des tables de hachage ?
 # 
 # ### En Python : `set` ~= `dict` avec des valeurs "inutiles"
@@ -827,6 +826,9 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 #%timeit random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000_000, min_value=0)
 
 
+# On montre plus bas que cette implémentation "maison" en pure Python est raisonnablement efficace !
+
+# ----
 # ## Implémentation avec des arbres binaires de recherche ?
 # 
 # Pour plus de détails sur les arbres binaires de recherche, cf. le cours, le chapitre 12 du livre de référence "Algorithmique" de Cormen et al, et sur Internet.
@@ -1004,7 +1006,7 @@ n_7.right = n_8 ; n_8.parent = n_7
 # ### Un arbre binaire de recherche
 # Et maintenant pour la classe :
 
-# In[577]:
+# In[594]:
 
 
 class BinarySearchTree():
@@ -1043,23 +1045,17 @@ class BinarySearchTree():
         """ Search for the NodeTree(...) associated to the minimum key.
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if self.root is None:
-            return self.root
-        else:
-            return self.root.left.minimum()
+        if self.root is not None:
+            return self.root.minimum()
+        raise KeyError
     
     def successor(self, node):
         """ Search for the NodeTree(...) successor of the queried node (ie. the node with smallest key >= node.key).
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if node.right is not None:
-            return node.right.minimum()
-        x = node
-        y = x.parent
-        while y is not None and x == y.right():
-            x = y
-            y = x.parent
-        return y
+        if self.root is not None:
+            return self.root.successor(node)
+        raise KeyError
 
     # --- Looking for maximum / predecessor ---
     
@@ -1067,23 +1063,17 @@ class BinarySearchTree():
         """ Search for the NodeTree(...) associated to the maximum key.
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if self.root is None:
-            return self.root
-        else:
-            return self.root.right.maximum()
+        if self.root is not None:
+            return self.root.maximum()
+        raise KeyError
     
     def predecessor(self, node):
         """ Search for the NodeTree(...) predecessor of the queried node (ie. the node with largest key <= node.key).
         
         - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
-        if node.left is not None:
-            return node.left.maximum()
-        x = node
-        y = x.parent
-        while y is not None and x == y.left():
-            x = y
-            y = x.parent
-        return y
+        if self.root is not None:
+            return self.root.predecessor(node)
+        raise KeyError
 
     # --- Insertion ---
     
@@ -1209,7 +1199,7 @@ class BinarySearchTree():
 
 # Dessiner l'ABR est facile, avec la bibliothèque [NetworkX](https://networkx.github.io/).
 
-# In[578]:
+# In[595]:
 
 
 import matplotlib.pyplot as plt
@@ -1218,14 +1208,14 @@ import networkx as nx
 
 # Quelques exemples et quelques tests :
 
-# In[579]:
+# In[596]:
 
 
 keys = list(range(10))
 values = [ "V{}".format(key) for key in keys ]
 
 
-# In[580]:
+# In[597]:
 
 
 BST = BinarySearchTree()
@@ -1237,7 +1227,7 @@ for (k, v) in zip(keys, values):
 print("Clés de l'ABR =", list(BST.keys()), "Valeurs de l'ABR =", list(BST.values()), "Hauteur de l'ABR =", BST.height(), "Taille de l'ABR =", BST.size)
 
 
-# In[581]:
+# In[598]:
 
 
 BST.plot()
@@ -1245,7 +1235,7 @@ BST.plot()
 
 # Maintenant si l'ordre d'insertion des clés n'est plus monotone, on va éviter d'avoir un arbre binaire réduit à une chaîne.
 
-# In[582]:
+# In[599]:
 
 
 BST = BinarySearchTree()
@@ -1265,7 +1255,7 @@ for k in keys:
     print("Valeur associée à", k, "=", BST.get(k))
 
 
-# In[583]:
+# In[600]:
 
 
 BST.plot()
@@ -1280,7 +1270,7 @@ BST.plot()
 # L'objectif est d'avoir une complexité en $\mathcal{O}(\log(n))$ pour l'ajout, l'appartenance et le retrait de valeurs, si les valeurs ajoutées sont insérées dans un ordre aléatoire.
 # Comme pour la table de hachage, la complexité au pire des cas restera linéaire en $\Omega(n)$ (si on construit un ABR réduit à une chaîne linéaire, comme l'exemple plus haut).
 
-# In[584]:
+# In[601]:
 
 
 class SetWithBinarySearchTree(BinarySearchTree, SetWithNonPrimOperations):
@@ -1301,7 +1291,7 @@ class SetWithBinarySearchTree(BinarySearchTree, SetWithNonPrimOperations):
 
 # Et pour la dernière structure implémentée ici, on teste :
 
-# In[585]:
+# In[602]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithBinarySearchTree)
@@ -1329,7 +1319,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySear
 
 # ## Comparaison des différentes implémentations
 
-# In[ ]:
+# In[589]:
 
 
 print("\n- Pour la classe", NativeSet)
@@ -1343,6 +1333,47 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 print("\n- Pour la classe", SetWithBinarySearchTree)
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=1000, max_value=1000_000, min_value=0)')
 
+
+# In[590]:
+
+
+print("\n- Pour la classe", NativeSet)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithList)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithHashTable)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithBinarySearchTree)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10_000, max_value=1000_000, min_value=0)')
+
+
+# In[592]:
+
+
+print("\n- Pour la classe", NativeSet)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=20_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithList)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=20_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithHashTable)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=20_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithBinarySearchTree)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=20_000, max_value=1000_000, min_value=0)')
+
+
+# In[593]:
+
+
+print("\n- Pour la classe", NativeSet)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=40_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithList)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=40_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithHashTable)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=40_000, max_value=1000_000, min_value=0)')
+print("\n- Pour la classe", SetWithBinarySearchTree)
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=40_000, max_value=1000_000, min_value=0)')
+
+
+# On voit que notre implémentation "maison" avec des tables de hachage est quasiment aussi efficace que l'implémentation native (en C !) de Python avec la classe `set` (qui utilise aussi une table de hachage, mais écrite en C !).
 
 # ## Conclusion
 # 
