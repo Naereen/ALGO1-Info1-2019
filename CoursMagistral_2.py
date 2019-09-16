@@ -824,18 +824,264 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 
 # La complexité (amortie) des opérations semble aussi indépendant de la taille des valeurs hachées (c'est logique, vu le modulo dans la fonction $f(x)$), et linéaire dans la taille des ensembles.
 
-# In[ ]:
+# In[229]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000, min_value=0)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000, min_value=0)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000, min_value=0)')
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000_000, min_value=0)')
+#%timeit random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000, min_value=0)
+#%timeit random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000, min_value=0)
+#%timeit random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000_000_000_000, min_value=0)
 
 
 # ## Implémentation avec des arbres binaires de recherche ?
 # 
+# Pour plus de détails sur les arbres binaires de recherche, cf. le cours, le chapitre 12 du livre de référence "Algorithmique" de Cormen et al, et sur Internet.
+# 
+# <img width="60%" src="figures/CM2_BinarySearchTree.png">
+# 
 # <span style="font-size:500%; color:red;">TODO !</span>
+
+# In[251]:
+
+
+class NodeTree():
+    def __init__(self, key, value=None, left=None, right=None, parent=None):
+        self.key = key
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
+    
+    def height(self):
+        h = 1
+        if self.left is not None:
+            h = max(h, 1 + self.left.height())
+        if self.right is not None:
+            h = max(h, 1 + self.right.height())
+        return h
+
+
+# Les deux exemples de la figure se représentent comme ça :
+
+# - Pour l'arbre équilibré de la figure (a) ci dessus :
+
+# In[252]:
+
+
+n_5 = NodeTree(5)
+n_3 = NodeTree(3)
+n_2 = NodeTree(2)
+n_5bis = NodeTree(5)
+n_7 = NodeTree(7)
+n_8 = NodeTree(8)
+
+n_5.left, n_5.right = n_3, n_7
+n_3.left, n_3.right = n_2, n_5bis
+n_7.right = n_8
+
+n_3.parent, n_7.parent = n_5, n_5
+n_2.parent, n_5bis.parent = n_3, n_3
+n_8.parent = n_7
+
+
+# In[254]:
+
+
+n_5.height()
+n_3.height()
+n_2.height()
+n_5bis.height()
+n_7.height()
+n_8.height()
+
+
+# - Pour l'arbre non équilibré de la figure (b) ci dessus :
+
+# In[256]:
+
+
+n_5 = NodeTree(5)
+n_3 = NodeTree(3)
+n_2 = NodeTree(2)
+n_5bis = NodeTree(5)
+n_7 = NodeTree(7)
+n_8 = NodeTree(8)
+
+n_2.right = n_3 ; n_3.parent = n_2
+n_3.right = n_7 ; n_7.parent = n_3
+n_7.left = n_5 ; n_5.parent = n_7
+n_5.left = n_5bis ; n_5bis.parent = n_5
+n_7.right = n_8 ; n_8.parent = n_7
+
+
+# In[257]:
+
+
+n_5.height()
+n_3.height()
+n_2.height()
+n_5bis.height()
+n_7.height()
+n_8.height()
+
+
+# Et maintenant pour la classe :
+
+# In[260]:
+
+
+class BinarySearchTree():
+    def __init__(self):
+        self.root = None
+        self.size = 0
+
+    # --- Looking for a (key,value) ---
+    
+    def search(self, key):
+        """ Search for the NodeTree(...) associated to the queried key.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if self.root is None or self.root.key == key:
+            return self.root
+        elif key < self.root.key:
+            return self.root.left.search(key)
+        else:
+            return self.root.right.search(key)
+
+    # --- Looking for minimum / successor ---
+    
+    def minimum(self):
+        """ Search for the NodeTree(...) associated to the minimum key.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if self.root is None:
+            return self.root
+        else:
+            return self.root.left.minimum()
+    
+    def successor(self, node):
+        """ Search for the NodeTree(...) successor of the queried node (ie. the node with smallest key >= node.key).
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if node.right is not None:
+            return node.right.minimum()
+        x = node
+        y = x.parent
+        while y is not None and x == y.right():
+            x = y
+            y = x.parent
+        return y
+
+    # --- Looking for maximum / predecessor ---
+    
+    def maximum(self):
+        """ Search for the NodeTree(...) associated to the maximum key.
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if self.root is None:
+            return self.root
+        else:
+            return self.root.right.maximum()
+    
+    def successor(self, node):
+        """ Search for the NodeTree(...) successor of the queried node (ie. the node with smallest key >= node.key).
+        
+        - Takes a time in O(h) = O(n) in worst case for n keys/values (if wrongly balanced)."""
+        if node.right is not None:
+            return node.right.minimum()
+        x = node
+        y = x.parent
+        while y is not None and x == y.right():
+            x = y
+            y = x.parent
+        return y
+
+    # --- Insertion ---
+    
+    def insert(self, key, value=None):
+        self.size += 1
+        z = NodeTree(key, value=value)
+        y = None
+        x = self.root
+        while x is not None:
+            y = x
+            if z.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        z.parent = y
+        if y is None:  # the tree was empty!
+            self.root = z
+        elif z.key < y.key:
+            y.left = z
+        else:
+            y.right = z
+
+    # --- Supression ---
+    
+    def delete(self, key, value=None):
+        self.size -= 1
+        # ligne 1-3 Cormen [Arbre-Supprimer]
+        if z.left is None or z.right is None:
+            y = z
+        else:
+            y = self.successor(z)
+        # ligne 4-6 Cormen [Arbre-Supprimer]
+        if y.left is not None:
+            x = y.left
+        else:
+            x = y.right
+        # ligne 7-8 Cormen [Arbre-Supprimer]
+        if x is not None:
+            x.parent = y.parent        
+        # ligne 9-13 Cormen [Arbre-Supprimer]
+        if y.parent is None:
+            self.root = x
+        elif y == y.parent.gauche:
+            y.parent.gauche = x
+        else:
+            y.parent.droite = x
+        # ligne 14-16 Cormen [Arbre-Supprimer]
+        if y != z:
+            z.key, z.value = y.key, y.value
+        return y
+    
+    # --- Length, height ---
+    
+    def __len__(self):
+        return self.size
+
+    def height(self):
+        return self.root.height()
+    
+    # --- Keys and values ---
+
+    def keys(self):
+        """ Extract the keys from the Binary Search Tree.
+        
+        - Takes a time in O(n) for n keys."""
+        if self.root is not None:
+            yield from self.root.left.keys()
+            yield self.root.key
+            yield from self.root.right.keys()
+
+    def values(self):
+        """ Extract the values from the Binary Search Tree.
+        
+        - Takes a time in O(n) for n values."""
+        if self.root is not None:
+            yield from self.root.left.values()
+            yield self.root.value
+            yield from self.root.right.values()
+
+
+# Quelques exemples et quelques tests :
+
+# In[ ]:
+
+
+
+
 
 # In[ ]:
 
