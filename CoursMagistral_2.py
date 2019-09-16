@@ -64,7 +64,7 @@
 # - Avec OCaml, on pourrait écrire un foncteur.
 # - Avec Python, on va écrire une classe, et on pourra obtenir différentes implémentations complètes de la structure de données d'ensemble, à partir de différentes implémentations partielles des opérations primitives. C'est assez naïf : le code est indépendant de l'implémentation sous jacente de `add`/`pop` et de l'itérations :
 
-# In[58]:
+# In[1]:
 
 
 class SetIterator():
@@ -84,7 +84,7 @@ class SetIterator():
             return self.values[self.current - 1]
 
 
-# In[205]:
+# In[2]:
 
 
 class SetWithNonPrimOperations():    
@@ -180,7 +180,7 @@ class SetWithNonPrimOperations():
 # 
 # On écrit un petit test qui sera utilisé avec les différentes implémentations.
 
-# In[206]:
+# In[3]:
 
 
 def un_petit_test_avec_une_structure_densemble(SetClass):
@@ -263,7 +263,7 @@ def un_petit_test_avec_une_structure_densemble(SetClass):
 # 
 # Il servira pour mesurer l'efficacité temporelle des deux opérations de bases (`add`/`pop`), en fonction de l'amplitude des valeurs de l'ensemble (`max_value`/`min_value`), et de la taille de l'ensemble qui sera construit (`size`).
 
-# In[209]:
+# In[4]:
 
 
 import random
@@ -290,7 +290,7 @@ def random_add_remove_test(SetClass, size=1000, max_value=10_000, min_value=-10_
 # - On utilise une liste ou un tableau (en Python, `list<d>`) pour stocker les valeurs.
 # - Voyons les implémentations concrètes (les complexités sont discutées pour chacune plus bas).
 
-# In[210]:
+# In[5]:
 
 
 class SetWithList(SetWithNonPrimOperations):
@@ -337,7 +337,7 @@ class SetWithList(SetWithNonPrimOperations):
 
 # On teste cette première structure :
 
-# In[177]:
+# In[6]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithList)
@@ -366,7 +366,7 @@ un_petit_test_avec_une_structure_densemble(SetWithList)
 # 
 # > Il reste à définir ce que signifie complexité moyenne. Regardez par exemple dans [Introduction à l'Algorithmique, de Cormen et al].
 
-# In[185]:
+# In[7]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=100)')
@@ -375,7 +375,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=100, max_value=10000000)')
 
 
-# In[186]:
+# In[8]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=100)')
@@ -384,7 +384,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=1000, max_value=10000000)')
 
 
-# In[187]:
+# In[9]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=10000, max_value=100)')
@@ -398,7 +398,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size
 # ----
 # ## Implémentation native avec `set` en Python
 
-# In[211]:
+# In[10]:
 
 
 class NativeSet(set, SetWithNonPrimOperations):
@@ -407,7 +407,7 @@ class NativeSet(set, SetWithNonPrimOperations):
     # et c'est tout
 
 
-# In[212]:
+# In[11]:
 
 
 un_petit_test_avec_une_structure_densemble(NativeSet)
@@ -434,7 +434,7 @@ un_petit_test_avec_une_structure_densemble(NativeSet)
 # 
 # > Référence : https://stackoverflow.com/questions/3949310/ddg#3949350, https://hg.python.org/releasing/3.6/file/tip/Objects/setobject.c et https://wiki.python.org/moin/TimeComplexity#set
 
-# In[213]:
+# In[12]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=100)')
@@ -443,7 +443,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100, max_value=1000_000_000)')
 
 
-# In[198]:
+# In[13]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=100)')
@@ -452,7 +452,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000, max_value=1000_000_000)')
 
 
-# In[199]:
+# In[14]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=100)')
@@ -461,7 +461,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=10_000, max_value=1000_000_000)')
 
 
-# In[200]:
+# In[15]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=100)')
@@ -470,7 +470,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=100_000, max_value=1000_000_000)')
 
 
-# In[201]:
+# In[16]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1000_000, max_value=100)')
@@ -489,7 +489,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 # - On peut faire pareil avec 64 bits.
 # - En Python, les entiers sont à précision arbitraire, mais on peut utiliser `np.int32` pour avoir des entiers 32 bits natifs :
 
-# In[68]:
+# In[17]:
 
 
 import numpy as np
@@ -497,7 +497,7 @@ import numpy as np
 
 # - On va voir comment utiliser les opérations bit à bit pour réaliser les opérations sur les ensembles. [Documentation ?](https://docs.scipy.org/doc/numpy/reference/routines.bitwise.html)
 
-# In[101]:
+# In[18]:
 
 
 bin(0b0)  # set {}
@@ -527,13 +527,13 @@ bin(1 << 7)  # = {7}
 
 # Et voilà la classe
 
-# In[103]:
+# In[19]:
 
 
 from math import log2
 
 
-# In[214]:
+# In[57]:
 
 
 class SetWithInt(SetWithNonPrimOperations):
@@ -549,15 +549,20 @@ class SetWithInt(SetWithNonPrimOperations):
         """ Test if value is in the set.
         
         - Test one bit.
+        - This & means "bitwise and".
         """
         return (self.int & (1 << value)) != 0
 
     def add(self, value):
-        """ Add value in the set if it is not present."""
+        """ Add value in the set if it is not present.
+        
+        - This |= means x = x | y and | is the "bitwise or" operation."""
         self.int |= (1 << value)
 
     def pop(self, value):
-        """ Remove value in the set if it is present."""
+        """ Remove value in the set if it is present.
+        
+        - This ^= means x = x ^ y and | is the "bitwise xor" operation."""
         self.int ^= (1 << value)
     
     def values(self):
@@ -571,7 +576,7 @@ class SetWithInt(SetWithNonPrimOperations):
             return [ i for i in range(n) if i in self]
 
 
-# In[133]:
+# In[21]:
 
 
 SetWithInt32 = lambda: SetWithInt(np.int32(0))
@@ -580,7 +585,7 @@ SetWithInt64 = lambda: SetWithInt(np.int64(0))
 
 # On test :
 
-# In[215]:
+# In[22]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithInt32)
@@ -593,32 +598,32 @@ un_petit_test_avec_une_structure_densemble(SetWithInt32)
 # - On ne verrait la différence que si on faisait des tests de la rapidité des opérations de bases, avec des valeurs $\leq 31$ en comparaison de la structure utilisant des entiers natifs sur 32 bits.
 # - On voit aussi la différence quant au fait que les ensembles représentés avec des entiers natifs 32/64 bits ne peuvent stocker que des valeurs entre 0 et 31 ou 63.
 
-# In[216]:
+# In[23]:
 
 
 SetWithIntInfinite = lambda: SetWithInt(int(0))
 
 
-# In[217]:
+# In[24]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithIntInfinite)
 
 
-# In[218]:
+# In[25]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=100, min_value=0)')
 
 
-# In[220]:
+# In[26]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=1000, min_value=0)')
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000, max_value=10000, min_value=0)')
 
 
-# In[221]:
+# In[27]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinite, size=1000_000, max_value=1000, min_value=0)')
@@ -700,13 +705,13 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinit
 # 
 # - Python utilise la fonction `hash()` :
 
-# In[142]:
+# In[28]:
 
 
 help(hash)
 
 
-# In[149]:
+# In[29]:
 
 
 hash(1)  # les entiers suffisamment petits sont hachés sur eux même
@@ -714,7 +719,7 @@ hash(2**2399)
 hash("1")
 
 
-# In[145]:
+# In[30]:
 
 
 hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !")
@@ -728,7 +733,7 @@ hash("Réfléchissez à l'impact écologique de TOUS les aspects de votre vie !"
 # - L'avantage est que l'on pourra stocker n'importe quel objet Python (enfin, n'importe quel objet hachable, cf. [cette explication](https://stackoverflow.com/questions/14535730/what-does-hashable-mean-in-python)).
 # 
 
-# In[222]:
+# In[31]:
 
 
 def homemadeHash(m=1024):
@@ -737,7 +742,7 @@ def homemadeHash(m=1024):
     return f
 
 
-# In[223]:
+# In[32]:
 
 
 class SetWithHashTable(SetWithNonPrimOperations):
@@ -789,7 +794,7 @@ class SetWithHashTable(SetWithNonPrimOperations):
         return values
 
 
-# In[224]:
+# In[33]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithHashTable)
@@ -797,7 +802,7 @@ un_petit_test_avec_une_structure_densemble(SetWithHashTable)
 
 # Et maintenant quelques tests :
 
-# In[225]:
+# In[34]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=10, max_value=10, min_value=0)')
@@ -806,7 +811,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=100, max_value=100, min_value=0)')
 
 
-# In[226]:
+# In[35]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000, max_value=1000, min_value=0)')
@@ -817,7 +822,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 
 # La complexité (amortie) des opérations semble aussi indépendant de la taille des valeurs hachées (c'est logique, vu le modulo dans la fonction $f(x)$), et linéaire dans la taille des ensembles.
 
-# In[229]:
+# In[36]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=1000_000, max_value=1000, min_value=0)')
@@ -840,7 +845,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable,
 # - Un nœud contient une clé, `key`, et éventuellement une valeur associée,
 # - Ainsi que des pointeurs vers d'autres nœuds (éventuellement) : parent, fils gauche (`left`) et fils droit (`right`).
 
-# In[574]:
+# In[37]:
 
 
 class NodeTree():
@@ -965,7 +970,7 @@ class NodeTree():
 
 # - Pour l'arbre équilibré de la figure (a) ci dessus :
 
-# In[575]:
+# In[38]:
 
 
 n_5 = NodeTree(5)
@@ -986,7 +991,7 @@ n_8.parent = n_7
 
 # - Pour l'arbre non équilibré de la figure (b) ci dessus :
 
-# In[576]:
+# In[39]:
 
 
 n_5 = NodeTree(5)
@@ -1006,7 +1011,7 @@ n_7.right = n_8 ; n_8.parent = n_7
 # ### Un arbre binaire de recherche
 # Et maintenant pour la classe :
 
-# In[594]:
+# In[40]:
 
 
 class BinarySearchTree():
@@ -1199,7 +1204,7 @@ class BinarySearchTree():
 
 # Dessiner l'ABR est facile, avec la bibliothèque [NetworkX](https://networkx.github.io/).
 
-# In[595]:
+# In[41]:
 
 
 import matplotlib.pyplot as plt
@@ -1208,14 +1213,14 @@ import networkx as nx
 
 # Quelques exemples et quelques tests :
 
-# In[596]:
+# In[42]:
 
 
 keys = list(range(10))
 values = [ "V{}".format(key) for key in keys ]
 
 
-# In[597]:
+# In[43]:
 
 
 BST = BinarySearchTree()
@@ -1227,7 +1232,7 @@ for (k, v) in zip(keys, values):
 print("Clés de l'ABR =", list(BST.keys()), "Valeurs de l'ABR =", list(BST.values()), "Hauteur de l'ABR =", BST.height(), "Taille de l'ABR =", BST.size)
 
 
-# In[598]:
+# In[44]:
 
 
 BST.plot()
@@ -1235,7 +1240,7 @@ BST.plot()
 
 # Maintenant si l'ordre d'insertion des clés n'est plus monotone, on va éviter d'avoir un arbre binaire réduit à une chaîne.
 
-# In[599]:
+# In[45]:
 
 
 BST = BinarySearchTree()
@@ -1255,7 +1260,7 @@ for k in keys:
     print("Valeur associée à", k, "=", BST.get(k))
 
 
-# In[600]:
+# In[46]:
 
 
 BST.plot()
@@ -1270,7 +1275,7 @@ BST.plot()
 # L'objectif est d'avoir une complexité en $\mathcal{O}(\log(n))$ pour l'ajout, l'appartenance et le retrait de valeurs, si les valeurs ajoutées sont insérées dans un ordre aléatoire.
 # Comme pour la table de hachage, la complexité au pire des cas restera linéaire en $\Omega(n)$ (si on construit un ABR réduit à une chaîne linéaire, comme l'exemple plus haut).
 
-# In[601]:
+# In[47]:
 
 
 class SetWithBinarySearchTree(BinarySearchTree, SetWithNonPrimOperations):
@@ -1291,7 +1296,7 @@ class SetWithBinarySearchTree(BinarySearchTree, SetWithNonPrimOperations):
 
 # Et pour la dernière structure implémentée ici, on teste :
 
-# In[602]:
+# In[48]:
 
 
 un_petit_test_avec_une_structure_densemble(SetWithBinarySearchTree)
@@ -1299,7 +1304,7 @@ un_petit_test_avec_une_structure_densemble(SetWithBinarySearchTree)
 
 # Et maintenant quelques tests :
 
-# In[586]:
+# In[49]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10, max_value=10, min_value=0)')
@@ -1308,7 +1313,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySear
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=100, max_value=100, min_value=0)')
 
 
-# In[587]:
+# In[50]:
 
 
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=100, max_value=1000_000, min_value=-1000_000)')
@@ -1319,7 +1324,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySear
 
 # ## Comparaison des différentes implémentations
 
-# In[589]:
+# In[51]:
 
 
 print("\n- Pour la classe", NativeSet)
@@ -1334,7 +1339,7 @@ print("\n- Pour la classe", SetWithBinarySearchTree)
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=1000, max_value=1000_000, min_value=0)')
 
 
-# In[590]:
+# In[52]:
 
 
 print("\n- Pour la classe", NativeSet)
@@ -1347,7 +1352,7 @@ print("\n- Pour la classe", SetWithBinarySearchTree)
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=10_000, max_value=1000_000, min_value=0)')
 
 
-# In[592]:
+# In[53]:
 
 
 print("\n- Pour la classe", NativeSet)
@@ -1360,17 +1365,17 @@ print("\n- Pour la classe", SetWithBinarySearchTree)
 get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=20_000, max_value=1000_000, min_value=0)')
 
 
-# In[593]:
+# In[56]:
 
 
 print("\n- Pour la classe", NativeSet)
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=40_000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=30_000, max_value=1000_000, min_value=0)')
 print("\n- Pour la classe", SetWithList)
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=40_000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithList, size=30_000, max_value=1000_000, min_value=0)')
 print("\n- Pour la classe", SetWithHashTable)
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=40_000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithHashTable, size=30_000, max_value=1000_000, min_value=0)')
 print("\n- Pour la classe", SetWithBinarySearchTree)
-get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=40_000, max_value=1000_000, min_value=0)')
+get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithBinarySearchTree, size=30_000, max_value=1000_000, min_value=0)')
 
 
 # On voit que notre implémentation "maison" avec des tables de hachage est quasiment aussi efficace que l'implémentation native (en C !) de Python avec la classe `set` (qui utilise aussi une table de hachage, mais écrite en C !).
