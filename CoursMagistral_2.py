@@ -480,7 +480,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(NativeSet, size=1
 
 
 # - On semble vérifier que l'implémentation native de Python est quasiment indépendante des valeurs stockées, dès qu'elles sont assez grandes.
-# - Et que les complexités (amorties) des opérations `add`/`remove` sont linéaires en la taille de l'ensemble.
+# - Et que les complexités (amorties) des opérations `add`/`remove` sont quasiment indépendantes en la taille de l'ensemble ! (multiplier la taille $n$ par 10 multiplie presque le temps de calcul des $n$ opérations par 10). En fait, on voit qu'elles sont sous linéaires, mais pas constantes.
 
 # ----
 # ## Bidouillage 1/1 : implémentation avec des entiers 32/64 bits
@@ -514,8 +514,6 @@ bin(np.bitwise_xor(0b11, 0b10)) # {0, 1} /\ {1} = {0} (symmetric difference)
 bin(0b11 ^ 0b10) # {0, 1} /\ {1} = {0} (symmetric difference)
 bin(np.bitwise_xor(0b101, 0b10)) # {0, 2} /\ {1} = {0, 1, 2} (symmetric difference)
 bin(0b101 ^ 0b10) # {0, 2} /\ {1} = {0, 1, 2} (symmetric difference)
-bin(np.bitwise_xor(0b11, 0b10)) # {1} - {0} = {}
-bin(0b11 ^ 0b10) # {1} - {0} = {}
 
 bin(np.left_shift(1, 0))  # = {0}
 bin(1 << 0)  # = {0}
@@ -691,7 +689,7 @@ get_ipython().run_line_magic('timeit', 'random_add_remove_test(SetWithIntInfinit
 #     19  |_|  --> []
 # 
 # Par exemples : 
-# - Ici, chercher l'appartenance de 76438 à l'ensemble se fera en deux opérations : calculer $f(76438)=18$, puis en cherchant (en une seule opération) $76438$ dans $[76438]$.
+# - Ici, chercher l'appartenance de 76438 à l'ensemble se fera en deux opérations : calculer $f(76438)=18$, puis en cherchant (en une seule opération) $76438$ dans `T[18]=` $[76438]$.
 # - Chercher $59068$ va trouver la cellule $f(59068) = 8$, qui contient 5 valeurs, et donc trouver $59068$ dans la liste $[86268,31908,21688,59068,50448]$ prend quatre opérations.
 
 # ### Choix de la fonction de hachage
