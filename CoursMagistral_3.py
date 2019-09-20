@@ -470,22 +470,145 @@ def quickhull(points):
 
 # ----
 # ## Algorithme de Gauss-Karatsuba
+# 
+# - Problème :
+#   + entrée = deux nombres `x` et `y`, avec `n` chiffres dans leurs écritures décimales,
+#   + sortie = un nombre `z = x * y` produit des deux nombres.
+# 
+# - Algorithme :
+#   + on découpe les deux nombres en nombres avec au plus `n/2` chiffres :
+#     * découper `x` = `b + 10^{n/2} a`, avec `a` et `b` de taille au plus `n/2`
+#     * découper `y` = `d + 10^{n/2} c`, avec `c` et `d` de taille au plus `n/2`
+#   + trois appels récursifs au produit de nombres, de tailles deux fois plus petites
+#   + on calcule `a * c` et `b * d`
+#   + l'astuce vient de `ad_plus_bc = ad + bc = (a+b)(c+d) - ac - bd` comme `(a+b)(c+d) = ac + ad + bc + bd`
+#   + `x y = (b + 10^{n/2} a) (d + 10^{n/2} c) = bd + 10^{n/2} (ad_plus_bc) + 10^{n} (a c)`
+
+# La complexité de cet algorithme est en $\mathcal{O}(n^{\log_2(3)})$, asymptotiquement meilleur que $\mathcal{O}(n^2)$ la méthode naïve.
+# 
+# **Avec le _master theorem_**, on a $a=3, b=2, k=1$ : on divise les entrées en $a=7$ entrées de tailles $\leq b=2$ plus petites [1], sur lesquels on applique un traitement linéaire (toutes les additions $\mathcal{O}(n^{k=1})$ avant et après l'appel récursif.
+# 
+# Donc $a = 3 > b^k = 2$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)})$.
+# 
+# En comparaison, la méthode naïve, que voici, sera en avec $a=4$ appels récursifs, soit $a = 4 > b^k = 2$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)}) = \mathcal{O}(n^2)$.
+
+# In[275]:
+
+
+def naivemult(x,y):
+    """ Function to multiply 2 numbers in a more efficient manner than the grade school algorithm."""
+    if len(str(x)) == 1 or len(str(y)) == 1:
+        return x*y
+    else:
+        n = max(len(str(x)),len(str(y)))
+        # that's suboptimal, and ugly, but it's quick to write
+
+        nby2 = n // 2
+        # split x in b + 10^{n/2} a, with a and b of sizes at most n/2
+        a = x // 10**(nby2)
+        b = x %  10**(nby2)
+        # split y in d + 10^{n/2} a, with c and d of sizes at most n/2
+        c = y // 10**(nby2)
+        d = y %  10**(nby2)
+
+        # we make 3 calls to entries which are 2 times smaller
+        ac = naivemult(a, c)
+        ad = naivemult(a, d)
+        bd = naivemult(b, d)
+        bc = naivemult(b, c)
+        # x y = (b + 10^{n/2} a) (d + 10^{n/2} c)
+        # ==> x y = bd + 10^{n/2} (b c + a d) + 10^{n} (a c)
+
+        # this little trick, writing n as 2*nby2 takes care of both even and odd n
+        prod = ac * 10**(2*nby2) + ((ad + bc) * 10**nby2) + bd
+
+        return prod
+
+
+# In[276]:
+
+
+def karatsuba(x,y):
+    """ Function to multiply 2 numbers in a more efficient manner than the grade school algorithm."""
+    if len(str(x)) == 1 or len(str(y)) == 1:
+        return x*y
+    else:
+        n = max(len(str(x)),len(str(y)))
+        # that's suboptimal, and ugly, but it's quick to write
+
+        nby2 = n // 2
+        # split x in b + 10^{n/2} a, with a and b of sizes at most n/2
+        a = x // 10**(nby2)
+        b = x %  10**(nby2)
+        # split y in d + 10^{n/2} c, with c and d of sizes at most n/2
+        c = y // 10**(nby2)
+        d = y %  10**(nby2)
+
+        # we make 3 calls to entries which are 2 times smaller
+        ac = karatsuba(a, c)
+        bd = karatsuba(b, d)
+        # ad + bc = (a+b)(c+d) - ac - bd as (a+b)(c+d) = ac + ad + bc + bd
+        ad_plus_bc = karatsuba(a + b, c + d) - ac - bd
+        # x y = (b + 10^{n/2} a) (d + 10^{n/2} c)
+        # ==> x y = bd + 10^{n/2} (ad_plus_bc) + 10^{n} (a c)
+
+        # this little trick, writing n as 2*nby2 takes care of both even and odd n
+        prod = ac * 10**(2*nby2) + (ad_plus_bc * 10**nby2) + bd
+
+        return prod
+
+
+# Un exemple :
+
+# In[277]:
+
+
+x = 1234
+y = 4567
+x * y
+naivemult(x, y)
+karatsuba(x, y)
+
+
+# Des exemples de grandes tailles :
+
+# In[278]:
+
+
+def rand_largeint(n=1024):
+    return int("".join(str(random.randint(0, 9)) for _ in range(n)))
+
+
+# In[279]:
+
+
+x = rand_largeint(1024)
+y = rand_largeint(1024)
+get_ipython().run_line_magic('timeit', 'x * y')
+get_ipython().run_line_magic('timeit', 'naivemult(x, y)')
+get_ipython().run_line_magic('timeit', 'karatsuba(x, y)')
+
+
+# Et pour des entrées de tailles croissantes :
 
 # In[ ]:
 
 
+for n in [2**3, 2**4, 2**5, 2**6, 2**7, 2**8, 2**9, 2**10, 2**11, 2**12]:
+    print(f"\nFor n = {n} : Python native, naive then Karatsuba :")
+    x = rand_largeint(n)
+    y = rand_largeint(n)
+    get_ipython().run_line_magic('timeit', 'x * y  # crazy fast!')
+    get_ipython().run_line_magic('timeit', 'naivemult(x, y)')
+    get_ipython().run_line_magic('timeit', 'karatsuba(x, y)')
 
 
-
-# In[ ]:
-
-
-
-
+# Ce n'est pas facile de vérifier le comportement en $n^{\log_2(3)}$ mais on voit déjà que la méthode de Gauss-Karatsuba est bien plus rapide que la méthode naïve !
 
 # ----
 # ## Algorithme de Strassen
 # 
+# - Cf le cours pour l'algorithme, ou https://fr.wikipedia.org/wiki/Algorithme_de_Strassen.
 # 
 # > Part of this code is coming from [this blog post](https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/).
 
@@ -502,6 +625,8 @@ def quickhull(points):
 
 import numpy as np
 
+
+# <span style="color:red; font-size:200%;">TODO je devrais utiliser numba pour faire que ces fonctions naïves soient aussi efficaces que celles de Numpy (en gros)</span>
 
 # In[221]:
 
@@ -546,7 +671,7 @@ def subtract(A, B):
 LEAF_SIZE = 64
 
 
-# In[255]:
+# In[ ]:
 
 
 def strassenR(A, B, leaf_size=LEAF_SIZE):
@@ -629,7 +754,7 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[256]:
+# In[ ]:
 
 
 def strassen(A, B, leaf_size=LEAF_SIZE):
@@ -637,8 +762,7 @@ def strassen(A, B, leaf_size=LEAF_SIZE):
     assert len(A) == len(A[0]) == len(B) == len(B[0])
 
     # Make the matrices bigger so that you can apply the strassen
-    # algorithm recursively without having to deal with odd
-    # matrix sizes
+    # algorithm recursively without having to deal with odd matrix sizes
     nextPowerOfTwo = lambda n: 2**int(ceil(log(n,2)))
     n = len(A)
     m = nextPowerOfTwo(n)
@@ -656,15 +780,118 @@ def strassen(A, B, leaf_size=LEAF_SIZE):
     return C
 
 
-# Un exemple de petite taille ($n=4$) :
+# En fait, on devrait essayer d'utiliser les opérations les plus efficaces pour les additions et soustractions de matrices, afin de vraiment voir où se situe le gain de l'algorithme de Strassen.
 
-# In[257]:
-
-
-NotImplemented
+# In[ ]:
 
 
-# Générer des exemples de tailles grandissantes :
+def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
+    n = len(A)
+
+    if n <= leaf_size:
+        return ikjMatrixProduct(A, B)
+    else:
+        # initializing the new sub-matrices
+        newSize = n//2
+        a11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        a12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        a21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        a22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        b11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        b12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        b21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        b22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+
+        aResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+        bResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
+
+        # dividing the matrices in 4 sub-matrices:
+        for i in range(newSize):
+            for j in range(newSize):
+                a11[i,j] = A[i, j]            # top left
+                a12[i,j] = A[i, j + newSize]    # top right
+                a21[i,j] = A[i + newSize, j]    # bottom left
+                a22[i,j] = A[i + newSize, j + newSize] # bottom right
+                b11[i,j] = B[i, j]            # top left
+                b12[i,j] = B[i, j + newSize]    # top right
+                b21[i,j] = B[i + newSize, j]    # bottom left
+                b22[i,j] = B[i + newSize, j + newSize] # bottom right
+
+        # Calculating p1 to p7:
+        aResult = add11 + a22
+        bResult = add11 + b22
+        p1 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p1 = (a11+a22) * (b11+b22)
+
+        aResult = a21 + a22
+        p2 = strassenR_with_numpy_for_add_sub(aResult, b11)  # p2 = (a21+a22) * (b11)
+
+        bResult = b12 - b22
+        p3 = strassenR_with_numpy_for_add_sub(a11, bResult)  # p3 = (a11) * (b12 - b22)
+
+        bResult = b21 - b11
+        p4 =strassenR_with_numpy_for_add_sub(a22, bResult)   # p4 = (a22) * (b21 - b11)
+
+        aResult = add11 + a12
+        p5 = strassenR_with_numpy_for_add_sub(aResult, b22)  # p5 = (a11+a12) * (b22)   
+
+        aResult = a21 - a11
+        bResult = b11 + b12
+        p6 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p6 = (a21-a11) * (b11+b12)
+
+        aResult = a12 - a22
+        bResult = b21 + b22
+        p7 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p7 = (a12-a22) * (b21+b22)
+
+        # calculating c21, c21, c11 e c22:
+        c12 = p3 + p5
+        c21 = p2 + p4
+
+        aResult = p1 + p4
+        bResult = aResult + p7
+        c11 = bResult - p5
+
+        aResult = p1 + p3
+        bResult = aResult + p6
+        c22 = bResult - p2
+
+        # Grouping the results obtained in a single matrix:
+        C = np.zeros((n, n), dtype=type(A[0,0]))
+        for i in range(newSize):
+            for j in range(newSize):
+                C[i,j] = c11[i,j]
+                C[i,j + newSize] = c12[i,j]
+                C[i + newSize,j] = c21[i,j]
+                C[i + newSize,j + newSize] = c22[i,j]
+        return C
+
+
+# In[ ]:
+
+
+def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
+    assert isinstance(A, np.ndarray) and isinstance(B, np.ndarray)
+    assert len(A) == len(A[0]) == len(B) == len(B[0])
+
+    # Make the matrices bigger so that you can apply the strassen
+    # algorithm recursively without having to deal with odd matrix sizes
+    nextPowerOfTwo = lambda n: 2**int(ceil(log(n,2)))
+    n = len(A)
+    m = nextPowerOfTwo(n)
+    APrep = np.zeros((m, m), dtype=type(A[0,0]))
+    BPrep = np.zeros((m, m), dtype=type(A[0,0]))
+    for i in range(n):
+        for j in range(n):
+            APrep[i,j] = A[i,j]
+            BPrep[i,j] = B[i,j]
+    CPrep = strassenR_with_numpy_for_add_sub(APrep, BPrep, leaf_size=leaf_size)
+    C = np.zeros((n, n), dtype=type(A[0,0]))
+    for i in range(n):
+        for j in range(n):
+            C[i,j] = CPrep[i,j]
+    return C
+
+
+# Pour générer des exemples de tailles grandissantes :
 
 # In[242]:
 
@@ -683,47 +910,55 @@ def random_matrix(n, minint=0, maxint=1000):
     return A
 
 
-# In[244]:
+# In[ ]:
 
 
 A = random_matrix(4)
 A
 
 
-# In[245]:
+# In[ ]:
 
 
 B = random_matrix(4)
 B
 
 
-# In[246]:
+# On vérifie sur un exemple que nos deux algorithmes calculant le produit $AB$ de matrices sont corrects :
+
+# In[ ]:
 
 
 A @ B
 
 
-# In[247]:
+# In[ ]:
 
 
 ikjMatrixProduct(A, B)
 
 
-# In[249]:
+# In[ ]:
 
 
 strassenR(A, B, leaf_size=1)
 
 
-# In[250]:
+# In[ ]:
 
 
 strassenR(A, B, leaf_size=2)
 
 
+# In[ ]:
+
+
+strassenR_with_numpy_for_add_sub(A, B, leaf_size=1)
+
+
 # Pour des tests de taille $n$ croissantes :
 
-# In[258]:
+# In[ ]:
 
 
 def test_ijk(n):
@@ -742,12 +977,14 @@ def test_strassen(n):
 # In[ ]:
 
 
-for n in [2**5, 2**6, 2**7, 2**8]:
-    print(f"\nFor n = {n} : first is the ikj naive algorithm, then Strassen :")
+for n in [2**5, 2**6, 2**7]:
+    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen :")
     A = random_matrix(n)
     B = random_matrix(n)
+    get_ipython().run_line_magic('timeit', 'A @ B  # crazy fast!')
     get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(A, B)')
     get_ipython().run_line_magic('timeit', 'strassen(A, B)')
+    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B)')
 
 
 # ## Conclusion
