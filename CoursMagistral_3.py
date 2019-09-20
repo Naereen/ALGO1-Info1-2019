@@ -591,7 +591,7 @@ get_ipython().run_line_magic('timeit', 'karatsuba(x, y)')
 
 # Et pour des entrées de tailles croissantes :
 
-# In[ ]:
+# In[281]:
 
 
 for n in [2**3, 2**4, 2**5, 2**6, 2**7, 2**8, 2**9, 2**10, 2**11, 2**12]:
@@ -671,7 +671,7 @@ def subtract(A, B):
 LEAF_SIZE = 64
 
 
-# In[ ]:
+# In[283]:
 
 
 def strassenR(A, B, leaf_size=LEAF_SIZE):
@@ -754,7 +754,7 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[ ]:
+# In[284]:
 
 
 def strassen(A, B, leaf_size=LEAF_SIZE):
@@ -782,7 +782,7 @@ def strassen(A, B, leaf_size=LEAF_SIZE):
 
 # En fait, on devrait essayer d'utiliser les opérations les plus efficaces pour les additions et soustractions de matrices, afin de vraiment voir où se situe le gain de l'algorithme de Strassen.
 
-# In[ ]:
+# In[298]:
 
 
 def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -818,8 +818,8 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
                 b22[i,j] = B[i + newSize, j + newSize] # bottom right
 
         # Calculating p1 to p7:
-        aResult = add11 + a22
-        bResult = add11 + b22
+        aResult = a11 + a22
+        bResult = a11 + b22
         p1 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p1 = (a11+a22) * (b11+b22)
 
         aResult = a21 + a22
@@ -831,7 +831,7 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
         bResult = b21 - b11
         p4 =strassenR_with_numpy_for_add_sub(a22, bResult)   # p4 = (a22) * (b21 - b11)
 
-        aResult = add11 + a12
+        aResult = a11 + a12
         p5 = strassenR_with_numpy_for_add_sub(aResult, b22)  # p5 = (a11+a12) * (b22)   
 
         aResult = a21 - a11
@@ -865,7 +865,7 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[ ]:
+# In[299]:
 
 
 def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -893,7 +893,7 @@ def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
 
 # Pour générer des exemples de tailles grandissantes :
 
-# In[242]:
+# In[300]:
 
 
 import random
@@ -910,14 +910,14 @@ def random_matrix(n, minint=0, maxint=1000):
     return A
 
 
-# In[ ]:
+# In[288]:
 
 
 A = random_matrix(4)
 A
 
 
-# In[ ]:
+# In[289]:
 
 
 B = random_matrix(4)
@@ -926,31 +926,31 @@ B
 
 # On vérifie sur un exemple que nos deux algorithmes calculant le produit $AB$ de matrices sont corrects :
 
-# In[ ]:
+# In[290]:
 
 
 A @ B
 
 
-# In[ ]:
+# In[291]:
 
 
 ikjMatrixProduct(A, B)
 
 
-# In[ ]:
+# In[292]:
 
 
 strassenR(A, B, leaf_size=1)
 
 
-# In[ ]:
+# In[293]:
 
 
 strassenR(A, B, leaf_size=2)
 
 
-# In[ ]:
+# In[301]:
 
 
 strassenR_with_numpy_for_add_sub(A, B, leaf_size=1)
@@ -958,7 +958,7 @@ strassenR_with_numpy_for_add_sub(A, B, leaf_size=1)
 
 # Pour des tests de taille $n$ croissantes :
 
-# In[ ]:
+# In[302]:
 
 
 def test_ijk(n):
@@ -974,18 +974,20 @@ def test_strassen(n):
     return C
 
 
-# In[ ]:
+# In[304]:
 
 
 for n in [2**5, 2**6, 2**7]:
-    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen :")
+    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
     A = random_matrix(n)
     B = random_matrix(n)
     get_ipython().run_line_magic('timeit', 'A @ B  # crazy fast!')
     get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(A, B)')
-    get_ipython().run_line_magic('timeit', 'strassen(A, B)')
-    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B)')
+    get_ipython().run_line_magic('timeit', 'strassen(A, B, leaf_size=4)')
+    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B, leaf_size=4)')
 
+
+# Je pense que cette implémentation est assez nulle, parce que les allocations de mémoire, et les boucles `for` en Python sont très lentes.
 
 # ## Conclusion
 # 
