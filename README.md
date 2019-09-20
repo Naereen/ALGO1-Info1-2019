@@ -26,7 +26,7 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 3 : Diviser pour régner
-- TODO : [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
+- [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 4 : Graphes, et parcours en profondeur
