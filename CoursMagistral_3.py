@@ -492,11 +492,11 @@ def quickhull(points):
 # 
 # En comparaison, la méthode naïve, que voici, sera en avec $a=4$ appels récursifs, soit $a = 4 > b^k = 2$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)}) = \mathcal{O}(n^2)$.
 
-# In[275]:
+# In[305]:
 
 
-def naivemult(x,y):
-    """ Function to multiply 2 numbers in a more efficient manner than the grade school algorithm."""
+def naivemult(x, y, base=10):
+    """ Function to multiply 2 numbers using the grade school algorithm."""
     if len(str(x)) == 1 or len(str(y)) == 1:
         return x*y
     else:
@@ -505,11 +505,11 @@ def naivemult(x,y):
 
         nby2 = n // 2
         # split x in b + 10^{n/2} a, with a and b of sizes at most n/2
-        a = x // 10**(nby2)
-        b = x %  10**(nby2)
+        a = x // base**(nby2)
+        b = x %  base**(nby2)
         # split y in d + 10^{n/2} a, with c and d of sizes at most n/2
-        c = y // 10**(nby2)
-        d = y %  10**(nby2)
+        c = y // base**(nby2)
+        d = y %  base**(nby2)
 
         # we make 3 calls to entries which are 2 times smaller
         ac = naivemult(a, c)
@@ -520,15 +520,17 @@ def naivemult(x,y):
         # ==> x y = bd + 10^{n/2} (b c + a d) + 10^{n} (a c)
 
         # this little trick, writing n as 2*nby2 takes care of both even and odd n
-        prod = ac * 10**(2*nby2) + ((ad + bc) * 10**nby2) + bd
+        prod = ac * base**(2*nby2) + ((ad + bc) * base**nby2) + bd
 
         return prod
 
 
-# In[276]:
+# Et la fonction implémentant l'algorithme de Karatsuba.
+
+# In[306]:
 
 
-def karatsuba(x,y):
+def karatsuba(x, y, base=10):
     """ Function to multiply 2 numbers in a more efficient manner than the grade school algorithm."""
     if len(str(x)) == 1 or len(str(y)) == 1:
         return x*y
@@ -538,11 +540,11 @@ def karatsuba(x,y):
 
         nby2 = n // 2
         # split x in b + 10^{n/2} a, with a and b of sizes at most n/2
-        a = x // 10**(nby2)
-        b = x %  10**(nby2)
+        a = x // base**(nby2)
+        b = x %  base**(nby2)
         # split y in d + 10^{n/2} c, with c and d of sizes at most n/2
-        c = y // 10**(nby2)
-        d = y %  10**(nby2)
+        c = y // base**(nby2)
+        d = y %  base**(nby2)
 
         # we make 3 calls to entries which are 2 times smaller
         ac = karatsuba(a, c)
@@ -553,14 +555,14 @@ def karatsuba(x,y):
         # ==> x y = bd + 10^{n/2} (ad_plus_bc) + 10^{n} (a c)
 
         # this little trick, writing n as 2*nby2 takes care of both even and odd n
-        prod = ac * 10**(2*nby2) + (ad_plus_bc * 10**nby2) + bd
+        prod = ac * base**(2*nby2) + (ad_plus_bc * base**nby2) + bd
 
         return prod
 
 
 # Un exemple :
 
-# In[277]:
+# In[308]:
 
 
 x = 1234
@@ -587,6 +589,28 @@ y = rand_largeint(1024)
 get_ipython().run_line_magic('timeit', 'x * y')
 get_ipython().run_line_magic('timeit', 'naivemult(x, y)')
 get_ipython().run_line_magic('timeit', 'karatsuba(x, y)')
+
+
+# Quelle est l'influence de la base ?
+
+# In[317]:
+
+
+n = 1024
+base = 10
+get_ipython().run_line_magic('timeit', 'rand_largeint(n) * rand_largeint(n)')
+get_ipython().run_line_magic('timeit', 'naivemult(rand_largeint(n), rand_largeint(n), base=base)')
+get_ipython().run_line_magic('timeit', 'karatsuba(rand_largeint(n), rand_largeint(n), base=base)')
+
+
+# In[318]:
+
+
+n = 1024
+base = 2
+get_ipython().run_line_magic('timeit', 'rand_largeint(n) * rand_largeint(n)')
+get_ipython().run_line_magic('timeit', 'naivemult(rand_largeint(n), rand_largeint(n), base=base)')
+get_ipython().run_line_magic('timeit', 'karatsuba(rand_largeint(n), rand_largeint(n), base=base)')
 
 
 # Et pour des entrées de tailles croissantes :
