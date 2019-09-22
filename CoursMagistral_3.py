@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-607-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4424" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-4425"><span class="texatom" id="MathJax-Span-4426"><span class="mrow" id="MathJax-Span-4427"><span class="mi" id="MathJax-Span-4428" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-4429" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4430" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-4431"></span><span class="mo" id="MathJax-Span-4432" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4433" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-4434" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-4435" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-607">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-515-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-3649" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-3650"><span class="texatom" id="MathJax-Span-3651"><span class="mrow" id="MathJax-Span-3652"><span class="mi" id="MathJax-Span-3653" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-3654" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-3655" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-3656" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-515">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-607-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4424" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-4425"><span class="texatom" id="MathJax-Span-4426"><span class="mrow" id="MathJax-Span-4427"><span class="mi" id="MathJax-Span-4428" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-4429" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4430" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-4431"></span><span class="mo" id="MathJax-Span-4432" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4433" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-4434" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-4435" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-607">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-515-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-3649" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-3650"><span class="texatom" id="MathJax-Span-3651"><span class="mrow" id="MathJax-Span-3652"><span class="mi" id="MathJax-Span-3653" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-3654" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-3655" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-3656" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-515">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev4 toc-item"><a href="#Un-exemple" data-toc-modified-id="Un-exemple-2141"><span class="toc-item-num">2.1.4.1&nbsp;&nbsp;</span>Un exemple</a></div><div class="lev4 toc-item"><a href="#Exemples-aléatoires-de-taille-contrôlée" data-toc-modified-id="Exemples-aléatoires-de-taille-contrôlée-2142"><span class="toc-item-num">2.1.4.2&nbsp;&nbsp;</span>Exemples aléatoires de taille contrôlée</a></div><div class="lev4 toc-item"><a href="#Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe" data-toc-modified-id="Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe-2143"><span class="toc-item-num">2.1.4.3&nbsp;&nbsp;</span>Complexité temporelle de ce calcul d'enveloppe convexe</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -438,6 +438,76 @@ get_ipython().run_line_magic('timeit', 'merge_sort(shuffle(L))')
 
 # On pourrait vérifier que la complexité est bien en $\mathcal{O}(n \log(n))$.
 
+# In[433]:
+
+
+import timeit
+try:
+    from tqdm import tqdm_notebook as tqdm
+except ImportError:
+    def tqdm(iterator, *args, **kwargs):
+        return iterator
+
+
+# In[357]:
+
+
+values_n = np.array(np.floor(np.logspace(2, 6.5, num=50)), dtype=int)
+values_L = [ random_sorted_sequence(n) for n in values_n ]
+
+
+# In[358]:
+
+
+values_times = [
+    timeit.timeit(
+        stmt=f"merge_sort(shuffle({L}))",
+        number= 10000 if n <= 1000 else (1000 if n <= 10000 else (100 if n <= 100000 else 10)),
+        globals=globals()
+    )
+    for (n, L) in tqdm(list(zip(values_n, values_L)))
+]
+
+
+# In[363]:
+
+
+import numpy as np
+
+import matplotlib as mpl
+mpl.rcParams['figure.figsize'] = (8, 5)
+mpl.rcParams['figure.dpi'] = 120
+    
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+sns.set(context="notebook", style="whitegrid", palette="hls", font="sans-serif", font_scale=1.1)
+
+
+# In[364]:
+
+
+plt.figure()
+plt.xlabel("Size of the input array $n$")
+plt.ylabel("Time in second")
+plt.title("Time complexity of the merge sort algorithm (naive code in Python)")
+plt.plot(values_n, values_times, "d-")
+plt.show()
+
+
+# In[368]:
+
+
+plt.figure()
+plt.xlabel("Size of the input array $n$")
+plt.ylabel("Time in milli-second, normalized by $n \log(n)$")
+plt.title("Time complexity of the merge sort algorithm (naive code in Python)")
+normalized_values_times = 1e6 * np.array(values_times) / (values_n * np.log(values_n))
+min_time = 1e5
+plt.plot(values_n[values_n >= min_time], normalized_values_times[values_n >= min_time], "d-")
+plt.show()
+
+
 # ### Enveloppe convexe de points en 2D (*quickhull*)
 # 
 # - Problème :
@@ -454,11 +524,150 @@ get_ipython().run_line_magic('timeit', 'merge_sort(shuffle(L))')
 # La fusion est naïve simple à réaliser.
 # Le test pour savoir si un point est à gauche, à droite, ou sur $D$, se fait en temps $O(1)$ avec un calcul de produit scalaire.
 
-# In[205]:
+# In[374]:
 
 
-def quickhull(points):
-    raise NotImplementedError
+exemple_points = [(1, 3) for _ in range(21)]
+for i in range(1, 21):
+    x, y = exemple_points[i-1]
+    exemple_points[i] = (x * 17) % 23, (y * 17) % 19
+
+
+# In[407]:
+
+
+plt.figure()
+plt.title("Des points en 2D")
+Xs = [p[0] for p in exemple_points]
+Ys = [p[1] for p in exemple_points]
+ax = plt.scatter(Xs, Ys)
+plt.show()
+
+
+# In[376]:
+
+
+def alpha(a, b, c):
+    xa, ya = a
+    xb, yb = b
+    xc, yc = c
+    return (xb - xa) * (yc - ya) - (xc - xa) * (yb - ya)
+
+
+# In[380]:
+
+
+p = exemple_points
+for i in range(2, 21):
+    for j in range(1, i):
+        for k in range(0, j):
+            if alpha(p[i], p[j], p[k]) == 0:
+                print(f"Les trois points #{i}, #{j} et #{k} sont alignés ({p[i]}, {p[j]} et {p[k]}).")
+
+
+# In[381]:
+
+
+plt.figure()
+plt.title("Des points en 2D, certains sont alignés")
+Xs = [p[0] for p in exemple_points]
+Ys = [p[1] for p in exemple_points]
+plt.scatter(Xs, Ys)
+p = exemple_points
+for i in range(2, 21):
+    for j in range(1, i):
+        for k in range(0, j):
+            if alpha(p[i], p[j], p[k]) == 0:
+                plt.plot([p[i][0], p[j][0], p[k][0]], [p[i][1], p[j][1], p[k][1]], ':')
+plt.show()
+
+
+# In[391]:
+
+
+def plus_bas(points):
+    """ Trouve le point (xa, ya) le plus en bas à gauche, en temps linéaire."""
+    n = len(points)
+    xa, ya = points[0]
+    for j in range(1, n):
+        xj, yj = points[j]
+        if (ya > yj) or (ya == yj and xa > xj):
+            xa, ya = xj, yj
+    return xa, ya
+
+
+# In[392]:
+
+
+plus_bas(exemple_points)  # (12, 2)
+
+
+# In[393]:
+
+
+def plus_haut(points):
+    """ Trouve le point (xb, yb) le plus en haut à droite, en temps linéaire."""
+    n = len(points)
+    xb, yb = points[0]
+    for j in range(1, n):
+        xj, yj = points[j]
+        if (yb < yj) or (yb == yj and xb < xj):
+            xb, yb = xj, yj
+    return xb, yb
+
+
+# In[395]:
+
+
+plus_haut(exemple_points)  # (21, 8)
+
+
+# In[396]:
+
+
+def plus_a_droite(b, h, points):
+    if not points:
+        return b, []
+    t = points[0]
+    q = points[1:]
+    m, d = plus_a_droite(b, h, q)  # recursif !
+    angle = alpha(b, t, h)
+    if angle <= 0:
+        return m, d
+    else:
+        if not d:
+            return t, [t]
+        if angle > alpha(b, m, h):
+            return t, [t] + d
+        else:
+            return m, [t] + d
+
+
+# In[400]:
+
+
+def quickHull_droite(b, h, points):
+    m, d = plus_a_droite(b, h, points)
+    # si aucun point n'est à droite du segment orienté [b h], on en garde un seul, [b]
+    if not d:
+        return [b]
+    # on fait les deux appels récursifs !
+    return quickHull_droite(b, m, d) + quickHull_droite(m, h, d)
+
+
+# In[408]:
+
+
+def quickHull(points):
+    b = plus_haut(points)
+    h = plus_bas(points)
+    return quickHull_droite(b, h, points) + quickHull_droite(h, b, points)
+
+
+# In[409]:
+
+
+quickHull(exemple_points)
 
 
 # La complexité de cet algorithme est en $\mathcal{O}(n \log(n))$.
@@ -467,6 +676,112 @@ def quickhull(points):
 # (*En supposant les points uniformément répartis dans le plan*.)
 # 
 # On pourrait l'implémenter, et vérifier la complexité sur des entrées aléatoires (ie. les points sont tirés uniformément dans une boîte carrée $(x_i,y_i) \sim [x_\min,x_\max] \times [y_\min,y_\max]$).
+# 
+# **Attention** ici avec Python, les ajout en tête de listes peuvent prendre un coût linéaire (et pas constant comme en OCaml) et les concaténations de listes prennent un coût linéaire ! Donc la vraie implémentation sera plus coûteuse que ce $\mathcal{O}(n \log(n))$ annoncé.
+
+# #### Un exemple
+
+# In[415]:
+
+
+plt.figure()
+plt.title("Des points en 2D, et leur enveloppe convexe")
+Xs = [p[0] for p in exemple_points]
+Ys = [p[1] for p in exemple_points]
+plt.scatter(Xs, Ys)
+p = exemple_points
+enveloppe = quickHull(p)
+q = enveloppe
+h = len(enveloppe)
+for i in range(h - 1):
+    plt.plot([q[i][0], q[i+1][0]], [q[i][1], q[i+1][1]])
+plt.plot([q[-1][0], q[0][0]], [q[-1][1], q[0][1]])
+plt.show()
+
+
+# #### Exemples aléatoires de taille contrôlée
+
+# In[416]:
+
+
+import random
+
+def points_aleatoires(n=100, xmin=-10, xmax=10, ymin=-10, ymax=10):
+    return [(random.randint(xmin, xmax), random.randint(ymin, ymax)) for _ in range(n)]
+
+
+# In[424]:
+
+
+xmin, xmax, ymin, ymax = -10, 10, -10, 10
+
+for n in [5, 10, 50, 100, 500, 1000]:
+    p = points_aleatoires(n=n, xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax)
+    _ = plt.figure()
+    _ = plt.title(f"{n} points aléatoires dans [{xmin},{xmax}] x [{ymin},{ymax}] en 2D, et leur enveloppe convexe")
+    Xs = [pi[0] for pi in p]
+    Ys = [pi[1] for pi in p]
+    _ = plt.scatter(Xs, Ys)
+    enveloppe = quickHull(p)
+    q = enveloppe
+    h = len(enveloppe)
+    for i in range(h - 1):
+        _ = plt.plot([q[i][0], q[i+1][0]], [q[i][1], q[i+1][1]])
+    _ = plt.plot([q[-1][0], q[0][0]], [q[-1][1], q[0][1]])
+    _ = plt.show()
+
+
+# #### Complexité temporelle de ce calcul d'enveloppe convexe
+
+# In[440]:
+
+
+values_n = np.array(np.floor(np.logspace(1, 4, num=20)), dtype=int)
+values_points = [ points_aleatoires(n=n) for n in values_n ]
+
+
+# In[437]:
+
+
+values_times = [
+    timeit.timeit(
+        stmt=f"quickHull({points})",
+        number= 1000 if n <= 1000 else (100 if n <= 10000 else (10 if n <= 100000 else 1)),
+        globals=globals()
+    )
+    for (n, points) in tqdm(list(zip(values_n, values_points)))
+]
+
+
+# In[439]:
+
+
+plt.figure()
+plt.xlabel("Size of the input array $n$")
+plt.ylabel("Time in second")
+plt.title("Time complexity of the quick hull algorithm (naive code in Python)")
+plt.plot(values_n, values_times, "d-")
+plt.show()
+
+
+# In[441]:
+
+
+plt.figure()
+plt.xlabel("Size of the input array $n$")
+plt.ylabel("Time in milli-second, normalized by $n \log(n)$")
+plt.title("Time complexity of the quick hull algorithm (naive code in Python)")
+normalized_values_times = 1e6 * np.array(values_times) / (values_n * np.log(values_n))
+min_time = 1
+plt.plot(values_n[values_n >= min_time], normalized_values_times[values_n >= min_time], "d-")
+plt.show()
+
+
+# In[ ]:
+
+
+
+
 
 # ----
 # ## Algorithme de Gauss-Karatsuba
