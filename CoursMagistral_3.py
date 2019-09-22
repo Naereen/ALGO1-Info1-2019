@@ -764,7 +764,7 @@ plt.plot(values_n, values_times, "d-")
 plt.show()
 
 
-# In[ ]:
+# In[447]:
 
 
 plt.figure()
@@ -959,11 +959,22 @@ for n in [2**3, 2**4, 2**5, 2**6, 2**7, 2**8, 2**9, 2**10, 2**11, 2**12]:
 import numpy as np
 
 
-# <span style="color:red; font-size:200%;">TODO je devrais utiliser numba pour faire que ces fonctions naïves soient aussi efficaces que celles de Numpy (en gros)</span>
+# <span style="color:red;">Attention</span> : peut-être que je devrais utiliser numba pour faire que ces fonctions naïves soient aussi efficaces que celles de Numpy (en gros).
 
-# In[221]:
+# In[450]:
 
 
+try:
+    from numba import jit
+except ImportError:
+    def jit(f, *args, **kwargs):
+        return f
+
+
+# In[451]:
+
+
+@jit
 def ikjMatrixProduct(A, B):
     n = len(A)
     C = np.zeros((n, n), dtype=type(A[0,0]))
@@ -974,9 +985,10 @@ def ikjMatrixProduct(A, B):
     return C
 
 
-# In[222]:
+# In[452]:
 
 
+@jit
 def add(A, B):
     n = len(A)
     C = np.zeros((n, n), dtype=type(A[0,0]))
@@ -989,6 +1001,7 @@ def add(A, B):
 # In[223]:
 
 
+@jit
 def subtract(A, B):
     n = len(A)
     C = np.zeros((n, n), dtype=type(A[0,0]))
@@ -1004,7 +1017,7 @@ def subtract(A, B):
 LEAF_SIZE = 64
 
 
-# In[283]:
+# In[500]:
 
 
 def strassenR(A, B, leaf_size=LEAF_SIZE):
@@ -1015,66 +1028,29 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
     else:
         # initializing the new sub-matrices
         newSize = n//2
-        a11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-
-        aResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        bResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-
-        # dividing the matrices in 4 sub-matrices:
-        for i in range(newSize):
-            for j in range(newSize):
-                a11[i,j] = A[i, j]            # top left
-                a12[i,j] = A[i, j + newSize]    # top right
-                a21[i,j] = A[i + newSize, j]    # bottom left
-                a22[i,j] = A[i + newSize, j + newSize] # bottom right
-                b11[i,j] = B[i, j]            # top left
-                b12[i,j] = B[i, j + newSize]    # top right
-                b21[i,j] = B[i + newSize, j]    # bottom left
-                b22[i,j] = B[i + newSize, j + newSize] # bottom right
+        a11 = A[:newSize, :newSize]  # top left
+        a12 = A[:newSize, newSize:]  # top right
+        a21 = A[newSize:, :newSize]  # bottom left
+        a22 = A[newSize:, newSize:]  # bottom right
+        b11 = A[:newSize, :newSize]  # top left
+        b12 = A[:newSize, newSize:]  # top right
+        b21 = A[newSize:, :newSize]  # bottom left
+        b22 = A[newSize:, newSize:]  # bottom right
 
         # Calculating p1 to p7:
-        aResult = add(a11, a22)
-        bResult = add(b11, b22)
-        p1 = strassenR(aResult, bResult) # p1 = (a11+a22) * (b11+b22)
-
-        aResult = add(a21, a22)      # a21 + a22
-        p2 = strassenR(aResult, b11)  # p2 = (a21+a22) * (b11)
-
-        bResult = subtract(b12, b22) # b12 - b22
-        p3 = strassenR(a11, bResult)  # p3 = (a11) * (b12 - b22)
-
-        bResult = subtract(b21, b11) # b21 - b11
-        p4 =strassenR(a22, bResult)   # p4 = (a22) * (b21 - b11)
-
-        aResult = add(a11, a12)      # a11 + a12
-        p5 = strassenR(aResult, b22)  # p5 = (a11+a12) * (b22)   
-
-        aResult = subtract(a21, a11) # a21 - a11
-        bResult = add(b11, b12)      # b11 + b12
-        p6 = strassenR(aResult, bResult) # p6 = (a21-a11) * (b11+b12)
-
-        aResult = subtract(a12, a22) # a12 - a22
-        bResult = add(b21, b22)      # b21 + b22
-        p7 = strassenR(aResult, bResult) # p7 = (a12-a22) * (b21+b22)
+        p1 = strassenR(add(a11, a22), add(b11, b22)) # p1 = (a11+a22) * (b11+b22)
+        p2 = strassenR(add(a21, a22), b11)  # p2 = (a21+a22) * (b11)
+        p3 = strassenR(a11, subtract(b12, b22))  # p3 = (a11) * (b12 - b22)
+        p4 = strassenR(a22, subtract(b21, b11))   # p4 = (a22) * (b21 - b11)
+        p5 = strassenR(add(a11, a12), b22)  # p5 = (a11+a12) * (b22)   
+        p6 = strassenR(subtract(a21, a11), add(b11, b12)) # p6 = (a21-a11) * (b11+b12)
+        p7 = strassenR(subtract(a12, a22), add(b21, b22)) # p7 = (a12-a22) * (b21+b22)
 
         # calculating c21, c21, c11 e c22:
         c12 = add(p3, p5) # c12 = p3 + p5
         c21 = add(p2, p4)  # c21 = p2 + p4
-
-        aResult = add(p1, p4) # p1 + p4
-        bResult = add(aResult, p7) # p1 + p4 + p7
-        c11 = subtract(bResult, p5) # c11 = p1 + p4 - p5 + p7
-
-        aResult = add(p1, p3) # p1 + p3
-        bResult = add(aResult, p6) # p1 + p3 + p6
-        c22 = subtract(bResult, p2) # c22 = p1 + p3 - p2 + p6
+        c11 = subtract(add(add(p1, p4), p7), p5) # c11 = p1 + p4 - p5 + p7
+        c22 = subtract(add(add(p1, p3), p6), p2) # c22 = p1 + p3 - p2 + p6
 
         # Grouping the results obtained in a single matrix:
         C = np.zeros((n, n), dtype=type(A[0,0]))
@@ -1087,7 +1063,7 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[284]:
+# In[501]:
 
 
 def strassen(A, B, leaf_size=LEAF_SIZE):
@@ -1115,7 +1091,7 @@ def strassen(A, B, leaf_size=LEAF_SIZE):
 
 # En fait, on devrait essayer d'utiliser les opérations les plus efficaces pour les additions et soustractions de matrices, afin de vraiment voir où se situe le gain de l'algorithme de Strassen.
 
-# In[298]:
+# In[502]:
 
 
 def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -1126,79 +1102,41 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
     else:
         # initializing the new sub-matrices
         newSize = n//2
-        a11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        a22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b11 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b12 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b21 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        b22 = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-
-        aResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-        bResult = np.zeros((newSize, newSize), dtype=type(A[0,0]))
-
         # dividing the matrices in 4 sub-matrices:
-        for i in range(newSize):
-            for j in range(newSize):
-                a11[i,j] = A[i, j]            # top left
-                a12[i,j] = A[i, j + newSize]    # top right
-                a21[i,j] = A[i + newSize, j]    # bottom left
-                a22[i,j] = A[i + newSize, j + newSize] # bottom right
-                b11[i,j] = B[i, j]            # top left
-                b12[i,j] = B[i, j + newSize]    # top right
-                b21[i,j] = B[i + newSize, j]    # bottom left
-                b22[i,j] = B[i + newSize, j + newSize] # bottom right
+        a11 = A[:newSize, :newSize]  # top left
+        a12 = A[:newSize, newSize:]  # top right
+        a21 = A[newSize:, :newSize]  # bottom left
+        a22 = A[newSize:, newSize:]  # bottom right
+        b11 = A[:newSize, :newSize]  # top left
+        b12 = A[:newSize, newSize:]  # top right
+        b21 = A[newSize:, :newSize]  # bottom left
+        b22 = A[newSize:, newSize:]  # bottom right
 
         # Calculating p1 to p7:
-        aResult = a11 + a22
-        bResult = a11 + b22
-        p1 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p1 = (a11+a22) * (b11+b22)
-
-        aResult = a21 + a22
-        p2 = strassenR_with_numpy_for_add_sub(aResult, b11)  # p2 = (a21+a22) * (b11)
-
-        bResult = b12 - b22
-        p3 = strassenR_with_numpy_for_add_sub(a11, bResult)  # p3 = (a11) * (b12 - b22)
-
-        bResult = b21 - b11
-        p4 =strassenR_with_numpy_for_add_sub(a22, bResult)   # p4 = (a22) * (b21 - b11)
-
-        aResult = a11 + a12
-        p5 = strassenR_with_numpy_for_add_sub(aResult, b22)  # p5 = (a11+a12) * (b22)   
-
-        aResult = a21 - a11
-        bResult = b11 + b12
-        p6 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p6 = (a21-a11) * (b11+b12)
-
-        aResult = a12 - a22
-        bResult = b21 + b22
-        p7 = strassenR_with_numpy_for_add_sub(aResult, bResult) # p7 = (a12-a22) * (b21+b22)
+        p1 = strassenR(a11 + a22, b11 + b22) # p1 = (a11+a22) * (b11+b22)
+        p2 = strassenR(a21 + a22, b11)  # p2 = (a21+a22) * (b11)
+        p3 = strassenR(a11, b12 - b22)  # p3 = (a11) * (b12 - b22)
+        p4 = strassenR(a22, b21 - b11)   # p4 = (a22) * (b21 - b11)
+        p5 = strassenR(a11 + a12, b22)  # p5 = (a11+a12) * (b22)   
+        p6 = strassenR(a21 - a11, b11 + b12) # p6 = (a21-a11) * (b11+b12)
+        p7 = strassenR(a12 - a22, b21 + b22) # p7 = (a12-a22) * (b21+b22)
 
         # calculating c21, c21, c11 e c22:
-        c12 = p3 + p5
-        c21 = p2 + p4
-
-        aResult = p1 + p4
-        bResult = aResult + p7
-        c11 = bResult - p5
-
-        aResult = p1 + p3
-        bResult = aResult + p6
-        c22 = bResult - p2
+        c12 = p3 + p5 # c12 = p3 + p5
+        c21 = p2 + p4  # c21 = p2 + p4
+        c11 = p1 + p4 + p7 - p5 # c11 = p1 + p4 - p5 + p7
+        c22 = p1 + p3 + p6 - p2 # c22 = p1 + p3 - p2 + p6
 
         # Grouping the results obtained in a single matrix:
         C = np.zeros((n, n), dtype=type(A[0,0]))
-        for i in range(newSize):
-            for j in range(newSize):
-                C[i,j] = c11[i,j]
-                C[i,j + newSize] = c12[i,j]
-                C[i + newSize,j] = c21[i,j]
-                C[i + newSize,j + newSize] = c22[i,j]
+        C[:newSize, :newSize] = c11
+        C[:newSize, newSize:] = c12
+        C[newSize:, :newSize] = c21
+        C[newSize:, newSize:] = c22
         return C
 
 
-# In[299]:
+# In[503]:
 
 
 def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -1212,27 +1150,21 @@ def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
     m = nextPowerOfTwo(n)
     APrep = np.zeros((m, m), dtype=type(A[0,0]))
     BPrep = np.zeros((m, m), dtype=type(A[0,0]))
-    for i in range(n):
-        for j in range(n):
-            APrep[i,j] = A[i,j]
-            BPrep[i,j] = B[i,j]
+    APrep[:n, :n] = A
+    BPrep[:n, :n] = B
     CPrep = strassenR_with_numpy_for_add_sub(APrep, BPrep, leaf_size=leaf_size)
-    C = np.zeros((n, n), dtype=type(A[0,0]))
-    for i in range(n):
-        for j in range(n):
-            C[i,j] = CPrep[i,j]
-    return C
+    return CPrep[:n, :n]
 
 
 # Pour générer des exemples de tailles grandissantes :
 
-# In[300]:
+# In[471]:
 
 
 import random
 
 
-# In[243]:
+# In[472]:
 
 
 def random_matrix(n, minint=0, maxint=1000):
@@ -1243,14 +1175,14 @@ def random_matrix(n, minint=0, maxint=1000):
     return A
 
 
-# In[288]:
+# In[504]:
 
 
 A = random_matrix(4)
 A
 
 
-# In[289]:
+# In[505]:
 
 
 B = random_matrix(4)
@@ -1259,34 +1191,40 @@ B
 
 # On vérifie sur un exemple que nos deux algorithmes calculant le produit $AB$ de matrices sont corrects :
 
-# In[290]:
+# In[506]:
 
 
 A @ B
 
 
-# In[291]:
+# In[507]:
 
 
 ikjMatrixProduct(A, B)
 
 
-# In[292]:
+# In[508]:
 
 
 strassenR(A, B, leaf_size=1)
 
 
-# In[293]:
+# In[509]:
 
 
 strassenR(A, B, leaf_size=2)
 
 
-# In[301]:
+# In[510]:
 
 
 strassenR_with_numpy_for_add_sub(A, B, leaf_size=1)
+
+
+# In[511]:
+
+
+strassenR_with_numpy_for_add_sub(A, B, leaf_size=2)
 
 
 # Pour des tests de taille $n$ croissantes :
@@ -1307,6 +1245,8 @@ def test_strassen(n):
     return C
 
 
+# Ce premier test était les versions les plus lentes :
+
 # In[304]:
 
 
@@ -1321,6 +1261,48 @@ for n in [2**5, 2**6, 2**7]:
 
 
 # Je pense que cette implémentation est assez nulle, parce que les allocations de mémoire, et les boucles `for` en Python sont très lentes.
+
+# C'était très lent ! Beaucoup trop d'allocations mémoire !
+# J'ai optimisé et (naïvement) simplifié le code, en enlevant les déclarations mémoires inutiles, mais surtout en utilisant [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) pour optimiser les opérations `add` et `substract`, et on obtient des temps bien plus courts :
+
+# In[513]:
+
+
+for n in [2**5, 2**6, 2**7, 2**8, 2**9]:
+    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
+    A = random_matrix(n)
+    B = random_matrix(n)
+    get_ipython().run_line_magic('timeit', 'A @ B  # crazy fast!')
+    get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(A, B)')
+    get_ipython().run_line_magic('timeit', 'strassen(A, B, leaf_size=4)')
+    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B, leaf_size=4)')
+
+
+# Est-ce que les temps sont vraiment différents si les deux matrices `A` et `B` changent à chaque test ? Pas vraiment ! Mais pour les petites valeurs de `n`, les quatre façons de multiplier sont toutes aussi lentes : le temps est principalement passé à générer `A` et `B` !
+
+# In[514]:
+
+
+for n in [2**5, 2**6, 2**7, 2**8, 2**9, 2**10]:
+    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
+    get_ipython().run_line_magic('timeit', 'random_matrix(n) @ random_matrix(n)')
+    get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(random_matrix(n), random_matrix(n))')
+    get_ipython().run_line_magic('timeit', 'strassen(random_matrix(n), random_matrix(n), leaf_size=64)')
+    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(random_matrix(n), random_matrix(n), leaf_size=64)')
+
+
+# In[515]:
+
+
+for n in [2**7, 2**8]:
+    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
+    get_ipython().run_line_magic('timeit', 'random_matrix(n) @ random_matrix(n)')
+    get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(random_matrix(n), random_matrix(n))')
+    for leaf_size in [1, 8, 32, 64, 128]:
+        print(f"Both Strassen, with a leaf size = {leaf_size}")
+        get_ipython().run_line_magic('timeit', 'strassen(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
+        get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
+
 
 # ## Conclusion
 # 
