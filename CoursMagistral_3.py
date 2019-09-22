@@ -733,14 +733,14 @@ for n in [5, 10, 50, 100, 500, 1000]:
 
 # #### Complexité temporelle de ce calcul d'enveloppe convexe
 
-# In[440]:
+# In[444]:
 
 
-values_n = np.array(np.floor(np.logspace(1, 4, num=20)), dtype=int)
+values_n = np.array(np.floor(np.logspace(1, 3.5, num=20)), dtype=int)
 values_points = [ points_aleatoires(n=n) for n in values_n ]
 
 
-# In[437]:
+# In[445]:
 
 
 values_times = [
@@ -753,7 +753,7 @@ values_times = [
 ]
 
 
-# In[439]:
+# In[446]:
 
 
 plt.figure()
@@ -764,7 +764,7 @@ plt.plot(values_n, values_times, "d-")
 plt.show()
 
 
-# In[441]:
+# In[ ]:
 
 
 plt.figure()
@@ -775,12 +775,6 @@ normalized_values_times = 1e6 * np.array(values_times) / (values_n * np.log(valu
 min_time = 1
 plt.plot(values_n[values_n >= min_time], normalized_values_times[values_n >= min_time], "d-")
 plt.show()
-
-
-# In[ ]:
-
-
-
 
 
 # ----
