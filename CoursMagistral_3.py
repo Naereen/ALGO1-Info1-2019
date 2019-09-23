@@ -1333,7 +1333,7 @@ def round_complex(x, decimals=0):
     return np.round(np.real(x), decimals=decimals) + 1j * np.round(np.imag(x), decimals=decimals)
 
 
-# In[580]:
+# In[634]:
 
 
 x = np.exp(2j * np.pi * np.arange(8) / 8)
@@ -1396,6 +1396,39 @@ plt.plot(freq, sp.real, freq, sp.imag)
 # ### Implémentation de la DFT par multiplication matricielle
 # 
 # On peut calculer la matrice de Vandermonde $W_N \in\mathbb{C}^{N \times N}$, associée à la racine $\omega_N = \exp(-i \frac{2\pi}{N}$ pour un signal de taille $N$, et ensuite calculer la DFT(x) comme $z = W_N x$ (produit matriciel). Cf [cette page Wikipédia](https://fr.wikipedia.org/wiki/Transformation_de_Fourier_discr%C3%A8te#Interpr%C3%A9tation_matricielle).
+# 
+# $$ f_j =  \sum_{k=0}^{n-1} x_k e^{-{2\pi i \over n} jk } \qquad j = 0,\dots,n-1. $$
+# 
+# ou en notation matricielle :
+# 
+# $$
+# \begin{array}{l}
+# \begin{pmatrix}
+# f_0 \\
+# f_1 \\
+# f_2 \\
+# \vdots \\
+# f_{n-1}
+# \end{pmatrix}
+# =
+# \begin{pmatrix}
+# 1 & 1 & 1 & \cdots & 1\\
+# 1 & w & w^2 & \cdots & w^{n-1}\\
+# 1 & w^2 & w^4 & \cdots & w^{2(n-1)}\\
+# \vdots & \vdots & \vdots & \ddots & \vdots &\\
+# 1 & w^{n-1} & w^{2(n-1)} & \cdots & w^{(n-1)^2}
+# \end{pmatrix}
+# \end{array}
+# \begin{pmatrix}
+# x_0 \\
+# x_1 \\
+# x_2 \\
+# \vdots \\
+# x_{n-1}
+# \end{pmatrix}
+# ,
+# w = e^{-\frac{2 \pi i}{n}}
+# $$
 
 # In[555]:
 
@@ -1511,65 +1544,91 @@ get_ipython().run_line_magic('timeit', 'dft_naive_matmult3(random_complex_vector
 LEAF_SIZE = 64
 
 
-# In[574]:
-
-
-x = np.arange(16)
-
-
-# In[575]:
-
-
-x
-
-
-# In[576]:
-
-
-even_x = x[::2]
-even_x
-odd_x = x[1::2]
-odd_x
-
-
 # <img width="45%" src="figures/CM3_Radix2FFT.png">
 
-# In[586]:
+# In[628]:
 
 
-def fft(x, leaf_size=64):
+def fft(x, leaf_size=LEAF_SIZE):
     n = len(x)
-    if n <= leaf_size:
+    if n <= 1:
+        return x
+    elif n <= leaf_size:
         return dft(x)
     n_by_2 = n//2
     assert n == 2 * n_by_2, "Error : only n = 2^k are accepted."
     # we split the entries in 2 vectors of size n/2
-    # we compute the two FFT, recursively
-    even_fft = fft(x[0::2])
-    odd_fft  = fft(x[1::2])
-    # combine the two
+    # we compute the two FFT, recursively, in T(n/2)
+    even_fft = fft(x[0::2], leaf_size=leaf_size)
+    odd_fft  = fft(x[1::2], leaf_size=leaf_size)
+    # combine the two, in O(n)
     full_fft = np.zeros(n, dtype=np.complex)
-    omega_n = np.exp(2j * np.pi / n)
-    omega = 1
-    for j in range(n_by_2):
-        full_fft[j]          = even_fft[j] + omega * odd_fft[j]
-        full_fft[j + n_by_2] = even_fft[j] - omega * odd_fft[j]
-        omega = omega * omega_n
+    omega_n = np.exp(-2j * np.pi / n)
+    omega_s = omega_n ** np.arange(n_by_2)  # compute all the omega^j j=0..n/2
+    full_fft[:n_by_2] = even_fft[:] + omega_s * odd_fft[:]
+    full_fft[n_by_2:] = even_fft[:] - omega_s * odd_fft[:]
+    # so T(n) = O(n) + 2 T(n/2)
+    # ==> T(n) = O(n \log(n)) by master theorem!
     return full_fft
 
 
 # Un exemple, pour vérifier notre implémentation :
 
-# In[587]:
+# In[635]:
 
 
 f6 = fft(x, leaf_size=1)
 round_complex(f6)
 
 
-# Pour l'instant, rien n'est correct !
+# In[636]:
+
+
+round_complex(fft(x, leaf_size=2))
+
+
+# In[637]:
+
+
+round_complex(fft(x))
+
+
+# In[638]:
+
+
+round_complex(np.fft.fft(x))
+
+
+# Cette implémentation semble fonctionner sans problème.
 # 
-# <span style="font-size:300%; color:red;">FIXME finish this!</span>
+# Pour les tests numériques, on peut aussi écrire une variante avec [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit).
+
+# In[639]:
+
+
+@jit
+def fft_jit(x, leaf_size=LEAF_SIZE):
+    n = len(x)
+    if n <= 1:
+        return x
+    elif n <= leaf_size:
+        return dft_jit(x)
+    n_by_2 = n//2
+    assert n == 2 * n_by_2, "Error : only n = 2^k are accepted."
+    # we split the entries in 2 vectors of size n/2
+    # we compute the two FFT, recursively, in T(n/2)
+    even_fft = fft_jit(x[0::2], leaf_size=leaf_size)
+    odd_fft  = fft_jit(x[1::2], leaf_size=leaf_size)
+    # combine the two, in O(n)
+    full_fft = np.zeros(n, dtype=np.complex)
+    omega_n = np.exp(-2j * np.pi / n)
+    omega_s = omega_n ** np.arange(n_by_2)  # compute all the omega^j j=0..n/2
+    full_fft[:n_by_2] = even_fft[:] + omega_s * odd_fft[:]
+    full_fft[n_by_2:] = even_fft[:] - omega_s * odd_fft[:]
+    # so T(n) = O(n) + 2 T(n/2)
+    # ==> T(n) = O(n \log(n)) by master theorem!
+    return full_fft
+
 
 # ### Tests avec des vecteurs aléatoires
 # On va définir des vecteurs $x\in\mathbb{C}^n$ aléatoires, distribués selon des lois normales centrées.
@@ -1581,7 +1640,7 @@ def random_complex_vector(n=16):
     return np.random.standard_normal(size=n) + 1j * np.random.standard_normal(size=n)
 
 
-# In[548]:
+# In[640]:
 
 
 x = random_complex_vector(4)
@@ -1592,30 +1651,62 @@ f2 = dft(x)
 f2
 f3 = dft_jit(x)
 f3
+f4 = fft(x, leaf_size=2)
+f4
+f5 = fft_jit(x, leaf_size=2)
+f5
 
 
-# Maintenant quelques comparaisons, montrant que l'implémentation naïve est très mauvaise en comparaison de celle optimisée (en C) de `numpy.fft` :
+# Maintenant quelques comparaisons, montrant que l'implémentation naïve est très mauvaise en comparaison de celle optimisée (en C) de `numpy.fft`, et que l'implémentation de la FFT est aussi plutôt lente :
 
-# In[551]:
+# In[626]:
 
 
-for n in [2**4, 2**5, 2**6, 2**7, 2**8]:
+for n in tqdm([2**4, 2**5, 2**6, 2**7, 2**8, 2**9, 2**10]):
     print(f"""\nPour des vecteurs aléatoires de tailles {n}
-    numpy.fft.fft | dft naive | dft numba""")
+    numpy.fft.fft | dft naive | dft numba.jit | fft naive | fft jit.jit """)
     x = random_complex_vector(n)
     get_ipython().run_line_magic('timeit', 'np.fft.fft(x)')
+    assert np.all(np.isclose(np.fft.fft(x), dft(x)))
     get_ipython().run_line_magic('timeit', 'dft(x)')
+    assert np.all(np.isclose(np.fft.fft(x), dft_jit(x)))
     get_ipython().run_line_magic('timeit', 'dft_jit(x)')
+    assert np.all(np.isclose(np.fft.fft(x), fft(x)))
+    get_ipython().run_line_magic('timeit', 'fft(x)')
+    assert np.all(np.isclose(np.fft.fft(x), fft_jit(x)))
+    get_ipython().run_line_magic('timeit', 'fft_jit(x)')
 
 
-# In[553]:
+# In[642]:
 
 
-round(157_000 / 7.21)
+round(258_000 / 9.79)
 
 
 # Avec une taille aussi petite que juste `n=2**8=256` échantillons, la DFT naïve (en $\Theta(n^2)$) et en pure Python est déjà environ **20_000 fois plus lente que la FFT optimisée**.
 # La DFT naïve mais compilée avec [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) est quant à elle 1000 plus lente.
+# 
+# La FFT naïve devrait être en $\mathcal{O}(n \log(n))$ et on a l'impression de le vérifier ici !
+
+# Quelle est l'influence de `leaf_size` ici ?
+
+# In[641]:
+
+
+for n in tqdm([2**7, 2**8, 2**9]):
+    print(f"""\nPour des vecteurs aléatoires de tailles {n}
+    numpy.fft.fft | fft naive | fft jit.jit for different leaf_size""")
+    x = random_complex_vector(n)
+    get_ipython().run_line_magic('timeit', 'np.fft.fft(x)')
+    for leaf_size in [1, 8, 32, 64, 2*n]:
+        print(f"For leaf_size = {leaf_size}")
+        assert np.all(np.isclose(np.fft.fft(x), fft(x, leaf_size=leaf_size)))
+        get_ipython().run_line_magic('timeit', 'fft(x)')
+        assert np.all(np.isclose(np.fft.fft(x), fft_jit(x, leaf_size=leaf_size)))
+        get_ipython().run_line_magic('timeit', 'fft_jit(x)')
+
+
+# The influence is hard to see, but this is very counter intuitive.
 
 # ## Conclusion
 # 
