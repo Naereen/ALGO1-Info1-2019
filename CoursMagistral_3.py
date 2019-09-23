@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-607-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4424" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-4425"><span class="texatom" id="MathJax-Span-4426"><span class="mrow" id="MathJax-Span-4427"><span class="mi" id="MathJax-Span-4428" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-4429" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4430" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-4431"></span><span class="mo" id="MathJax-Span-4432" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4433" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-4434" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-4435" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-607">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-515-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-3649" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-3650"><span class="texatom" id="MathJax-Span-3651"><span class="mrow" id="MathJax-Span-3652"><span class="mi" id="MathJax-Span-3653" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-3654" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-3655" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-3656" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-515">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev4 toc-item"><a href="#Un-exemple" data-toc-modified-id="Un-exemple-2141"><span class="toc-item-num">2.1.4.1&nbsp;&nbsp;</span>Un exemple</a></div><div class="lev4 toc-item"><a href="#Exemples-aléatoires-de-taille-contrôlée" data-toc-modified-id="Exemples-aléatoires-de-taille-contrôlée-2142"><span class="toc-item-num">2.1.4.2&nbsp;&nbsp;</span>Exemples aléatoires de taille contrôlée</a></div><div class="lev4 toc-item"><a href="#Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe" data-toc-modified-id="Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe-2143"><span class="toc-item-num">2.1.4.3&nbsp;&nbsp;</span>Complexité temporelle de ce calcul d'enveloppe convexe</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-607-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4424" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-4425"><span class="texatom" id="MathJax-Span-4426"><span class="mrow" id="MathJax-Span-4427"><span class="mi" id="MathJax-Span-4428" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-4429" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4430" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-4431"></span><span class="mo" id="MathJax-Span-4432" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4433" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-4434" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-4435" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-607">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-515-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-3649" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-3650"><span class="texatom" id="MathJax-Span-3651"><span class="mrow" id="MathJax-Span-3652"><span class="mi" id="MathJax-Span-3653" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-3654" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-3655" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-3656" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-515">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev4 toc-item"><a href="#Un-exemple" data-toc-modified-id="Un-exemple-2141"><span class="toc-item-num">2.1.4.1&nbsp;&nbsp;</span>Un exemple</a></div><div class="lev4 toc-item"><a href="#Exemples-aléatoires-de-taille-contrôlée" data-toc-modified-id="Exemples-aléatoires-de-taille-contrôlée-2142"><span class="toc-item-num">2.1.4.2&nbsp;&nbsp;</span>Exemples aléatoires de taille contrôlée</a></div><div class="lev4 toc-item"><a href="#Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe" data-toc-modified-id="Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe-2143"><span class="toc-item-num">2.1.4.3&nbsp;&nbsp;</span>Complexité temporelle de ce calcul d'enveloppe convexe</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev2 toc-item"><a href="#Transformée-de-Fourier-Rapide-(FFT)" data-toc-modified-id="Transformée-de-Fourier-Rapide-(FFT)-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Transformée de Fourier Rapide (FFT)</a></div><div class="lev3 toc-item"><a href="#Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve" data-toc-modified-id="Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve-241"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Transformée de Fourier Discrète (DFT), implémentation naïve</a></div><div class="lev3 toc-item"><a href="#Implémentation-de-FFT-dans-le-module-numpy" data-toc-modified-id="Implémentation-de-FFT-dans-le-module-numpy-242"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Implémentation de FFT dans le module <code>numpy</code></a></div><div class="lev3 toc-item"><a href="#Implémentation-de-la-DFT-par-multiplication-matricielle" data-toc-modified-id="Implémentation-de-la-DFT-par-multiplication-matricielle-243"><span class="toc-item-num">2.4.3&nbsp;&nbsp;</span>Implémentation de la DFT par multiplication matricielle</a></div><div class="lev3 toc-item"><a href="#Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)" data-toc-modified-id="Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)-244"><span class="toc-item-num">2.4.4&nbsp;&nbsp;</span>Implémentation manuelle de la FFT (Cooley-Tucker)</a></div><div class="lev3 toc-item"><a href="#Tests-avec-des-vecteurs-aléatoires" data-toc-modified-id="Tests-avec-des-vecteurs-aléatoires-245"><span class="toc-item-num">2.4.5&nbsp;&nbsp;</span>Tests avec des vecteurs aléatoires</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -1303,6 +1303,319 @@ for n in [2**7, 2**8]:
         get_ipython().run_line_magic('timeit', 'strassen(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
         get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
 
+
+# ----
+# ## Transformée de Fourier Rapide (FFT)
+# 
+# - Regardez [ces notes de cours]() pour les détails, [ou cette page](http://algorithms.wtf/notes/A-fft.pdf).
+
+# ### Transformée de Fourier Discrète (DFT), implémentation naïve
+# 
+# Ce premier algorithme est simple à écrire, et a une complexité en $\Theta(n^2)$.
+
+# In[538]:
+
+
+def dft(x):
+    n = len(x)
+    omega = lambda j, k: np.exp(- (j * k) * 2j * np.pi / n)
+    f = np.zeros_like(x)
+    for j in range(n):
+        for k in range(n):
+            f[j] += x[k] * omega(j, k)
+    return f
+
+
+# In[533]:
+
+
+def round_complex(x, decimals=0):
+    return np.round(np.real(x), decimals=decimals) + 1j * np.round(np.imag(x), decimals=decimals)
+
+
+# In[580]:
+
+
+x = np.exp(2j * np.pi * np.arange(8) / 8)
+x
+f = dft(x)
+f
+
+
+# In[581]:
+
+
+round_complex(f)
+
+
+# On va faire des tests numériques, avec une version "optimisée" automatiquement grâce à [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit).
+
+# In[541]:
+
+
+@jit
+def dft_jit(x):
+    n = len(x)
+    pi_2j_by_n = 2j * np.pi / n
+    f = np.zeros_like(x)
+    for j in range(n):
+        for k in range(n):
+            f[j] += x[k] * np.exp(- (j * k) * pi_2j_by_n)
+    return f
+
+
+# In[542]:
+
+
+round_complex(dft_jit(x))
+
+
+# ### Implémentation de FFT dans le module `numpy`
+
+# In[543]:
+
+
+f2 = np.fft.fft(x)
+round_complex(f2)
+
+
+# In this example, real input has an FFT which is Hermitian, i.e., symmetric
+# in the real part and anti-symmetric in the imaginary part, as described in
+# the `numpy.fft` documentation:
+
+# In[517]:
+
+
+import matplotlib.pyplot as plt
+t = np.arange(256)
+sp = np.fft.fft(np.sin(t))
+freq = np.fft.fftfreq(t.shape[-1])
+plt.plot(freq, sp.real, freq, sp.imag)
+
+
+# ### Implémentation de la DFT par multiplication matricielle
+# 
+# On peut calculer la matrice de Vandermonde $W_N \in\mathbb{C}^{N \times N}$, associée à la racine $\omega_N = \exp(-i \frac{2\pi}{N}$ pour un signal de taille $N$, et ensuite calculer la DFT(x) comme $z = W_N x$ (produit matriciel). Cf [cette page Wikipédia](https://fr.wikipedia.org/wiki/Transformation_de_Fourier_discr%C3%A8te#Interpr%C3%A9tation_matricielle).
+
+# In[555]:
+
+
+def vandermonde_fourier(n):
+    pi_2j_by_n = 2j * np.pi / n
+    omega = np.zeros((n, n), dtype=np.complex)
+    for j in range(n):
+        for k in range(n):
+            omega[j, k] = np.exp(- (j * k) * pi_2j_by_n)
+    return omega
+
+
+# In[567]:
+
+
+def dft_naive_matmult(x):
+    n = len(x)
+    return vandermonde_fourier(len(x)) * np.array(x)
+
+
+# In[582]:
+
+
+f3 = dft_naive_matmult(x)
+round_complex(f3)
+
+
+# In[568]:
+
+
+get_ipython().run_line_magic('timeit', 'dft_naive_matmult(random_complex_vector(2**8))')
+
+
+# Une approche plus efficace :
+
+# In[559]:
+
+
+def vandermonde_fourier2(n):
+    pi_2j_by_n = 2j * np.pi / n
+    omega = np.zeros((n, n), dtype=np.complex)
+    for j in range(n):
+        omega[j, :] = np.exp(- (j * np.arange(n)) * pi_2j_by_n)
+    return omega
+
+
+# In[560]:
+
+
+def dft_naive_matmult2(x):
+    n = len(x)
+    return vandermonde_fourier2(len(x)) * np.array(x)
+
+
+# In[543]:
+
+
+f4 = dft_naive_matmult2(x)
+round_complex(f4)
+
+
+# In[561]:
+
+
+get_ipython().run_line_magic('timeit', 'dft_naive_matmult2(random_complex_vector(2**8))')
+
+
+# Une approche encore un peu plus efficace :
+
+# In[569]:
+
+
+@jit
+def vandermonde_fourier3(n):
+    pi_2j_by_n = 2j * np.pi / n
+    omega = np.zeros((n, n), dtype=np.complex)
+    for j in range(n):
+        omega[j, :] = np.exp(- (j * np.arange(n)) * pi_2j_by_n)
+    return omega
+
+
+# In[572]:
+
+
+def dft_naive_matmult3(x):
+    n = len(x)
+    return vandermonde_fourier3(len(x)) * np.array(x)
+
+
+# In[583]:
+
+
+f5 = dft_naive_matmult3(x)
+round_complex(f5)
+
+
+# In[573]:
+
+
+get_ipython().run_line_magic('timeit', 'dft_naive_matmult3(random_complex_vector(2**8))')
+
+
+# ### Implémentation manuelle de la FFT (Cooley-Tucker)
+# Comme avec notre petite implémentation de l'algorithme de Strassen, on va se restreindre aux valeurs $n = 2^p$ pour $p=\mathbb{N}$.
+# On va utiliser la DFT naïve pour les valeurs trop petites, comme on sait que trop d'appels récursifs ajoutent un gros surcoût (avec `leaf_size=64`, cela devrait donner un bon compromis).
+# 
+# Cf. [cette page Wikipédia](https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm#The_radix-2_DIT_case)
+
+# In[554]:
+
+
+LEAF_SIZE = 64
+
+
+# In[574]:
+
+
+x = np.arange(16)
+
+
+# In[575]:
+
+
+x
+
+
+# In[576]:
+
+
+even_x = x[::2]
+even_x
+odd_x = x[1::2]
+odd_x
+
+
+# <img width="45%" src="figures/CM3_Radix2FFT.png">
+
+# In[586]:
+
+
+def fft(x, leaf_size=64):
+    n = len(x)
+    if n <= leaf_size:
+        return dft(x)
+    n_by_2 = n//2
+    assert n == 2 * n_by_2, "Error : only n = 2^k are accepted."
+    # we split the entries in 2 vectors of size n/2
+    # we compute the two FFT, recursively
+    even_fft = fft(x[0::2])
+    odd_fft  = fft(x[1::2])
+    # combine the two
+    full_fft = np.zeros(n, dtype=np.complex)
+    omega_n = np.exp(2j * np.pi / n)
+    omega = 1
+    for j in range(n_by_2):
+        full_fft[j]          = even_fft[j] + omega * odd_fft[j]
+        full_fft[j + n_by_2] = even_fft[j] - omega * odd_fft[j]
+        omega = omega * omega_n
+    return full_fft
+
+
+# Un exemple, pour vérifier notre implémentation :
+
+# In[587]:
+
+
+f6 = fft(x, leaf_size=1)
+round_complex(f6)
+
+
+# Pour l'instant, rien n'est correct !
+# 
+# <span style="font-size:300%; color:red;">FIXME finish this!</span>
+
+# ### Tests avec des vecteurs aléatoires
+# On va définir des vecteurs $x\in\mathbb{C}^n$ aléatoires, distribués selon des lois normales centrées.
+
+# In[544]:
+
+
+def random_complex_vector(n=16):
+    return np.random.standard_normal(size=n) + 1j * np.random.standard_normal(size=n)
+
+
+# In[548]:
+
+
+x = random_complex_vector(4)
+x
+f1 = np.fft.fft(x)
+f1
+f2 = dft(x)
+f2
+f3 = dft_jit(x)
+f3
+
+
+# Maintenant quelques comparaisons, montrant que l'implémentation naïve est très mauvaise en comparaison de celle optimisée (en C) de `numpy.fft` :
+
+# In[551]:
+
+
+for n in [2**4, 2**5, 2**6, 2**7, 2**8]:
+    print(f"""\nPour des vecteurs aléatoires de tailles {n}
+    numpy.fft.fft | dft naive | dft numba""")
+    x = random_complex_vector(n)
+    get_ipython().run_line_magic('timeit', 'np.fft.fft(x)')
+    get_ipython().run_line_magic('timeit', 'dft(x)')
+    get_ipython().run_line_magic('timeit', 'dft_jit(x)')
+
+
+# In[553]:
+
+
+round(157_000 / 7.21)
+
+
+# Avec une taille aussi petite que juste `n=2**8=256` échantillons, la DFT naïve (en $\Theta(n^2)$) et en pure Python est déjà environ **20_000 fois plus lente que la FFT optimisée**.
+# La DFT naïve mais compilée avec [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) est quant à elle 1000 plus lente.
 
 # ## Conclusion
 # 
