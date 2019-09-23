@@ -40,7 +40,7 @@
 # 
 # **Avec le _master theorem_**, on a $a=1, b=2, k=0$ : on divise les entrées en $a=2$ entrées de tailles $\leq b=2$ plus petites, sur lesquels on applique un traitement **constant** ($\mathcal{O}(n^{k=0})$ avant l'appel récursif (**aucune recopie, juste des changements d'indices !**).
 
-# In[206]:
+# In[643]:
 
 
 def dichotomy_in_array(array, value, left=0, right=None):
@@ -56,9 +56,9 @@ def dichotomy_in_array(array, value, left=0, right=None):
     index_of_middle = left + (n // 2)
     middle_of_list = array[index_of_middle]
     if value < middle_of_list:  # search on left
-        return dichotomy_in_array(array, value, left=left, right=index_of_middle - 1, debug=debug, depth=depth+1)
+        return dichotomy_in_array(array, value, left=left, right=index_of_middle - 1)
     elif value > middle_of_list:  # search on right
-        return dichotomy_in_array(array, value, left=index_of_middle + 1, right=right, debug=debug, depth=depth+1)
+        return dichotomy_in_array(array, value, left=index_of_middle + 1, right=right)
     else:
         return index_of_middle
 
