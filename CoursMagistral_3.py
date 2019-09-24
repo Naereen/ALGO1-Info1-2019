@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-607-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4424" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-4425"><span class="texatom" id="MathJax-Span-4426"><span class="mrow" id="MathJax-Span-4427"><span class="mi" id="MathJax-Span-4428" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-4429" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4430" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-4431"></span><span class="mo" id="MathJax-Span-4432" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-4433" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-4434" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-4435" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-607">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-515-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-3649" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-3650"><span class="texatom" id="MathJax-Span-3651"><span class="mrow" id="MathJax-Span-3652"><span class="mi" id="MathJax-Span-3653" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-3654" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-3655" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-3656" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-515">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev4 toc-item"><a href="#Un-exemple" data-toc-modified-id="Un-exemple-2141"><span class="toc-item-num">2.1.4.1&nbsp;&nbsp;</span>Un exemple</a></div><div class="lev4 toc-item"><a href="#Exemples-aléatoires-de-taille-contrôlée" data-toc-modified-id="Exemples-aléatoires-de-taille-contrôlée-2142"><span class="toc-item-num">2.1.4.2&nbsp;&nbsp;</span>Exemples aléatoires de taille contrôlée</a></div><div class="lev4 toc-item"><a href="#Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe" data-toc-modified-id="Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe-2143"><span class="toc-item-num">2.1.4.3&nbsp;&nbsp;</span>Complexité temporelle de ce calcul d'enveloppe convexe</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev2 toc-item"><a href="#Transformée-de-Fourier-Rapide-(FFT)" data-toc-modified-id="Transformée-de-Fourier-Rapide-(FFT)-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Transformée de Fourier Rapide (FFT)</a></div><div class="lev3 toc-item"><a href="#Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve" data-toc-modified-id="Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve-241"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Transformée de Fourier Discrète (DFT), implémentation naïve</a></div><div class="lev3 toc-item"><a href="#Implémentation-de-FFT-dans-le-module-numpy" data-toc-modified-id="Implémentation-de-FFT-dans-le-module-numpy-242"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Implémentation de FFT dans le module <code>numpy</code></a></div><div class="lev3 toc-item"><a href="#Implémentation-de-la-DFT-par-multiplication-matricielle" data-toc-modified-id="Implémentation-de-la-DFT-par-multiplication-matricielle-243"><span class="toc-item-num">2.4.3&nbsp;&nbsp;</span>Implémentation de la DFT par multiplication matricielle</a></div><div class="lev3 toc-item"><a href="#Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)" data-toc-modified-id="Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)-244"><span class="toc-item-num">2.4.4&nbsp;&nbsp;</span>Implémentation manuelle de la FFT (Cooley-Tucker)</a></div><div class="lev3 toc-item"><a href="#Tests-avec-des-vecteurs-aléatoires" data-toc-modified-id="Tests-avec-des-vecteurs-aléatoires-245"><span class="toc-item-num">2.4.5&nbsp;&nbsp;</span>Tests avec des vecteurs aléatoires</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-3" data-toc-modified-id="Cours-Magistral-3-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 3</a></div><div class="lev2 toc-item"><a href="#Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques" data-toc-modified-id="Quelques-algorithmes-&quot;diviser-pour-régner&quot;-classiques-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Quelques algorithmes "diviser pour régner" classiques</a></div><div class="lev3 toc-item"><a href="#Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$" data-toc-modified-id="Recherche-dans-un-tableau-trié-en-$\mathcal{O}(\log(n))$-211"><span class="toc-item-num">2.1.1&nbsp;&nbsp;</span>Recherche dans un tableau trié en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-380-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>log</mi><mo>&amp;#x2061;</mo><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-2749" style="width: 4.307em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.854em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.769em, 1003.81em, 2.971em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-2750"><span class="texatom" id="MathJax-Span-2751"><span class="mrow" id="MathJax-Span-2752"><span class="mi" id="MathJax-Span-2753" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-2754" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-2755" style="font-family: STIXMathJax_Main;">log</span><span class="mo" id="MathJax-Span-2756"></span><span class="mo" id="MathJax-Span-2757" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-2758" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-2759" style="font-family: STIXMathJax_Main;">)</span><span class="mo" id="MathJax-Span-2760" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.298em; border-left: 0px solid; width: 0px; height: 1.111em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-380">\mathcal{O}(\log(n))</script></a></div><div class="lev3 toc-item"><a href="#Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$" data-toc-modified-id="Recherche-dans-une-liste-triée-en-$\mathcal{O}(n)$-212"><span class="toc-item-num">2.1.2&nbsp;&nbsp;</span>Recherche dans une liste triée en <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-388-Frame" tabindex="0" style="position: relative;" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;>O</mi></mrow><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-2826" style="width: 2.105em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.902em; height: 0px; font-size: 111%;"><span style="position: absolute; clip: rect(1.776em, 1001.85em, 2.93em, -1000em); top: -2.603em; left: 0em;"><span class="mrow" id="MathJax-Span-2827"><span class="texatom" id="MathJax-Span-2828"><span class="mrow" id="MathJax-Span-2829"><span class="mi" id="MathJax-Span-2830" style="font-family: STIXMathJax_Variants; font-style: italic;"></span></span></span><span class="mo" id="MathJax-Span-2831" style="font-family: STIXMathJax_Main;">(</span><span class="mi" id="MathJax-Span-2832" style="font-family: STIXMathJax_Normal; font-style: italic;">𝑛</span><span class="mo" id="MathJax-Span-2833" style="font-family: STIXMathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.603em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.252em; border-left: 0px solid; width: 0px; height: 1.058em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-388">\mathcal{O}(n)</script></a></div><div class="lev3 toc-item"><a href="#Tri-fusion-(merge-sort)" data-toc-modified-id="Tri-fusion-(merge-sort)-213"><span class="toc-item-num">2.1.3&nbsp;&nbsp;</span>Tri fusion (<em>merge sort</em>)</a></div><div class="lev3 toc-item"><a href="#Enveloppe-convexe-de-points-en-2D-(quickhull)" data-toc-modified-id="Enveloppe-convexe-de-points-en-2D-(quickhull)-214"><span class="toc-item-num">2.1.4&nbsp;&nbsp;</span>Enveloppe convexe de points en 2D (<em>quickhull</em>)</a></div><div class="lev4 toc-item"><a href="#Un-exemple" data-toc-modified-id="Un-exemple-2141"><span class="toc-item-num">2.1.4.1&nbsp;&nbsp;</span>Un exemple</a></div><div class="lev4 toc-item"><a href="#Exemples-aléatoires-de-taille-contrôlée" data-toc-modified-id="Exemples-aléatoires-de-taille-contrôlée-2142"><span class="toc-item-num">2.1.4.2&nbsp;&nbsp;</span>Exemples aléatoires de taille contrôlée</a></div><div class="lev4 toc-item"><a href="#Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe" data-toc-modified-id="Complexité-temporelle-de-ce-calcul-d'enveloppe-convexe-2143"><span class="toc-item-num">2.1.4.3&nbsp;&nbsp;</span>Complexité temporelle de ce calcul d'enveloppe convexe</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Gauss-Karatsuba" data-toc-modified-id="Algorithme-de-Gauss-Karatsuba-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Algorithme de Gauss-Karatsuba</a></div><div class="lev2 toc-item"><a href="#Algorithme-de-Strassen" data-toc-modified-id="Algorithme-de-Strassen-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Algorithme de Strassen</a></div><div class="lev3 toc-item"><a href="#Méthode-naïve,-&quot;méthode-i-k-j&quot;" data-toc-modified-id="Méthode-naïve,-&quot;méthode-i-k-j&quot;-231"><span class="toc-item-num">2.3.1&nbsp;&nbsp;</span>Méthode naïve, "méthode i k j"</a></div><div class="lev3 toc-item"><a href="#Méthode-naïve-récursive" data-toc-modified-id="Méthode-naïve-récursive-232"><span class="toc-item-num">2.3.2&nbsp;&nbsp;</span>Méthode naïve récursive</a></div><div class="lev3 toc-item"><a href="#Méthode-récursive-de-Strassen" data-toc-modified-id="Méthode-récursive-de-Strassen-233"><span class="toc-item-num">2.3.3&nbsp;&nbsp;</span>Méthode récursive de Strassen</a></div><div class="lev2 toc-item"><a href="#Transformée-de-Fourier-Rapide-(FFT)" data-toc-modified-id="Transformée-de-Fourier-Rapide-(FFT)-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Transformée de Fourier Rapide (FFT)</a></div><div class="lev3 toc-item"><a href="#Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve" data-toc-modified-id="Transformée-de-Fourier-Discrète-(DFT),-implémentation-naïve-241"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Transformée de Fourier Discrète (DFT), implémentation naïve</a></div><div class="lev3 toc-item"><a href="#Implémentation-de-FFT-dans-le-module-numpy" data-toc-modified-id="Implémentation-de-FFT-dans-le-module-numpy-242"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Implémentation de FFT dans le module <code>numpy</code></a></div><div class="lev3 toc-item"><a href="#Implémentation-de-la-DFT-par-multiplication-matricielle" data-toc-modified-id="Implémentation-de-la-DFT-par-multiplication-matricielle-243"><span class="toc-item-num">2.4.3&nbsp;&nbsp;</span>Implémentation de la DFT par multiplication matricielle</a></div><div class="lev3 toc-item"><a href="#Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)" data-toc-modified-id="Implémentation-manuelle-de-la-FFT-(Cooley-Tucker)-244"><span class="toc-item-num">2.4.4&nbsp;&nbsp;</span>Implémentation manuelle de la FFT (Cooley-Tucker)</a></div><div class="lev3 toc-item"><a href="#Tests-avec-des-vecteurs-aléatoires" data-toc-modified-id="Tests-avec-des-vecteurs-aléatoires-245"><span class="toc-item-num">2.4.5&nbsp;&nbsp;</span>Tests avec des vecteurs aléatoires</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -941,27 +941,29 @@ for n in [2**3, 2**4, 2**5, 2**6, 2**7, 2**8, 2**9, 2**10, 2**11, 2**12]:
 # ----
 # ## Algorithme de Strassen
 # 
+# - On cherche à multiplier deux matrices $A, B \in\mathbb{K}^{n \times n}$, où $\mathbb{K}$ est un anneau commutatif quelconque (e.g., les entiers, ou les rationnels, ou les flottants), et $n\in\mathbb{N}$ est un entier.
+# - On va rappeler un algorithme naïf (de complexité temporelle asymptotque en $\Theta(n^3)$), un algorithme récursif mais qui n'est pas plus efficace que l'algorithme naïf, et un algorithme récursif qui attend une complexité asymptotique plus effaice ($\Theta(n^{\log_2(7)})$).
+# 
 # - Cf le cours pour l'algorithme, ou https://fr.wikipedia.org/wiki/Algorithme_de_Strassen.
 # 
 # > Part of this code is coming from [this blog post](https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/).
 
-# La complexité de cet algorithme est en $\mathcal{O}(n^{\log_2(7)})$, asymptotiquement meilleur que $\mathcal{O}(n^3)$ la méthode naïve.
+# ### Méthode naïve, "méthode i k j"
 # 
-# **Avec le _master theorem_**, on a $a=7, b=2, k=2$ : on divise les entrées en $a=7$ entrées de tailles $\leq b=2$ plus petites [1], sur lesquels on applique un traitement quadratique (toutes les additions $\mathcal{O}(n^{k=2})$ avant et après l'appel récursif.
+# On écrit $C = A \times B$, et on rappelle que $\forall i, j \in[n], C_{i,j} = \sum_{k=1}^n A_{i,k} B_{k,j}$.
+# Donc on peut calculer cela avec trois boucles `for` imbriquées, pour $i, k, j$.
 # 
-# Donc $a = 7 > b^k = 4$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)})$.
-# 
-# > [1] : c'est $n$ qui est divisé par deux, bien que $n^2$ soit divisé par $4$ et que l'on puisse considérer que la taille d'une matrice $(n,m)$ est $n \times m$.
+# On va utiliser des tableaux `numpy` et pas des listes de listes, pour plus de simplicités.
 
-# In[208]:
+# In[644]:
 
 
 import numpy as np
 
 
-# <span style="color:red;">Attention</span> : peut-être que je devrais utiliser numba pour faire que ces fonctions naïves soient aussi efficaces que celles de Numpy (en gros).
+# <span style="color:red;">Attention</span> : pour ne pas être trop lent, j'utilise la compilation "just in time" proposée par le projet [numba](https://numba.pydata.org/), pour faire que ces fonctions naïves soient aussi efficaces que celles de Numpy (en gros).
 
-# In[450]:
+# In[645]:
 
 
 try:
@@ -971,11 +973,12 @@ except ImportError:
         return f
 
 
-# In[451]:
+# In[ ]:
 
 
 @jit
 def ikjMatrixProduct(A, B):
+    """ Produit matriciel naïf, en O(n^3) opérations."""
     n = len(A)
     C = np.zeros((n, n), dtype=type(A[0,0]))
     for i in range(n):
@@ -985,7 +988,11 @@ def ikjMatrixProduct(A, B):
     return C
 
 
-# In[452]:
+# ### Méthode naïve récursive
+# 
+# On va d'abord définir nos propres opérations d'additions et de soustractions de matrices dans $\mathbb{K}^{n \times n}$.
+
+# In[647]:
 
 
 @jit
@@ -998,7 +1005,7 @@ def add(A, B):
     return C
 
 
-# In[223]:
+# In[648]:
 
 
 @jit
@@ -1011,13 +1018,173 @@ def subtract(A, B):
     return C
 
 
-# In[224]:
+# La méthode récursive mais naïve est la suivante.
+# On découpe les matrices de taille $n \times n$ en quatre matrices de tailles $(n/2) \times (n/2)$.
+# $$
+# A B =
+# \begin{array}{l}
+# \begin{pmatrix}
+# a_{11} & a_{12}\\
+# a_{21} & a_{22}
+# \end{pmatrix}
+# \end{array}
+# \begin{array}{l}
+# \begin{pmatrix}
+# b_{11} & b_{12}\\
+# b_{21} & b_{22}
+# \end{pmatrix}
+# \end{array}
+# = 
+# C =
+# \begin{array}{l}
+# \begin{pmatrix}
+#   c_{11} = p_1 + p2 = a_{11}b_{11} + a_{12}b_{21}
+# & c_{12} = p_3 + p4 = a_{11}b_{12} + a_{12}b_{22}\\
+#   c_{21} = p_5 + p6 = a_{21}b_{11} + a_{22}b_{21}
+# & c_{22} = p_7 + p8 = a_{21}b_{12} + a_{22}b_{22}
+# \end{pmatrix}
+# \end{array}
+# $$
+
+# In[ ]:
+
+
+def naive_recursive(A, B, leaf_size=LEAF_SIZE):
+    n = len(A)
+
+    if n <= leaf_size:
+        return ikjMatrixProduct(A, B)
+    else:
+        # initializing the new sub-matrices
+        newSize = n//2
+        a11 = A[:newSize, :newSize]  # top left
+        a12 = A[:newSize, newSize:]  # top right
+        a21 = A[newSize:, :newSize]  # bottom left
+        a22 = A[newSize:, newSize:]  # bottom right
+        b11 = B[:newSize, :newSize]  # top left
+        b12 = B[:newSize, newSize:]  # top right
+        b21 = B[newSize:, :newSize]  # bottom left
+        b22 = B[newSize:, newSize:]  # bottom right
+
+        # Calculating p1 to p8:
+        p1 = naive_recursive(a11, b11, leaf_size=leaf_size)
+        p2 = naive_recursive(a12, b21, leaf_size=leaf_size)
+        p3 = naive_recursive(a11, b12, leaf_size=leaf_size)
+        p4 = naive_recursive(a12, b22, leaf_size=leaf_size)
+        p5 = naive_recursive(a21, b11, leaf_size=leaf_size)
+        p6 = naive_recursive(a22, b21, leaf_size=leaf_size)
+        p7 = naive_recursive(a21, b12, leaf_size=leaf_size)
+        p8 = naive_recursive(a22, b22, leaf_size=leaf_size)
+
+        # calculating c11, c21, c11 and c22:
+        c11 = add(p1, p2)
+        c12 = add(p3, p4)
+        c21 = add(p5, p6)
+        c22 = add(p7, p8)
+
+        # Grouping the results obtained in a single matrix:
+        C = np.zeros((n, n), dtype=type(A[0,0]))
+        for i in range(newSize):
+            for j in range(newSize):
+                C[i,j] = c11[i,j]
+                C[i,j + newSize] = c12[i,j]
+                C[i + newSize,j] = c21[i,j]
+                C[i + newSize,j + newSize] = c22[i,j]
+        return C
+
+
+# La complexité de cet algorithme est en $\mathcal{O}(n^{\log_2(8)}) = \mathcal{O}(n^3)$ équivalent à la méthode naïve non récursive.
+# 
+# **Avec le _master theorem_**, on a $a=8, b=2, k=2$ : on divise les entrées en $8$ entrées de tailles plus petites, et on fait $a=8$ calculs sur des entrées de tailles $\leq b=2$ plus petites [1], sur lesquels on applique un traitement quadratique (toutes les additions $\mathcal{O}(n^{k=2})$ avant et après l'appel récursif.
+# 
+# Donc $a = 8 > b^k = 4$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)})$.
+# 
+# > [1] : c'est $n$ qui est divisé par deux, bien que $n^2$ soit divisé par $4$ et que l'on puisse considérer que la taille d'une matrice $(n,m)$ est $n \times m$.
+
+# In[ ]:
+
+
+def naive(A, B, leaf_size=LEAF_SIZE):
+    assert isinstance(A, np.ndarray) and isinstance(B, np.ndarray)
+    assert len(A) == len(A[0]) == len(B) == len(B[0])
+
+    # Make the matrices bigger so that you can apply the strassen
+    # algorithm recursively without having to deal with odd matrix sizes
+    nextPowerOfTwo = lambda n: 2**int(ceil(log(n,2)))
+    n = len(A)
+    m = nextPowerOfTwo(n)
+    APrep = np.zeros((m, m), dtype=type(A[0,0]))
+    BPrep = np.zeros((m, m), dtype=type(A[0,0]))
+    for i in range(n):
+        for j in range(n):
+            APrep[i,j] = A[i,j]
+            BPrep[i,j] = B[i,j]
+    CPrep = naive_recursive(APrep, BPrep, leaf_size=leaf_size)
+    C = np.zeros((n, n), dtype=type(A[0,0]))
+    for i in range(n):
+        for j in range(n):
+            C[i,j] = CPrep[i,j]
+    return C
+
+
+# ### Méthode récursive de Strassen
+# 
+# La méthode récursive de Strassen est la suivante.
+# On découpe les matrices de taille $n \times n$ en quatre matrices de tailles $(n/2) \times (n/2)$.
+# $$
+# A B =
+# \begin{array}{l}
+# \begin{pmatrix}
+# a_{11} & a_{12}\\
+# a_{21} & a_{22}
+# \end{pmatrix}
+# \end{array}
+# \begin{array}{l}
+# \begin{pmatrix}
+# b_{11} & b_{12}\\
+# b_{21} & b_{22}
+# \end{pmatrix}
+# \end{array}
+# = 
+# C =
+# \begin{array}{l}
+# \begin{pmatrix}
+#   c_{11} = p1 + p4 - p5 + p7
+# & c_{12} = p3 + p5 \\
+#   c_{21} = p2 + p4
+# & c_{22} = p1 + p3 - p2 + p6 \\
+# \end{pmatrix}
+# \end{array}
+# $$
+# Avec les 7 produits intermédiaires suivants :
+# $$
+# p1 = (a_{11}+a_{22}) * (b_{11}+b_{22}) \\
+# p2 = (a_{21}+a_{22}) * (b_{11}) \\
+# p3 = (a_{11}) * (b_{12} - b_{22}) \\
+# p4 = (a_{22}) * (b_{21} - b_{11}) \\
+# p5 = (a_{11}+a_{12}) * (b_{22})    \\
+# p6 = (a_{21}-a_{11}) * (b_{11}+b_{12}) \\
+# p7 = (a_{12}-a_{22}) * (b_{21}+b_{22})
+# $$
+# On fait plus d'additions mais moins de produits, et les additions sont en $\Theta(n^2)$, les produits sont plus couteux, donc on va gagner (asymptotiquement) !
+
+# La complexité de cet algorithme est en $\mathcal{O}(n^{\log_2(7)})$, asymptotiquement meilleur que $\mathcal{O}(n^3)$ la méthode naïve.
+# 
+# **Avec le _master theorem_**, on a $a=7, b=2, k=2$ : on divise les entrées en $8$ entrées de tailles 2 fois plus petites, mais on ne fait que $a=7$ calculs sur entrées de tailles $\leq b=2$ plus petites [1], sur lesquels on applique un traitement quadratique (toutes les additions $\mathcal{O}(n^{k=2})$ avant et après l'appel récursif.
+# 
+# Donc $a = 7 > b^k = 4$ ce qui donne $T(n) = \mathcal{O}(n^{\log_b(a)})$.
+# 
+# > [1] : c'est $n$ qui est divisé par deux, bien que $n^2$ soit divisé par $4$ et que l'on puisse considérer que la taille d'une matrice $(n,m)$ est $n \times m$.
+
+# On va encore utiliser cette idée de `leaf_size` : dès que les entrées sont trop petites, on réutilise l'algorithme naïf.
+
+# In[649]:
 
 
 LEAF_SIZE = 64
 
 
-# In[500]:
+# In[661]:
 
 
 def strassenR(A, B, leaf_size=LEAF_SIZE):
@@ -1032,19 +1199,19 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
         a12 = A[:newSize, newSize:]  # top right
         a21 = A[newSize:, :newSize]  # bottom left
         a22 = A[newSize:, newSize:]  # bottom right
-        b11 = A[:newSize, :newSize]  # top left
-        b12 = A[:newSize, newSize:]  # top right
-        b21 = A[newSize:, :newSize]  # bottom left
-        b22 = A[newSize:, newSize:]  # bottom right
+        b11 = B[:newSize, :newSize]  # top left
+        b12 = B[:newSize, newSize:]  # top right
+        b21 = B[newSize:, :newSize]  # bottom left
+        b22 = B[newSize:, newSize:]  # bottom right
 
         # Calculating p1 to p7:
-        p1 = strassenR(add(a11, a22), add(b11, b22)) # p1 = (a11+a22) * (b11+b22)
-        p2 = strassenR(add(a21, a22), b11)  # p2 = (a21+a22) * (b11)
-        p3 = strassenR(a11, subtract(b12, b22))  # p3 = (a11) * (b12 - b22)
-        p4 = strassenR(a22, subtract(b21, b11))   # p4 = (a22) * (b21 - b11)
-        p5 = strassenR(add(a11, a12), b22)  # p5 = (a11+a12) * (b22)   
-        p6 = strassenR(subtract(a21, a11), add(b11, b12)) # p6 = (a21-a11) * (b11+b12)
-        p7 = strassenR(subtract(a12, a22), add(b21, b22)) # p7 = (a12-a22) * (b21+b22)
+        p1 = strassenR(add(a11, a22), add(b11, b22), leaf_size=leaf_size) # p1 = (a11+a22) * (b11+b22)
+        p2 = strassenR(add(a21, a22), b11, leaf_size=leaf_size)  # p2 = (a21+a22) * (b11)
+        p3 = strassenR(a11, subtract(b12, b22), leaf_size=leaf_size)  # p3 = (a11) * (b12 - b22)
+        p4 = strassenR(a22, subtract(b21, b11), leaf_size=leaf_size)   # p4 = (a22) * (b21 - b11)
+        p5 = strassenR(add(a11, a12), b22, leaf_size=leaf_size)  # p5 = (a11+a12) * (b22)   
+        p6 = strassenR(subtract(a21, a11), add(b11, b12), leaf_size=leaf_size) # p6 = (a21-a11) * (b11+b12)
+        p7 = strassenR(subtract(a12, a22), add(b21, b22), leaf_size=leaf_size) # p7 = (a12-a22) * (b21+b22)
 
         # calculating c21, c21, c11 e c22:
         c12 = add(p3, p5) # c12 = p3 + p5
@@ -1063,7 +1230,7 @@ def strassenR(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[501]:
+# In[662]:
 
 
 def strassen(A, B, leaf_size=LEAF_SIZE):
@@ -1091,7 +1258,7 @@ def strassen(A, B, leaf_size=LEAF_SIZE):
 
 # En fait, on devrait essayer d'utiliser les opérations les plus efficaces pour les additions et soustractions de matrices, afin de vraiment voir où se situe le gain de l'algorithme de Strassen.
 
-# In[502]:
+# In[663]:
 
 
 def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -1107,19 +1274,19 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
         a12 = A[:newSize, newSize:]  # top right
         a21 = A[newSize:, :newSize]  # bottom left
         a22 = A[newSize:, newSize:]  # bottom right
-        b11 = A[:newSize, :newSize]  # top left
-        b12 = A[:newSize, newSize:]  # top right
-        b21 = A[newSize:, :newSize]  # bottom left
-        b22 = A[newSize:, newSize:]  # bottom right
+        b11 = B[:newSize, :newSize]  # top left
+        b12 = B[:newSize, newSize:]  # top right
+        b21 = B[newSize:, :newSize]  # bottom left
+        b22 = B[newSize:, newSize:]  # bottom right
 
         # Calculating p1 to p7:
-        p1 = strassenR(a11 + a22, b11 + b22) # p1 = (a11+a22) * (b11+b22)
-        p2 = strassenR(a21 + a22, b11)  # p2 = (a21+a22) * (b11)
-        p3 = strassenR(a11, b12 - b22)  # p3 = (a11) * (b12 - b22)
-        p4 = strassenR(a22, b21 - b11)   # p4 = (a22) * (b21 - b11)
-        p5 = strassenR(a11 + a12, b22)  # p5 = (a11+a12) * (b22)   
-        p6 = strassenR(a21 - a11, b11 + b12) # p6 = (a21-a11) * (b11+b12)
-        p7 = strassenR(a12 - a22, b21 + b22) # p7 = (a12-a22) * (b21+b22)
+        p1 = strassenR_with_numpy_for_add_sub(a11 + a22, b11 + b22, leaf_size=leaf_size) # p1 = (a11+a22) * (b11+b22)
+        p2 = strassenR_with_numpy_for_add_sub(a21 + a22, b11, leaf_size=leaf_size)  # p2 = (a21+a22) * (b11)
+        p3 = strassenR_with_numpy_for_add_sub(a11, b12 - b22, leaf_size=leaf_size)  # p3 = (a11) * (b12 - b22)
+        p4 = strassenR_with_numpy_for_add_sub(a22, b21 - b11, leaf_size=leaf_size)   # p4 = (a22) * (b21 - b11)
+        p5 = strassenR_with_numpy_for_add_sub(a11 + a12, b22, leaf_size=leaf_size)  # p5 = (a11+a12) * (b22)   
+        p6 = strassenR_with_numpy_for_add_sub(a21 - a11, b11 + b12, leaf_size=leaf_size) # p6 = (a21-a11) * (b11+b12)
+        p7 = strassenR_with_numpy_for_add_sub(a12 - a22, b21 + b22, leaf_size=leaf_size) # p7 = (a12-a22) * (b21+b22)
 
         # calculating c21, c21, c11 e c22:
         c12 = p3 + p5 # c12 = p3 + p5
@@ -1136,7 +1303,7 @@ def strassenR_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
         return C
 
 
-# In[503]:
+# In[664]:
 
 
 def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
@@ -1158,13 +1325,13 @@ def strassen_with_numpy_for_add_sub(A, B, leaf_size=LEAF_SIZE):
 
 # Pour générer des exemples de tailles grandissantes :
 
-# In[471]:
+# In[665]:
 
 
 import random
 
 
-# In[472]:
+# In[666]:
 
 
 def random_matrix(n, minint=0, maxint=1000):
@@ -1175,14 +1342,14 @@ def random_matrix(n, minint=0, maxint=1000):
     return A
 
 
-# In[504]:
+# In[667]:
 
 
 A = random_matrix(4)
 A
 
 
-# In[505]:
+# In[668]:
 
 
 B = random_matrix(4)
@@ -1191,99 +1358,69 @@ B
 
 # On vérifie sur un exemple que nos deux algorithmes calculant le produit $AB$ de matrices sont corrects :
 
-# In[506]:
+# In[669]:
 
 
 A @ B
 
 
-# In[507]:
+# In[670]:
 
 
 ikjMatrixProduct(A, B)
 
 
-# In[508]:
+# In[671]:
 
 
 strassenR(A, B, leaf_size=1)
 
 
-# In[509]:
+# In[672]:
 
 
 strassenR(A, B, leaf_size=2)
 
 
-# In[510]:
+# In[673]:
 
 
 strassenR_with_numpy_for_add_sub(A, B, leaf_size=1)
 
 
-# In[511]:
+# In[674]:
 
 
 strassenR_with_numpy_for_add_sub(A, B, leaf_size=2)
 
 
-# Pour des tests de taille $n$ croissantes :
-
-# In[302]:
-
-
-def test_ijk(n):
-    A = random_matrix(n)
-    B = random_matrix(n)
-    C = ikjMatrixProduct(A, B)
-    return C
-
-def test_strassen(n):
-    A = random_matrix(n)
-    B = random_matrix(n)
-    C = strassen(A, B)
-    return C
-
-
-# Ce premier test était les versions les plus lentes :
-
-# In[304]:
-
-
-for n in [2**5, 2**6, 2**7]:
-    print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
-    A = random_matrix(n)
-    B = random_matrix(n)
-    get_ipython().run_line_magic('timeit', 'A @ B  # crazy fast!')
-    get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(A, B)')
-    get_ipython().run_line_magic('timeit', 'strassen(A, B, leaf_size=4)')
-    get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B, leaf_size=4)')
-
-
-# Je pense que cette implémentation est assez nulle, parce que les allocations de mémoire, et les boucles `for` en Python sont très lentes.
-
-# C'était très lent ! Beaucoup trop d'allocations mémoire !
+# La première version n'utilisait pas la compilation "just in time" offerte par Numba, et c'était très lent ! Il y avait aussi beaucoup trop d'allocations mémoire !
+# 
 # J'ai optimisé et (naïvement) simplifié le code, en enlevant les déclarations mémoires inutiles, mais surtout en utilisant [`numba.jit`](https://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) pour optimiser les opérations `add` et `substract`, et on obtient des temps bien plus courts :
 
-# In[513]:
+# In[681]:
 
 
-for n in [2**5, 2**6, 2**7, 2**8, 2**9]:
+for n in tqdm([2**5, 2**6, 2**7, 2**8, 2**9]):
     print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
     A = random_matrix(n)
     B = random_matrix(n)
+    C = A @ B
     get_ipython().run_line_magic('timeit', 'A @ B  # crazy fast!')
+    assert np.all(np.isclose(ikjMatrixProduct(A, B), C))
     get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(A, B)')
+    assert np.all(np.isclose(strassen(A, B, leaf_size=4), C))
     get_ipython().run_line_magic('timeit', 'strassen(A, B, leaf_size=4)')
+    assert np.all(np.isclose(strassen_with_numpy_for_add_sub(A, B, leaf_size=4), C))
     get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(A, B, leaf_size=4)')
 
 
 # Est-ce que les temps sont vraiment différents si les deux matrices `A` et `B` changent à chaque test ? Pas vraiment ! Mais pour les petites valeurs de `n`, les quatre façons de multiplier sont toutes aussi lentes : le temps est principalement passé à générer `A` et `B` !
 
-# In[514]:
+# In[682]:
 
 
-for n in [2**5, 2**6, 2**7, 2**8, 2**9, 2**10]:
+for n in tqdm([2**5, 2**6, 2**7, 2**8, 2**9, 2**10]):
     print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
     get_ipython().run_line_magic('timeit', 'random_matrix(n) @ random_matrix(n)')
     get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(random_matrix(n), random_matrix(n))')
@@ -1291,14 +1428,14 @@ for n in [2**5, 2**6, 2**7, 2**8, 2**9, 2**10]:
     get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(random_matrix(n), random_matrix(n), leaf_size=64)')
 
 
-# In[515]:
+# In[687]:
 
 
-for n in [2**7, 2**8]:
+for n in tqdm([2**7, 2**8, 2**9]):
     print(f"\nFor n = {n} : numpy, ten ikj naive algorithm, then Strassen, then (slightly) faster Strassen :")
     get_ipython().run_line_magic('timeit', 'random_matrix(n) @ random_matrix(n)')
     get_ipython().run_line_magic('timeit', 'ikjMatrixProduct(random_matrix(n), random_matrix(n))')
-    for leaf_size in [1, 8, 32, 64, 128]:
+    for leaf_size in tqdm([8, 32, 64, 128]):
         print(f"Both Strassen, with a leaf size = {leaf_size}")
         get_ipython().run_line_magic('timeit', 'strassen(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
         get_ipython().run_line_magic('timeit', 'strassen_with_numpy_for_add_sub(random_matrix(n), random_matrix(n), leaf_size=leaf_size)')
