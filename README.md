@@ -29,6 +29,8 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 - [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
+**Je rédigerai moins pour les cours suivants.**
+
 ### Cours 4 : Graphes, et parcours en profondeur
 - TODO : [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
