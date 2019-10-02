@@ -497,15 +497,61 @@ except ImportError:
 # In[ ]:
 
 
-for n in tqdm_notebook([100], desc="n"):  #, 1000, 10_000, 100_000]):
+graph.is_vertex(vertex)
+graph.add_vertex(m)
+graph.add_edge(i, j)
+graph.remove_edge(i, j)
+graph.pred(i)
+graph.is_pred(u, v)
+graph.succ(i)
+graph.is_succ(u, v)
+graph.neighbors(i)
+graph.is_neighbor(u, v)
+
+
+# In[64]:
+
+
+def random_vertex(n):
+    return random.randint(0, n+1)
+
+def random_edge(n):
+    return (random_vertex(n), random_vertex(n))
+
+
+# In[69]:
+
+
+for n in tqdm_notebook([100, 1000], desc="n"):  #, 1000, 10_000, 100_000]):
     print(f"\n\n For graphs with {n} vertexes:")
-    for probability in tqdm_notebook([0.1, 0.5, 0.9], desc="proba"):
+    for probability in tqdm_notebook([1.0/n, 1.0/np.sqrt(n), 0.9], desc="proba"):
+        # p = 1/n => |A| ~= |S|
+        # p = 1/sqrt(n) => |A| ~= |S|^(3/2)
+        # p = 0.9 => |A| ~= 0.9 |S|^2
         print(f"\n  and link probability of {probability}:")
         for GraphClass in tqdm_notebook([AdjMatrixGraph, AdjListsGraph, EdgesListGraph], desc="class"):
             print(f"\n    for class {GraphClass}...")
-            g = randomGraph(GraphClass, n=n, probability=probability)
+            graph = randomGraph(GraphClass, n=n, probability=probability)
             print("Time to create a new graph:")
             get_ipython().run_line_magic('timeit', 'randomGraph(GraphClass, n=n, probability=probability)')
+            print("Time to test presence of a vertex:")
+            get_ipython().run_line_magic('timeit', 'graph.is_vertex(random_vertex(n))')
+            print("Time to add the next vertex n + 2:")
+            get_ipython().run_line_magic('timeit', 'graph.add_vertex(n + 2)')
+            print("Time to compute pred:")
+            get_ipython().run_line_magic('timeit', 'graph.pred(random_vertex(n))')
+            print("Time to test pred:")
+            get_ipython().run_line_magic('timeit', 'graph.is_pred(*random_edge(n))')
+            print("Time to compute succ:")
+            get_ipython().run_line_magic('timeit', 'graph.succ(random_vertex(n))')
+            print("Time to test succ:")
+            get_ipython().run_line_magic('timeit', 'graph.is_succ(*random_edge(n))')
+            print("Time to compute neighbors:")
+            get_ipython().run_line_magic('timeit', 'graph.neighbors(random_vertex(n))')
+            print("Time to test neighbors:")
+            get_ipython().run_line_magic('timeit', 'graph.is_neighbor(*random_edge(n))')
+            print("Time to add an edge:")
+            get_ipython().run_line_magic('timeit', 'graph.add_edge(*random_edge(n))')
 
 
 # In[ ]:
