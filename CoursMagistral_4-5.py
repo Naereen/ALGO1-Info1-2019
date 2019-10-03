@@ -498,23 +498,23 @@ test_defaultGraph(EdgesListGraph)
 # ----
 # ## Test numérique des complexités des différentes opérations
 # 
-# On rappelle qu'on devrait obtenir les résultats suivants, avec $n=|S|$, que l'on va valider expérimentalement.
+# On rappelle qu'on devrait obtenir les résultats suivants, avec $n=|S|$ et $m=|A|$, que l'on va valider expérimentalement.
 # 
 # | Opérations | Matrice d'adjacence | Listes d'adjacence | Liste d'arêtes |
 # |:-----------|---------------------|--------------------|----------------|
 # | Création (vide) | temps et mémoire $O(n^2)$ si vide | temps et mémoire $O(n)$ si vide | temps et mémoire $O(1)$ si vide |
 # | Ajoute un sommet $u$ | $O(n^2)$ (recopie) | $O(1)$ | $O(1)$ |
-# | Retire un sommet $u$ | $O(n^2)$ (recopie) | $O(d(u))$ si orienté, $O(|A|+|S|)$ sinon | $O(|A|)$ (suppression des arêtes) |
+# | Retire un sommet $u$ | $O(n^2)$ (recopie) | $O(d(u))$ si orienté, $O(n+m)$ sinon | $O(n)$ (suppression des arêtes) |
 # | Ajoute un arc $(u,v)$ | $O(1)$ | $O(d(u))$ si orienté, $O(d(u)+d(v))$ sinon | $O(1)$ (si liste d'arêtes) ou $O(1)$ en amorti (si ensemble d'arêtes) |
-# | Retire un arc $(u,v)$ | $O(1)$ | $O(d(u))$ si orienté, $O(d(u)+d(v))$ sinon | $O(|A|)$ (si liste d'arêtes) ou $O(1)$ en amorti (si ensemble d'arêtes) |
+# | Retire un arc $(u,v)$ | $O(1)$ | $O(d(u))$ si orienté, $O(d(u)+d(v))$ sinon | $O(n)$ (si liste d'arêtes) ou $O(1)$ en amorti (si ensemble d'arêtes) |
 # | Liste des sommets | $O(n)$ | $O(n)$ | $O(n)$ |
-# | Liste des arcs | $O(n^2)$ tout parcourir | $O(|A|)$ parcourir les $n$ listes de tailles $d(u)$, et $\sum_u d(u) = |A|$ | $O(1)$ (si liste d'arêtes) ou $O(|A|)$ (si ensemble d'arêtes) |
-# | Liste des voisins du nœud $u$ | $O(n)$ | $O(d(u))$ ($O(1)$ si on ne crée pas de nouvelle liste) | $O(|A|)$ |
-# | Degré du nœud $u$ | $O(n)$ | $O(n)$ | $O(|A|)$ |
-# | Liste des voisins sortant du nœud $u$ | $O(n)$ | $O(n)$ | $O(|A|)$ |
-# | Degré sortant du nœud $u$ | $O(n)$ | $O(n)$ | $O(|A|)$ |
-# | Liste des voisins entrant du nœud $u$ | $O(n)$ | $O(n)$ | $O(|A|)$ |
-# | Degré entrant du nœud $u$ | $O(n)$ | $O(n)$ | $O(|A|)$ |
+# | Liste des arcs | $O(n^2)$ tout parcourir | $O(n)$ parcourir les $n$ listes de tailles $d(u)$, et $\sum_u d(u) = n$ | $O(1)$ (si liste d'arêtes) ou $O(n)$ (si ensemble d'arêtes) |
+# | Liste des voisins du nœud $u$ | $O(n)$ | $O(d(u))$ ($O(1)$ si on ne crée pas de nouvelle liste) | $O(n)$ |
+# | Degré du nœud $u$ | $O(n)$ | $O(n)$ | $O(n)$ |
+# | Liste des voisins sortant du nœud $u$ | $O(n)$ | $O(n)$ | $O(n)$ |
+# | Degré sortant du nœud $u$ | $O(n)$ | $O(n)$ | $O(n)$ |
+# | Liste des voisins entrant du nœud $u$ | $O(n)$ | $O(n)$ | $O(n)$ |
+# | Degré entrant du nœud $u$ | $O(n)$ | $O(n)$ | $O(n)$ |
 # 
 
 # In[62]:
