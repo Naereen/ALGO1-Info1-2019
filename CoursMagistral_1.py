@@ -823,7 +823,7 @@ def visualisation_temps_push_and_pop(values_n, **kwargs):
     plt.ylabel("Temps en micro-secondes")
     plt.title("Temps des opérations ajouterMax et retirerMax")
     plt.plot(values_n, 1e6 * times_push, "d-", label="ajouterMax", lw=5, ms=12)
-    plt.plot(values_n, 1e6 * times_pop, "o-", label="retierMax", lw=5, ms=12)
+    plt.plot(values_n, 1e6 * times_pop, "o-", label="retirerMax", lw=5, ms=12)
     plt.legend()
     plt.show()
 
