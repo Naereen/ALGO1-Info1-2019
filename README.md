@@ -11,9 +11,10 @@
 
 C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/`).
 
-- Liste des notebooks : [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/`), [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master).
+- Liste des notebooks : [cette page](https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/) (`https://perso.crans.org/besson/teach/info1_algo1_2019/notebooks/`), [sur NBViewer (passif)](https://nbviewer.jupyter.org/github/Naereen/ALGO1-Info1-2019/tree/master/), [sur Binder (interactif)](https://beta.mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master), et [sur Google Colab](https://colab.research.google.com/github/Naereen/ALGO1-Info1-2019/blob/master/).
 
 [![MyBinder v2](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Naereen/ALGO1-Info1-2019/master)
+[![Google Colab: Launch](https://img.shields.io/badge/Google%20Colab-Launch-blue.svg)](https://colab.research.google.com/github/Naereen/ALGO1-Info1-2019/blob/master/)
 
 ## Liste de notebooks
 
