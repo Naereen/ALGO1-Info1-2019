@@ -20,6 +20,8 @@
 # - Ce notebook sera concis, comparé aux précédents.
 
 # ## Rendu de monnaie
+# 
+# - Voir https://en.wikipedia.org/wiki/Change-making_problem ou https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_rendu_de_monnaie
 
 # In[7]:
 
@@ -86,7 +88,7 @@ coin_change(euros, 16.12)
 
 # ### Naïve
 
-# In[46]:
+# In[54]:
 
 
 class UnionFind:
@@ -98,7 +100,7 @@ class UnionFind:
     def find(self, x_index):
         """
         :returns: identifier of part containing x_index
-        :complex_indexity: O(n) worst case.
+        :complex_indexity: O(n) worst case, O(log n) in amortized cost.
         """
         if self.up_bound[x_index] == x_index:
             return x_index
@@ -109,7 +111,7 @@ class UnionFind:
         """
         Merges part that contain x and part containing y
         :returns: False if x_index, y_index are already in same part
-        :complexity: O(n) worst case.
+        :complexity: O(n) worst case, O(log n) in amortized cost.
         """
         repr_x = self.find(x_index)
         repr_y = self.find(y_index)
@@ -118,6 +120,40 @@ class UnionFind:
         self.up_bound[repr_x] = repr_y
         return True
 
+
+# Par exemple avec $S = \{0,1,2,3,4\}$ et les unions suivantes :
+
+# In[63]:
+
+
+S = [0,1,2,3,4]
+U = UnionFind(len(S))
+
+
+# In[64]:
+
+
+U.up_bound
+U.union(0, 2)
+U.up_bound
+
+
+# In[65]:
+
+
+U.up_bound
+U.union(2, 3)
+U.up_bound
+
+
+# In[66]:
+
+
+for i in S:
+    U.find(i)
+
+
+# Cela représente la partition $\{ \{0,2,3\}, \{1\}, \{4\}\}$.
 
 # ### Avec compression de chemin
 
@@ -175,12 +211,12 @@ def kruskal(graph, weight):
     :complexity: ``O(|E|log|E|)``
     """
     u_f = UnionFind(len(graph))
-    edges = []
+    edges = [ ]
     for u, _ in enumerate(graph):
         for v in graph[u]:
             edges.append((weight[u][v], u, v))
     edges.sort()
-    min_span_tree = []
+    min_span_tree = [ ]
     # in increasing order!
     for w_idx, u_idx, v_idx in edges:
         if u_f.union(u_idx, v_idx):
