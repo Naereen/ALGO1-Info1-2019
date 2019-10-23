@@ -30,27 +30,27 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 - [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
-**Je rédigerai moins pour les cours suivants.**
-
 ### Cours 4 : Graphes, et parcours en profondeur
-- TODO : [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
+- [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 5 : Parcours en largeur
-- TODO : [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
+- [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 6 : Algorithmes gloutons
-- TODO : [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
+- [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 7 : Programmation dynamique
-- TODO : [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
+- [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 8 : Flots
-- TODO : [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
+- [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+
+**Je rédigerai moins pour les cours suivants.**
 
 ### Cours 9 : Programmation linéaire
 - TODO : [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
