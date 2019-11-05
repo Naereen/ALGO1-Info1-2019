@@ -587,7 +587,7 @@ class OurHeap:
 # - On utilise un tri max pour trier en ordre décroissant, ou alors on renverse juste le tableau `T_trie` à la fin.
 
 # ### Tri par tas
-# L'algorithme est indépandent de la structure de tas que l'on utilise !
+# L'algorithme est indépendent de la structure de tas que l'on utilise !
 
 # In[208]:
 
