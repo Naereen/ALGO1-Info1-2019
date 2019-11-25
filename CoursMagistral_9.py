@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-9" data-toc-modified-id="Cours-Magistral-9-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 9</a></div><div class="lev2 toc-item"><a href="#Documentation-de-scipy.opt.linprog" data-toc-modified-id="Documentation-de-scipy.opt.linprog-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Documentation de <code>scipy.opt.linprog</code></a></div><div class="lev2 toc-item"><a href="#Fonction-de-débogage" data-toc-modified-id="Fonction-de-débogage-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Fonction de débogage</a></div><div class="lev2 toc-item"><a href="#Premier-exemple" data-toc-modified-id="Premier-exemple-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Premier exemple</a></div><div class="lev2 toc-item"><a href="#Second-exemple" data-toc-modified-id="Second-exemple-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Second exemple</a></div><div class="lev3 toc-item"><a href="#Essayons-avec-différentes-méthodes-de-résolution-:" data-toc-modified-id="Essayons-avec-différentes-méthodes-de-résolution-:-241"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Essayons avec différentes méthodes de résolution :</a></div><div class="lev4 toc-item"><a href="#Avec-la-méthode-du-simplexe" data-toc-modified-id="Avec-la-méthode-du-simplexe-2411"><span class="toc-item-num">2.4.1.1&nbsp;&nbsp;</span>Avec la méthode du simplexe</a></div><div class="lev4 toc-item"><a href="#Avec-la-méthode-du-simplexe" data-toc-modified-id="Avec-la-méthode-du-simplexe-2412"><span class="toc-item-num">2.4.1.2&nbsp;&nbsp;</span>Avec la méthode du simplexe</a></div><div class="lev2 toc-item"><a href="#Bonus-:-implémentation-manuelle-de-l'algorithme-du-simplexe" data-toc-modified-id="Bonus-:-implémentation-manuelle-de-l'algorithme-du-simplexe-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Bonus : implémentation manuelle de l'algorithme du simplexe</a></div><div class="lev3 toc-item"><a href="#Algorithme" data-toc-modified-id="Algorithme-251"><span class="toc-item-num">2.5.1&nbsp;&nbsp;</span>Algorithme</a></div><div class="lev3 toc-item"><a href="#Conversion-en-forme-standard" data-toc-modified-id="Conversion-en-forme-standard-252"><span class="toc-item-num">2.5.2&nbsp;&nbsp;</span>Conversion en forme standard</a></div><div class="lev3 toc-item"><a href="#Utilitaires-pour-les-matrices" data-toc-modified-id="Utilitaires-pour-les-matrices-253"><span class="toc-item-num">2.5.3&nbsp;&nbsp;</span>Utilitaires pour les matrices</a></div><div class="lev3 toc-item"><a href="#L'algorithme-du-simplexe" data-toc-modified-id="L'algorithme-du-simplexe-254"><span class="toc-item-num">2.5.4&nbsp;&nbsp;</span>L'algorithme du simplexe</a></div><div class="lev3 toc-item"><a href="#Un-premier-exemple" data-toc-modified-id="Un-premier-exemple-255"><span class="toc-item-num">2.5.5&nbsp;&nbsp;</span>Un premier exemple</a></div><div class="lev3 toc-item"><a href="#Tests" data-toc-modified-id="Tests-256"><span class="toc-item-num">2.5.6&nbsp;&nbsp;</span>Tests</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Conclusion</a></div>
+#  <p><div class="lev1 toc-item"><a href="#ALGO1-:-Introduction-à-l'algorithmique" data-toc-modified-id="ALGO1-:-Introduction-à-l'algorithmique-1"><span class="toc-item-num">1&nbsp;&nbsp;</span><a href="https://perso.crans.org/besson/teach/info1_algo1_2019/" target="_blank">ALGO1 : Introduction à l'algorithmique</a></a></div><div class="lev1 toc-item"><a href="#Cours-Magistral-9" data-toc-modified-id="Cours-Magistral-9-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Cours Magistral 9</a></div><div class="lev2 toc-item"><a href="#Documentation-de-scipy.opt.linprog" data-toc-modified-id="Documentation-de-scipy.opt.linprog-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Documentation de <code>scipy.opt.linprog</code></a></div><div class="lev2 toc-item"><a href="#Fonction-de-débogage" data-toc-modified-id="Fonction-de-débogage-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Fonction de débogage</a></div><div class="lev2 toc-item"><a href="#Premier-exemple" data-toc-modified-id="Premier-exemple-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Premier exemple</a></div><div class="lev2 toc-item"><a href="#Second-exemple" data-toc-modified-id="Second-exemple-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Second exemple</a></div><div class="lev3 toc-item"><a href="#Essayons-avec-différentes-méthodes-de-résolution-:" data-toc-modified-id="Essayons-avec-différentes-méthodes-de-résolution-:-241"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Essayons avec différentes méthodes de résolution :</a></div><div class="lev4 toc-item"><a href="#Avec-la-méthode-du-simplexe" data-toc-modified-id="Avec-la-méthode-du-simplexe-2411"><span class="toc-item-num">2.4.1.1&nbsp;&nbsp;</span>Avec la méthode du simplexe</a></div><div class="lev4 toc-item"><a href="#Avec-la-méthode-du-point-intérieur-(un-autre-algorithme)" data-toc-modified-id="Avec-la-méthode-du-point-intérieur-(un-autre-algorithme)-2412"><span class="toc-item-num">2.4.1.2&nbsp;&nbsp;</span>Avec la méthode du point intérieur (un autre algorithme)</a></div><div class="lev2 toc-item"><a href="#Bonus-:-implémentation-manuelle-de-l'algorithme-du-simplexe" data-toc-modified-id="Bonus-:-implémentation-manuelle-de-l'algorithme-du-simplexe-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Bonus : implémentation manuelle de l'algorithme du simplexe</a></div><div class="lev3 toc-item"><a href="#Algorithme" data-toc-modified-id="Algorithme-251"><span class="toc-item-num">2.5.1&nbsp;&nbsp;</span>Algorithme</a></div><div class="lev3 toc-item"><a href="#Conversion-en-forme-standard" data-toc-modified-id="Conversion-en-forme-standard-252"><span class="toc-item-num">2.5.2&nbsp;&nbsp;</span>Conversion en forme standard</a></div><div class="lev3 toc-item"><a href="#Utilitaires-pour-les-matrices" data-toc-modified-id="Utilitaires-pour-les-matrices-253"><span class="toc-item-num">2.5.3&nbsp;&nbsp;</span>Utilitaires pour les matrices</a></div><div class="lev3 toc-item"><a href="#L'algorithme-du-simplexe" data-toc-modified-id="L'algorithme-du-simplexe-254"><span class="toc-item-num">2.5.4&nbsp;&nbsp;</span>L'algorithme du simplexe</a></div><div class="lev3 toc-item"><a href="#Un-premier-exemple" data-toc-modified-id="Un-premier-exemple-255"><span class="toc-item-num">2.5.5&nbsp;&nbsp;</span>Un premier exemple</a></div><div class="lev3 toc-item"><a href="#Tests" data-toc-modified-id="Tests-256"><span class="toc-item-num">2.5.6&nbsp;&nbsp;</span>Tests</a></div><div class="lev2 toc-item"><a href="#Conclusion" data-toc-modified-id="Conclusion-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Conclusion</a></div>
 
 # # [ALGO1 : Introduction à l'algorithmique](https://perso.crans.org/besson/teach/info1_algo1_2019/)
 # 
@@ -32,10 +32,10 @@ import scipy.optimize as opt
 
 # ## Documentation de `scipy.opt.linprog`
 
-# In[2]:
+# In[8]:
 
 
-help(opt.linprog)
+print("\n".join(opt.linprog.__doc__.split("\n")[:31]))
 
 
 # La programmation linéaire résout des problèmes de la forme suivante :
@@ -53,7 +53,7 @@ help(opt.linprog)
 
 # ## Fonction de débogage
 
-# In[60]:
+# In[16]:
 
 
 def make_callback():
@@ -106,22 +106,22 @@ def make_callback():
 # \min_{[x, y]} \ & [-30, -10]^T [x, y] \\
 # \mbox{such that} \ & 
 #     [
-#         [6, 3], [-3, 1], [1, 1/4]
+#         [6, 3], [3, -1], [1, 1/4]
 #     ]
 #     [x, y]
-# = [6x + 3y, y - 3x, x + y/4] \leq [36, 0, 4],\\
+# = [6x + 3y, 3x - y, x + y/4] \leq [36, 0, 4],\\
 # & [0, 0] \leq [x, y] \leq [+\infty,+\infty] ,
 # \end{align}
 # $$
 
 # Et donc avec Python cela sera :
 
-# In[83]:
+# In[10]:
 
 
 c = np.array([-30, -10])
 
-A_ub = np.array([[6, 3], [-3, 1], [1, 1/4]])
+A_ub = np.array([[6, 3], [3, -1], [1, 1/4]])
 b_ub = np.array([36, 0, 4])
 
 A_eq = None
@@ -133,14 +133,14 @@ bounds = (0, None)
 
 # Objectif :
 
-# In[84]:
+# In[11]:
 
 
 import sympy
 x, y = sympy.var('x y')
 
 
-# In[85]:
+# In[12]:
 
 
 c.T @ [x, y]
@@ -148,22 +148,24 @@ c.T @ [x, y]
 
 # Contraintes d'inéqualités :
 
-# In[86]:
+# In[13]:
 
 
 A_ub @ [x, y]
 
 
-# In[87]:
+# In[14]:
 
 
 b_ub
 
 
-# Essaysons avec différentes méthodes de résolution :
+# Essayons avec différentes méthodes de résolution :
 
-# In[88]:
+# In[17]:
 
+
+list_of_x, list_of_fun, debug_callback = make_callback()
 
 opt.linprog(c,
             A_ub=A_ub, b_ub=b_ub,
@@ -174,37 +176,39 @@ opt.linprog(c,
 )
 
 
-# In[89]:
+# In[18]:
 
 
 x_opt, y_opt = _.x
 
 
-# La solution obtenue est donc $x = 2.28$ et $y = 6.85$, qui donnerait un profit maximal de $+137 €$ par semaine en respectant toutes les contraintes.
+# La solution obtenue est donc $x = 2$ et $y = 8$, qui donnerait un profit maximal de $+140 €$ par semaine en respectant toutes les contraintes.
 # 
-# Pour obtenir une solution entière, on essaie $x = 2, 3$ et $y = 6, 7$, ie. on arrondit en dessous et au dessus, et on prend la solution qui satisfait les contraintes et maximise l'objectif :
+# Pour obtenir une solution entière, on a rien à faire ici.
+# 
+# Si la solution optimale était par exemple $2.23$ et $6.43$, on pourrait essayer $x = 2, 3$ et $y = 6, 7$, ie. on arrondit en dessous et au dessus, et on prend la solution qui satisfait les contraintes et maximise l'objectif :
 
-# In[90]:
+# In[19]:
 
 
 x_opt, y_opt
 
 
-# In[103]:
+# In[20]:
 
 
 import itertools
 
 
-# In[95]:
+# In[22]:
 
 
 sol = None
 min_obj = float("+inf")
 
 for (x, y) in itertools.product(
-        [np.floor(x_opt), np.ceil(x_opt)],
-        [np.floor(y_opt), np.ceil(y_opt)],
+        [int(np.floor(x_opt)), int(np.ceil(x_opt))],
+        [int(np.floor(y_opt)), int(np.ceil(y_opt))],
     ):
     obj = c.T @ [x, y]
     ctr = (A_ub @ [x, y]) <= b_ub
@@ -216,7 +220,7 @@ for (x, y) in itertools.product(
 print(f"==> Donc on utilise la solution entière optimale = {sol}")
 
 
-# La solution entière optimale à ce premier problème est donc de fabriquer $x=2$ tables et $y=6$ chaises chaque semaine.
+# La solution entière optimale à ce premier problème est donc de fabriquer $x=2$ tables et $y=8$ chaises chaque semaine.
 
 # ## Second exemple
 
@@ -239,7 +243,7 @@ print(f"==> Donc on utilise la solution entière optimale = {sol}")
 
 # Et donc avec Python cela sera :
 
-# In[54]:
+# In[23]:
 
 
 c = np.array([-4, -3])
@@ -256,14 +260,14 @@ bounds = (0, None)
 
 # Objectif :
 
-# In[55]:
+# In[24]:
 
 
 import sympy
 x, y = sympy.var('x y')
 
 
-# In[56]:
+# In[25]:
 
 
 c.T @ [x, y]
@@ -271,13 +275,13 @@ c.T @ [x, y]
 
 # Contraintes d'inéqualités :
 
-# In[57]:
+# In[26]:
 
 
 A_ub @ [x, y]
 
 
-# In[58]:
+# In[27]:
 
 
 b_ub
@@ -287,7 +291,7 @@ b_ub
 
 # #### Avec la méthode du simplexe
 
-# In[97]:
+# In[38]:
 
 
 list_of_x, list_of_fun, debug_callback = make_callback()
@@ -301,20 +305,20 @@ opt.linprog(c,
 )
 
 
-# In[98]:
+# In[39]:
 
 
 plt.figure(figsize=(10, 7))
-plt.title("Valeur de l'objectif étape par étape")
+plt.title("Valeur de l'objectif étape par étape (méthode simplexe)")
 plt.plot(list_of_fun, "ro-", lw=3, ms=14)
 plt.show()
 
 
-# In[99]:
+# In[40]:
 
 
 plt.figure(figsize=(10, 7))
-plt.title("Position des points étape par étape")
+plt.title("Position des points étape par étape (méthode simplexe)")
 list_of_X, list_of_Y = [x for (x,y) in list_of_x], [y for (x,y) in list_of_x]
 # plt.plot(list_of_X, list_of_Y, 'bo-')
 plt.plot(list_of_X, 'bo-', label="Valeur de x", lw=3, ms=14)
@@ -323,9 +327,11 @@ plt.legend()
 plt.show()
 
 
-# #### Avec la méthode du simplexe
+# #### Avec la méthode du point intérieur (un autre algorithme)
+# 
+# Cet autre algorithme est plus récent, plus technique, et il fonctionne généralement mieux : plus rapide, plus stable numérique.
 
-# In[100]:
+# In[41]:
 
 
 list_of_x, list_of_fun, debug_callback = make_callback()
@@ -339,20 +345,20 @@ opt.linprog(c,
 )
 
 
-# In[101]:
+# In[42]:
 
 
 plt.figure(figsize=(10, 7))
-plt.title("Valeur de l'objectif étape par étape")
+plt.title("Valeur de l'objectif étape par étape (méthode point intérieur)")
 plt.plot(list_of_fun, "ro-", lw=3, ms=14)
 plt.show()
 
 
-# In[102]:
+# In[43]:
 
 
 plt.figure(figsize=(10, 7))
-plt.title("Position des points étape par étape")
+plt.title("Position des points étape par étape (méthode point intérieur)")
 list_of_X, list_of_Y = [x for (x,y) in list_of_x], [y for (x,y) in list_of_x]
 # plt.plot(list_of_X, list_of_Y, 'bo-')
 plt.plot(list_of_X, 'bo-', label="Valeur de x", lw=3, ms=14)
@@ -368,21 +374,21 @@ plt.show()
 # - Code source venant de : https://github.com/j2kun/simplex-algorithm/
 
 # ### Algorithme
-# 
-# TODO use numpy arrays?
 
-# In[107]:
+# In[44]:
 
 
+import numpy as np
 import heapq
 
 
-# In[108]:
+# In[89]:
 
 
 def identity(numRows, numCols, val=1, rowStart=0):
     """ Return a rectangular identity matrix with the specified diagonal entiries, possibly starting in the middle.
     """
+    # return val * np.ones((numRows, numCols))
     return [
         [
             (val if i == j else 0)
@@ -394,11 +400,14 @@ def identity(numRows, numCols, val=1, rowStart=0):
 
 # ### Conversion en forme standard
 
-# In[109]:
+# In[90]:
 
 
-def standardForm(cost, greaterThans=[], gtThreshold=[], lessThans=[], ltThreshold=[],
-                equalities=[], eqThreshold=[], maximization=True):
+def standardForm(cost,
+                 greaterThans=None, gtThreshold=None,
+                 lessThans=None, ltThreshold=None,
+                 equalities=None, eqThreshold=None,
+                 maximization=True):
     """
        standardForm: [float], [[float]], [float], [[float]], [float], [[float]], [float] -> [float], [[float]], [float]
        Convert a linear program in general form to the standard form for the
@@ -409,13 +418,13 @@ def standardForm(cost, greaterThans=[], gtThreshold=[], lessThans=[], ltThreshol
     """
     newVars = 0
     numRows = 0
-    if gtThreshold != []:
+    if gtThreshold:
         newVars += len(gtThreshold)
         numRows += len(gtThreshold)
-    if ltThreshold != []:
+    if ltThreshold:
         newVars += len(ltThreshold)
         numRows += len(ltThreshold)
-    if eqThreshold != []:
+    if eqThreshold:
         numRows += len(eqThreshold)
 
     if not maximization:
@@ -424,10 +433,10 @@ def standardForm(cost, greaterThans=[], gtThreshold=[], lessThans=[], ltThreshol
     if newVars == 0:
         return cost, equalities, eqThreshold
 
-    newCost = list(cost) + [0] * newVars
+    newCost = list(cost) + ([0] * newVars)
 
-    constraints = []
-    threshold = []
+    constraints = [ ]
+    threshold   = [ ]
 
     oldConstraints = [(greaterThans, gtThreshold, -1), (lessThans, ltThreshold, 1),
                      (equalities, eqThreshold, 0)]
@@ -445,28 +454,28 @@ def standardForm(cost, greaterThans=[], gtThreshold=[], lessThans=[], ltThreshol
 
 # ### Utilitaires pour les matrices
 
-# In[110]:
+# In[91]:
 
 
 def dot(a, b):
     return sum(x*y for x, y in zip(a, b))
 
 
-# In[111]:
+# In[92]:
 
 
 def column(A, j):
     return [row[j] for row in A]
 
 
-# In[112]:
+# In[93]:
 
 
 def transpose(A):
     return [column(A, j) for j in range(len(A[0]))]
 
 
-# In[113]:
+# In[94]:
 
 
 def isPivotCol(col):
@@ -477,7 +486,7 @@ def variableValueForPivotColumn(tableau, column):
     return tableau[pivotRow][-1]
 
 
-# In[114]:
+# In[95]:
 
 
 # assume the last m columns of A are the slack variables; the initial basis is
@@ -488,7 +497,7 @@ def initialTableau(c, A, b):
     return tableau
 
 
-# In[115]:
+# In[96]:
 
 
 def primalSolution(tableau):
@@ -499,14 +508,14 @@ def primalSolution(tableau):
             for colIndex in indices]
 
 
-# In[116]:
+# In[97]:
 
 
 def objectiveValue(tableau):
     return -(tableau[-1][-1])
 
 
-# In[117]:
+# In[98]:
 
 
 def canImprove(tableau):
@@ -514,7 +523,7 @@ def canImprove(tableau):
     return any(x > 0 for x in lastRow[:-1])
 
 
-# In[118]:
+# In[99]:
 
 
 # this can be slightly faster
@@ -526,7 +535,7 @@ def moreThanOneMin(L):
     return x == y
 
 
-# In[119]:
+# In[100]:
 
 
 def findPivotIndex(tableau):
@@ -554,7 +563,7 @@ def findPivotIndex(tableau):
     return row, column
 
 
-# In[120]:
+# In[101]:
 
 
 def pivotAbout(tableau, pivot):
@@ -571,7 +580,7 @@ def pivotAbout(tableau, pivot):
 
 # ### L'algorithme du simplexe
 
-# In[141]:
+# In[102]:
 
 
 def simplex(c, A, b):
@@ -603,7 +612,7 @@ def simplex(c, A, b):
 
 # ### Un premier exemple
 
-# In[142]:
+# In[103]:
 
 
 c = [300, 250, 450]
@@ -611,11 +620,11 @@ A = [[15, 20, 25], [35, 60, 60], [20, 30, 25], [0, 250, 0]]
 b = [1200, 3000, 1500, 500]
 
 # add slack variables by hand
-A[0] += [1,0,0,0]
-A[1] += [0,1,0,0]
-A[2] += [0,0,1,0]
-A[3] += [0,0,0,-1]
-c += [0,0,0,0]
+A[0] += [1, 0, 0, 0]
+A[1] += [0, 1, 0, 0]
+A[2] += [0, 0, 1, 0]
+A[3] += [0, 0, 0, -1]
+c += [0, 0, 0, 0]
 
 t, s, v = simplex(c, A, b)
 print(s)
@@ -624,7 +633,7 @@ print(v)
 
 # Et pou comparer avec la réponse donnée par `scipy.optimize.linprog` :
 
-# In[148]:
+# In[104]:
 
 
 opt_res = opt.linprog(-np.array(c), A_ub=A, b_ub=b, method="simplex")
@@ -633,7 +642,7 @@ opt_res
 
 # La solution optimale trouvée par `scipy.optimize.linprog` est meilleure que celle trouvée par notre algorithme.
 
-# In[149]:
+# In[105]:
 
 
 v, - opt_res.fun
@@ -641,7 +650,7 @@ v, - opt_res.fun
 
 # Notre implémentation donne une solution :
 
-# In[151]:
+# In[106]:
 
 
 s
@@ -649,20 +658,20 @@ s
 
 # Qui s'interprète comme étant assez proche de la solution trouvée par `scipy.optimize.linprog`.
 
-# In[152]:
+# In[107]:
 
 
 opt_res.x
 
 
-# In[159]:
+# In[108]:
 
 
 s2 = np.array([56, 2, 12, 0, 152, 0, 0])
 s2
 
 
-# In[161]:
+# In[109]:
 
 
 np.linalg.norm(opt_res.x - s2) / np.linalg.norm(opt_res.x)
@@ -672,7 +681,7 @@ np.linalg.norm(opt_res.x - s2) / np.linalg.norm(opt_res.x)
 
 # ### Tests
 
-# In[172]:
+# In[110]:
 
 
 def test(expected, actual):
@@ -683,7 +692,7 @@ def test(expected, actual):
         print("Test: {} failed on line {} in file {}.\nExpected {} but got {}\n".format((code, lineno, filename, expected, actual)))
 
 
-# In[181]:
+# In[111]:
 
 
 def testFromPost():
@@ -705,15 +714,18 @@ def testFromPost():
     
     A_ub = np.array([
         [0, 1, 4],
-        [-3, 2, 0],
+        [-3, 2, 0]
     ])
     b_ub = np.array([10, -7])
-    opt_res = opt.linprog(-np.array(c), A_eq=eqs, b_eq=eqB, A_ub=A_ub.T, b_ub=b_ub, method="simplex")
+    opt_res = opt.linprog(-np.array(cost),
+                          A_eq=np.array(eqs), b_eq=np.array(eqB),
+                          A_ub=np.array(A_ub), b_ub=np.array(b_ub),
+                          method="simplex")
     print("Expected cost", expectedCost)
-    print("scipy.optimize.linprog gives", opt_res.x)
+    print("scipy.optimize.linprog gives a solution =", opt_res.x)
 
 
-# In[182]:
+# In[112]:
 
 
 testFromPost()
@@ -721,7 +733,7 @@ testFromPost()
 
 # Un second test :
 
-# In[131]:
+# In[113]:
 
 
 def test2():
@@ -738,7 +750,7 @@ def test2():
          standardForm(cost, lessThans=lts, ltThreshold=ltB, equalities=eqs, eqThreshold=eqB))
 
 
-# In[134]:
+# In[ ]:
 
 
 test2()
@@ -746,7 +758,7 @@ test2()
 
 # Un dernier test :
 
-# In[137]:
+# In[115]:
 
 
 def test3():
@@ -761,7 +773,7 @@ def test3():
          standardForm(cost, equalities=eqs, eqThreshold=eqB))
 
 
-# In[138]:
+# In[ ]:
 
 
 test3()
