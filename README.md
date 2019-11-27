@@ -53,7 +53,7 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 **Je rédigerai moins pour les cours suivants.**
 
 ### Cours 9 : Programmation linéaire
-- TODO : [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
+- [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
 - (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
 
 ### Cours 10 : Algorithmes de recherche de solutions
@@ -113,7 +113,6 @@ All the notebooks in this repository are published under the terms of the [MIT L
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/ALGO1-Info1-2019/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 [![Analytics](https://ga-beacon.appspot.com/UA-38514290-17/github.com/Naereen/ALGO1-Info1-2019/README.md?pixel)](https://GitHub.com/Naereen/ALGO1-Info1-2019/)
-
 [![made-with-jupyter](https://img.shields.io/badge/Made%20with-Jupyter-1f425f.svg)](http://jupyter.org/) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![made-with-ocaml](https://img.shields.io/badge/Made%20with-OCaml-1f425f.svg)](https://ocaml.org/)
 [![ForTheBadge uses-badges](http://ForTheBadge.com/images/badges/uses-badges.svg)](http://ForTheBadge.com)
 [![ForTheBadge uses-git](http://ForTheBadge.com/images/badges/uses-git.svg)](https://GitHub.com/)
