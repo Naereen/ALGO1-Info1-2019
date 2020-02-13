@@ -24,41 +24,44 @@ C'est en ligne, sur [cette page](https://perso.crans.org/besson/teach/info1_algo
 
 ### Cours 2 : Structures de données pour un ensemble
 - [CoursMagistral_2.ipynb](CoursMagistral_2.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_2.py) et [en HTML](CoursMagistral_2.html))
 
 ### Cours 3 : Diviser pour régner
 - [CoursMagistral_3.ipynb](CoursMagistral_3.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_3.py) et [en HTML](CoursMagistral_3.html))
 
 ### Cours 4 : Graphes, et parcours en profondeur
 - [CoursMagistral_4.ipynb](CoursMagistral_4.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_4.py) et [en HTML](CoursMagistral_4.html))
 
 ### Cours 5 : Parcours en largeur
 - [CoursMagistral_5.ipynb](CoursMagistral_5.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_5.py) et [en HTML](CoursMagistral_5.html))
 
 ### Cours 6 : Algorithmes gloutons
 - [CoursMagistral_6.ipynb](CoursMagistral_6.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_6.py) et [en HTML](CoursMagistral_6.html))
 
 ### Cours 7 : Programmation dynamique
 - [CoursMagistral_7.ipynb](CoursMagistral_7.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_7.py) et [en HTML](CoursMagistral_7.html))
 
 ### Cours 8 : Flots
 - [CoursMagistral_8.ipynb](CoursMagistral_8.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_8.py) et [en HTML](CoursMagistral_8.html))
 
 **Je rédigerai moins pour les cours suivants.**
 
 ### Cours 9 : Programmation linéaire
 - [CoursMagistral_9.ipynb](CoursMagistral_9.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- (aussi [en python](CoursMagistral_9.py) et [en HTML](CoursMagistral_9.html))
 
 ### Cours 10 : Algorithmes de recherche de solutions
-- TODO : [CoursMagistral_10.ipynb](CoursMagistral_10.ipynb)
-- (aussi [en python](CoursMagistral_1.py) et [en HTML](CoursMagistral_1.html))
+- Je n'ai rien rédigé pour ce cours
+
+### Examen terminal : tri cocktail et autres problèmes
+- [Correction_examen_ALGO1_2019.ipynb](Correction_examen_ALGO1_2019.ipynb)
+- (aussi [en python](Correction_examen_ALGO1_2019.py) et [en HTML](Correction_examen_ALGO1_2019.html))
 
 ----
 
